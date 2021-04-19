@@ -1,16 +1,23 @@
 <nav class="navbar">
   <a class="sidebar__dropright-btn" id="sidebarDroprightBtn" href=""></a>
   <div class="navbar__left">
-    <a class="navbar__logo" href="">
+    <a class="navbar__logo" routerLink="/" href="">
       <img
         class="navbar__logo-img"
-        src="../assets/icons/inmobi-logo-navbar.svg"
+        src="https://res.cloudinary.com/project-p3/image/upload/v1618872693/inmobi-logo-navbar_zpo2rq.svg"
         alt=""
       />
     </a>
-    <a class="navbar__dropdown-btn" id="navbarDropdownBtn" href=""></a>
+    <a
+      class="navbar__dropdown-btn"
+      (click)="changeDropdown($event)"
+      href=""
+    ></a>
   </div>
-  <div class="navbar__right dropdown-transition" id="navbarRight">
+  <div
+    class="navbar__right dropdown-transition {{ dropdownActive }}"
+    id="navbarRight"
+  >
     <a class="navbar__link" href="">Iniciar Sesion</a>
     <a class="navbar__link" href="">Registrase</a>
   </div>

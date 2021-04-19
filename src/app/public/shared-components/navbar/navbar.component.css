@@ -37,7 +37,7 @@
   display: inline-block;
   width: 30px;
   height: 30px;
-  background-image: url("https://res.cloudinary.com/project-p3/image/upload/v1618872693/inmobi-logo-navbar_zpo2rq.svg");
+  background-image: url("https://res.cloudinary.com/project-p3/image/upload/v1618873316/mdi_view-headline_skzgiq.svg");
   background-position: center;
   background-size: contain;
   background-repeat: no-repeat;
@@ -82,7 +82,6 @@
   overflow: visible;
   height: 120px;
 }
-
 @media (min-width: 660px) {
   .dropdown-transition {
     transition: none;
