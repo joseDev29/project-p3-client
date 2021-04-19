@@ -1,0 +1,121 @@
+.navbar {
+  position: sticky;
+  top: 0;
+  z-index: 2;
+  width: 100%;
+  height: 60px;
+  background-color: var(--primary-red);
+  display: flex;
+  flex-direction: column;
+}
+
+.navbar__left {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  padding-left: 5px;
+  align-items: center;
+  background-color: var(--primary-red);
+}
+
+.navbar__logo {
+  width: max-content;
+  height: 100%;
+  display: flex;
+  align-items: center;
+}
+
+.navbar__logo-img {
+  height: 40%;
+}
+
+.navbar__dropdown-btn {
+  position: absolute;
+  right: 5px;
+  z-index: 1;
+  display: inline-block;
+  width: 30px;
+  height: 30px;
+  background-image: url("https://res.cloudinary.com/project-p3/image/upload/v1618872693/inmobi-logo-navbar_zpo2rq.svg");
+  background-position: center;
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+
+.navbar__right {
+  position: absolute;
+  z-index: 3;
+  top: 100%;
+  right: 0;
+  width: 100%;
+  height: 0;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  background-color: var(--primary-red);
+}
+
+.navbar__link {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  font-size: 1.6rem;
+  font-weight: 500;
+  color: #fff;
+}
+
+.navbar__link:hover {
+  background-color: #c41f3d;
+}
+
+.dropdown-transition {
+  transition-property: overflow, height;
+  transition-duration: 150ms;
+  transition-delay: 0ms;
+  transition-timing-function: ease-out;
+}
+
+.dropdown-active {
+  overflow: visible;
+  height: 120px;
+}
+
+@media (min-width: 660px) {
+  .dropdown-transition {
+    transition: none;
+  }
+
+  .sidebar__dropright-btn {
+    right: 260px;
+  }
+
+  .navbar {
+    flex-direction: row;
+  }
+
+  .navbar__left {
+    width: auto;
+    margin-left: 8px;
+  }
+
+  .navbar__right {
+    top: 0;
+    right: 0;
+    width: 250px;
+    height: 60px;
+    flex-direction: row;
+    overflow: visible;
+    border-bottom: none;
+  }
+
+  .navbar__link {
+    width: 50%;
+  }
+
+  .navbar__dropdown-btn {
+    display: none;
+  }
+}
