@@ -15,7 +15,6 @@ export class NavbarComponent implements OnInit {
   changeDropdown(e) {
     e.preventDefault();
 
-    console.log('change drop');
     if (this.dropdownActive === '')
       return (this.dropdownActive = 'dropdown-active');
 
