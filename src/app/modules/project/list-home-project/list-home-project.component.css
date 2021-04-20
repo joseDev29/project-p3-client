@@ -1,0 +1,21 @@
+.projects {
+  width: 100%;
+  display: grid;
+  grid-template-columns: 100%;
+  row-gap: 20px;
+  margin: 10px auto;
+}
+@media (min-width: 660px) {
+  .projects {
+    width: 620px;
+    grid-template-columns: repeat(2, 300px);
+    column-gap: 20px;
+  }
+}
+
+@media (min-width: 970px) {
+  .projects {
+    width: 940px;
+    grid-template-columns: repeat(3, 300px);
+  }
+}

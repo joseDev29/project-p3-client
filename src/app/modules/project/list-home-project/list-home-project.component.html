@@ -1,1 +1,6 @@
-<p>list-home-project works!</p>
+<div class="projects custom-text-color">
+  <app-card-project
+    *ngFor="let project of projects"
+    [project]="project"
+  ></app-card-project>
+</div>

@@ -9,6 +9,8 @@ import { NavbarComponent } from './public/shared-components/navbar/navbar.compon
 import { SidebarComponent } from './public/shared-components/sidebar/sidebar.component';
 import { CardComponent } from './public/shared-components/card/card.component';
 import { HomeHeaderComponent } from './public/shared-components/home-header/home-header.component';
+import { ProjectModule } from './modules/project/project.module';
+import { PublicProjectService } from './services/project/public-project.service';
 
 @NgModule({
   declarations: [
@@ -18,14 +20,10 @@ import { HomeHeaderComponent } from './public/shared-components/home-header/home
     NavbarComponent,
     SidebarComponent,
     CardComponent,
-    HomeHeaderComponent
+    HomeHeaderComponent,
   ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    HttpClientModule
-  ],
+  imports: [BrowserModule, AppRoutingModule, HttpClientModule, ProjectModule],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

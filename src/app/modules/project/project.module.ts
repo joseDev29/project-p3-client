@@ -10,6 +10,10 @@ import { ListBlockComponent } from './block/admin/list-block/list-block.componen
 import { CreatePropertyComponent } from './block/property/create-property/create-property.component';
 import { UpdatePropertyComponent } from './block/property/update-property/update-property.component';
 import { ListPropertyComponent } from './block/property/list-property/list-property.component';
+import { CardProjectComponent } from './card-project/card-project.component';
+import { ProjectDescriptionPipe } from 'src/app/pipes/project-description.pipe';
+import { RouterModule } from '@angular/router';
+import { PublicProjectService } from 'src/app/services/project/public-project.service';
 
 @NgModule({
   declarations: [
@@ -23,7 +27,10 @@ import { ListPropertyComponent } from './block/property/list-property/list-prope
     CreatePropertyComponent,
     UpdatePropertyComponent,
     ListPropertyComponent,
+    CardProjectComponent,
+    ProjectDescriptionPipe,
   ],
-  imports: [CommonModule],
+  imports: [CommonModule, RouterModule],
+  exports: [ListHomeProjectComponent],
 })
 export class ProjectModule {}

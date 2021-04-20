@@ -1,0 +1,15 @@
+<div class="project-card--main fade-in">
+  <img [src]="project.image" class="project-card--img" [alt]="project.name" />
+  <div class="project-card--body">
+    <h4 class="project-card--title">{{ project.name }}</h4>
+    <h3 class="project-card--subtitle">
+      {{ project.city.name }} , {{ project.city.country.name }}
+    </h3>
+    <p class="project-card--description">
+      {{ project.description | projectDescription }}
+    </p>
+    <a href="" routerLink="/{{ project.id }}" class="project-card--btn"
+      >Ver mas...</a
+    >
+  </div>
+</div>
