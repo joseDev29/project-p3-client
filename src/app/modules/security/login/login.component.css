@@ -29,6 +29,12 @@ img{
     font-family: 'Nunito Sans';
     margin-bottom: 10rem;
 }
+.form__captcha{
+  display: flex;
+    justify-content: center;
+    margin-top: 2rem;
+}
+
   .form{
     width: 90%;
     min-width: 320px;
