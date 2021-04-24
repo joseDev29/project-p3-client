@@ -11,6 +11,8 @@ import { CardComponent } from './public/shared-components/card/card.component';
 import { HomeHeaderComponent } from './public/shared-components/home-header/home-header.component';
 import { ProjectModule } from './modules/project/project.module';
 import { PublicProjectService } from './services/project/public-project.service';
+import { ReactiveFormsModule } from '@angular/forms';
+import { NgxCaptchaModule } from 'ngx-captcha';
 
 @NgModule({
   declarations: [
@@ -22,7 +24,8 @@ import { PublicProjectService } from './services/project/public-project.service'
     CardComponent,
     HomeHeaderComponent,
   ],
-  imports: [BrowserModule, AppRoutingModule, HttpClientModule, ProjectModule],
+  imports: [BrowserModule, AppRoutingModule, HttpClientModule, ProjectModule,ReactiveFormsModule,
+    NgxCaptchaModule],
   providers: [],
   bootstrap: [AppComponent],
 })

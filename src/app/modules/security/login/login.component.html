@@ -1,1 +1,47 @@
-<p>login works!</p>
+<div class="main fade-in">
+    <div class="top__app">
+
+        <!-- Tabs Titles -->
+        <!-- Icon -->
+
+
+        <h1 class="form__tittle">Inicio de sesión</h1>
+
+    </div>
+    <div class="bot__app">
+        <!-- Login Form -->
+        <form class="form" [formGroup]="aFormGroup">
+            <div class="form__group">
+                <div class="form__pair">
+                    <input formControlName="email"class="form__input-text" type="email" id="email" name="login" placeholder="Correo electrónico">
+                    <div class="warning-validator" *ngIf="fgv.email.errors && (fgv.email.dirty || fgv.email.touched)">
+                        <strong *ngIf="fgv.email.errors.required">
+                          Este campo es requerido
+                        </strong>
+                        <strong *ngIf="fgv.email.errors.email">
+                          Debe ingresar un email correcto
+                        </strong>
+                      </div>
+                </div>
+                <input formControlName="password" class="form__input-text" type="password" id="password" name="login" placeholder="Contraseña">
+                <div class="warning-validator" *ngIf="fgv.password.errors && (fgv.password.dirty || fgv.password.touched)">
+                    <strong *ngIf="fgv.password.errors.required">
+                      Este campo es requerido
+                    </strong>
+                    
+                  </div>
+            </div>
+            <div class="form__captcha">
+                <ngx-recaptcha2 #captchaElem [siteKey]="siteKey" formControlName="recaptcha">
+                </ngx-recaptcha2>
+            </div>
+            <div class="form__button">
+                <input class="button" type="button" (click)="LoginUser()" value="Iniciar sesión">
+                <div class="forgot-pass" id="">
+                    <a>¿Olvidaste tu contraseña?</a>
+                </div>
+            </div>
+        </form>
+
+    </div>
+</div>
