@@ -13,7 +13,7 @@
   }
 }
 
-@media (min-width: 970px) {
+@media (min-width: 990px) {
   .projects {
     width: 940px;
     grid-template-columns: repeat(3, 300px);

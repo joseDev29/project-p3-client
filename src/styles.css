@@ -34,6 +34,8 @@ a:hover {
 
 main {
   width: 100%;
+  min-height: calc(100vh - 60px);
+  padding-bottom: 50px;
 }
 
 @keyframes FadeIn {
