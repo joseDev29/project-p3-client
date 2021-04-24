@@ -34,6 +34,11 @@ img{
     justify-content: center;
     margin-top: 2rem;
 }
+.warning-validator{
+font-size: 10px;
+padding-left: 10px;
+color: red;
+}
 
   .form{
     width: 90%;
@@ -44,6 +49,7 @@ img{
     background-color: white;
     opacity: 0.95;
     box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.25);  
+    padding-top: 0;
 }
 .form__pair{
     width: 100%;
@@ -76,6 +82,7 @@ img{
     font-size: 14px;
     line-height: 19px;
     color: #828282;
+    margin-top: 1rem;
   }
 .form__button{
     text-align: center;

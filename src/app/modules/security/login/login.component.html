@@ -13,29 +13,30 @@
         <form class="form" [formGroup]="aFormGroup">
             <div class="form__group">
                 <div class="form__pair">
-                    <input class="form__input-text" name="login" placeholder="Correo electrónico">
-                    <div>
-                        <strong>
-                            This field is required.
+                    <input formControlName="email"class="form__input-text" type="email" id="email" name="login" placeholder="Correo electrónico">
+                    <div class="warning-validator" *ngIf="fgv.email.errors && (fgv.email.dirty || fgv.email.touched)">
+                        <strong *ngIf="fgv.email.errors.required">
+                          Este campo es requerido
                         </strong>
-                        <strong>
-                            This field must be at least characters long.
+                        <strong *ngIf="fgv.email.errors.email">
+                          Debe ingresar un email correcto
                         </strong>
-                    </div>
+                      </div>
                 </div>
-                <input class="form__input-text" type="password" id="password" name="login" placeholder="Contraseña">
-                <div>
-                    <strong>
-                        This field is required.
+                <input formControlName="password" class="form__input-text" type="password" id="password" name="login" placeholder="Contraseña">
+                <div class="warning-validator" *ngIf="fgv.password.errors && (fgv.password.dirty || fgv.password.touched)">
+                    <strong *ngIf="fgv.password.errors.required">
+                      Este campo es requerido
                     </strong>
-                </div>
+                    
+                  </div>
             </div>
             <div class="form__captcha">
                 <ngx-recaptcha2 #captchaElem [siteKey]="siteKey" formControlName="recaptcha">
                 </ngx-recaptcha2>
             </div>
             <div class="form__button">
-                <input class="button" type="button" value="Iniciar sesión">
+                <input class="button" type="button" (click)="LoginUser()" value="Iniciar sesión">
                 <div class="forgot-pass" id="">
                     <a>¿Olvidaste tu contraseña?</a>
                 </div>
