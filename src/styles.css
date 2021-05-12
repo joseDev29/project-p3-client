@@ -4,6 +4,7 @@
   --black-text: #414141;
   --primary-red: #b00020;
   --secondary-green: #00b090;
+  --cancel-red: #db0028;
 }
 
 * {
@@ -35,7 +36,6 @@ a:hover {
 main {
   width: 100%;
   min-height: calc(100vh - 60px);
-  padding-bottom: 50px;
 }
 
 @keyframes FadeIn {
