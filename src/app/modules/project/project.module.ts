@@ -16,7 +16,8 @@ import { RouterModule } from '@angular/router';
 import { ProjectPageComponent } from './project-page/project-page.component';
 import { MasterPageComponent } from './master-page/master-page.component';
 import { ProjectRoutingModule } from './project-routing.module';
-import { ListPublicPropertyComponent } from './list-public-property/list-public-property.component';
+import { ListPublicPropertyComponent } from './block/property/list-public-property/list-public-property.component';
+import { PublicBlockSelectorComponent } from './block/public-block-selector/public-block-selector.component';
 
 @NgModule({
   declarations: [
@@ -35,6 +36,7 @@ import { ListPublicPropertyComponent } from './list-public-property/list-public-
     ProjectPageComponent,
     MasterPageComponent,
     ListPublicPropertyComponent,
+    PublicBlockSelectorComponent,
   ],
   imports: [CommonModule, RouterModule, ProjectRoutingModule],
   exports: [],

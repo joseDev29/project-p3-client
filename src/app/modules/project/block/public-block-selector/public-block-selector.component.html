@@ -1,0 +1,15 @@
+<div class="project__blocks box-shadow">
+    <div class="project__blocks-select-fake">
+      <span class="blocks-select-fake__item"></span>
+      <p class="blocks-select-fake__title">{{activatedBlock.name}}</p>
+      <span class="blocks-select-fake__item select-row-icon-red"></span>
+    </div>
+    <select class="project__blocks-select" name="blocks" id="projectBlock">
+      <option *ngFor="let block of blocks" value="{{block.id}}">{{block.name}}</option>
+      
+    </select>
+  </div>
+
+  <div class="project__block-description box-shadow">
+   {{activatedBlock.description}}
+  </div>

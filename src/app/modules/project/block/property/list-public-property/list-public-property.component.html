@@ -5,9 +5,9 @@
     *ngFor="let property of properties"
     class="project__property-card box-shadow"
   >
-    <h4 class="property-card__title">{{ property.name } }</h4>
+    <h4 class="property-card__title">Propiedad {{ property.number }}</h4>
     <hr class="separator" />
-    <p class="property-card__description">{{ property.description } }</p>
+    <p class="property-card__description">{{ property.description }}</p>
     <p class="property-card__value">$ {{ property.value }}</p>
     <a class="property-card__btn">Ver mas</a>
   </div>

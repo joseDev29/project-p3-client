@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { PropertyModel } from '../../../models/project/property.model';
+import { PropertyModel } from 'src/app/models/project/property.model';
 
 @Component({
   selector: 'app-list-public-property',

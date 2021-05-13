@@ -11,39 +11,61 @@ import { PropertyModel } from '../../../models/project/property.model';
   styleUrls: ['./project-page.component.css'],
 })
 export class ProjectPageComponent implements OnInit {
-  private route: ActivatedRoute;
-  project: ProjectModel;
-  blocks: BlockModel[];
-  properties: PropertyModel[];
 
-  constructor(private publicProjectService: PublicProjectService) {}
+  project: ProjectModel;
+  blocks: BlockModel[] = [];
+  properties: PropertyModel[] = [];
+
+  constructor(
+    private publicProjectService: PublicProjectService,
+    private route: ActivatedRoute) { }
 
   ngOnInit(): void {
-    const id = this.route.params['id'];
+    const id = this.route.snapshot.params["id"];
 
     this.getProject(id);
     this.getBlocks(id);
+    this.getPropertiesByBlock(id);
+
+
+
   }
 
   getProject(id: string) {
     this.publicProjectService.getProjectById(id).subscribe(
-      (project) => (this.project = project),
+      (project) => {
+        this.project = project
+        console.log(project);
+        
+        this.getBlocks(id);
+      },
       (err) => console.log
     );
   }
 
   getBlocks(id: string) {
     this.publicProjectService.getBlocksByProjectId(id).subscribe(
-      (blocks) => (this.blocks = blocks),
+      (blocks) => {
+        this.blocks = blocks
+        console.log(blocks);
+        console.log(this.blocks);
+        
+        this.getPropertiesByBlock(this.blocks[0].id);
+      },
       (err) => console.log
     );
+
   }
 
   getPropertiesByBlock(blockId: string) {
     this.publicProjectService
       .getPropertiesByBlockId(blockId)
       .subscribe(
-        (properties) => ((this.properties = properties), (err) => console.log)
-      );
+        (properties) => {
+          this.properties = properties
+          console.log(properties);
+          console.log(this.properties);
+          
+        }, (err) => console.log);
   }
 }

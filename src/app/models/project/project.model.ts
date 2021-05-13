@@ -1,11 +1,11 @@
 import {CityCountryModel} from 'src/app/models/parameters/cityCountry.model';
 
 export interface ProjectModel{
-    id?: String;
-    code: String;
-    name: String;
-    description: String;
-    image: String;
-    id_city:String;
+    id?: string;
+    code: string;
+    name: string;
+    description: string;
+    image: string;
+    id_city:string;
     city:CityCountryModel;
 }

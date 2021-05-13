@@ -1,41 +1,21 @@
 <div class="project__main">
-  <h1 class="project__title">Valle del bombu</h1>
+  <h1 class="project__title">{{project.name}}</h1>
 
   <div class="project__data">
     <img
       class="project__image"
-      src="../assets/images/p3.jpg"
+      [src]="project.image"
       alt="Imagen de Valle del bombu"
     />
 
     <div class="project__data-right">
-      <h3 class="project__location">Manizales, Colombia</h3>
+      <h3 class="project__location">{{project.city.name}}, {{project.city.country.name}}</h3>
       <p class="project__description">
-        Ubicado a 15 minutos de la ciudad, con una bella vista, picina y zona
-        recreasional, todo lo necesario para comenzar una nueva vida. Contacte
-        con nosotros para solicitar uno de nuestros increibles apartamentos.
+       {{project.description}}
       </p>
 
-      <div class="project__blocks box-shadow">
-        <div class="project__blocks-select-fake">
-          <span class="blocks-select-fake__item"></span>
-          <p class="blocks-select-fake__title">Bloque 1</p>
-          <span class="blocks-select-fake__item select-row-icon-red"></span>
-        </div>
-        <select class="project__blocks-select" name="blocks" id="projectBlock">
-          <option value="BQ-FDSDF3">Bloque 1</option>
-          <option value="BQ-FDSDF3">Bloque 2</option>
-          <option value="BQ-FDSDF3">Bloque 3</option>
-          <option value="BQ-FDSDF3">Bloque 4</option>
-        </select>
-      </div>
-
-      <div class="project__block-description box-shadow">
-        Lorem ipsum dolor sit, amet consectetur adipisicing elit. Sit, quas.
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Necessitatibus,
-        commodi! Lorem ipsum dolor sit amet consectetur adipisicing elit.
-        Consequuntur, fuga?
-      </div>
+      <app-public-block-selector [blocks]="blocks"></app-public-block-selector>
+     
     </div>
   </div>
 
