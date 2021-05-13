@@ -13,7 +13,10 @@ import { ListPropertyComponent } from './block/property/list-property/list-prope
 import { CardProjectComponent } from './card-project/card-project.component';
 import { ProjectDescriptionPipe } from 'src/app/pipes/project-description.pipe';
 import { RouterModule } from '@angular/router';
-import { PublicProjectService } from 'src/app/services/project/public-project.service';
+import { ProjectPageComponent } from './project-page/project-page.component';
+import { MasterPageComponent } from './master-page/master-page.component';
+import { ProjectRoutingModule } from './project-routing.module';
+import { ListPublicPropertyComponent } from './list-public-property/list-public-property.component';
 
 @NgModule({
   declarations: [
@@ -29,8 +32,11 @@ import { PublicProjectService } from 'src/app/services/project/public-project.se
     ListPropertyComponent,
     CardProjectComponent,
     ProjectDescriptionPipe,
+    ProjectPageComponent,
+    MasterPageComponent,
+    ListPublicPropertyComponent,
   ],
-  imports: [CommonModule, RouterModule],
-  exports: [ListHomeProjectComponent],
+  imports: [CommonModule, RouterModule, ProjectRoutingModule],
+  exports: [],
 })
 export class ProjectModule {}

@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { ProjectModel } from 'src/app/models/project/project.model';
 import { PublicProjectService } from 'src/app/services/project/public-project.service';
 
 @Component({

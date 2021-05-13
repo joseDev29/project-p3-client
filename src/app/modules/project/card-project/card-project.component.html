@@ -8,7 +8,7 @@
     <p class="project-card--description">
       {{ project.description | projectDescription }}
     </p>
-    <a href="" routerLink="/{{ project.id }}" class="project-card--btn"
+    <a href="" [routerLink]="['/project', project.id]" class="project-card--btn"
       >Ver mas...</a
     >
   </div>
