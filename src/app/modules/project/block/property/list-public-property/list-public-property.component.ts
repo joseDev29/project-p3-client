@@ -8,8 +8,13 @@ import { PropertyModel } from 'src/app/models/project/property.model';
 })
 export class ListPublicPropertyComponent implements OnInit {
   @Input('properties') properties: PropertyModel[] = [];
-
-  constructor() {}
-
-  ngOnInit(): void {}
+  
+  constructor() {
+    
+  }
+  
+  ngOnInit(): void {
+    
+    
+  }
 }

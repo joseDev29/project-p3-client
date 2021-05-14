@@ -1,25 +1,24 @@
-<div class="project__main">
+<div *ngIf="project" class="project__main">
   <h1 class="project__title">{{project.name}}</h1>
 
   <div class="project__data">
-    <img
-      class="project__image"
-      [src]="project.image"
-      alt="Imagen de Valle del bombu"
-    />
+    <img class="project__image" [src]="project.image" alt="Imagen de Valle del bombu" />
 
     <div class="project__data-right">
       <h3 class="project__location">{{project.city.name}}, {{project.city.country.name}}</h3>
       <p class="project__description">
-       {{project.description}}
+        {{project.description}}
       </p>
 
-      <app-public-block-selector [blocks]="blocks"></app-public-block-selector>
-     
+      <app-public-block-selector 
+        [ngStyle]="{ width: '90%', 'min-width': '300px', 'max-width': '400px' }"
+        [blocks]="blocks" 
+        [activeBlock]="activeBlock"
+        (onChangeBlock)="changeBlock($event)"
+        ></app-public-block-selector>
+
     </div>
   </div>
 
-  <app-list-public-property
-    [properties]="properties"
-  ></app-list-public-property>
+  <app-list-public-property [properties]="properties"></app-list-public-property>
 </div>

@@ -15,57 +15,53 @@ export class ProjectPageComponent implements OnInit {
   project: ProjectModel;
   blocks: BlockModel[] = [];
   properties: PropertyModel[] = [];
+  projectId: string = '';
+  activeBlock: BlockModel;
 
   constructor(
     private publicProjectService: PublicProjectService,
-    private route: ActivatedRoute) { }
+    private route: ActivatedRoute) {
+    this.projectId = this.route.snapshot.params["id"];
+  }
 
   ngOnInit(): void {
-    const id = this.route.snapshot.params["id"];
-
-    this.getProject(id);
-    this.getBlocks(id);
-    this.getPropertiesByBlock(id);
-
-
-
+    this.getProject();
   }
 
-  getProject(id: string) {
-    this.publicProjectService.getProjectById(id).subscribe(
+  getProject() {
+    this.publicProjectService.getProjectById(this.projectId).subscribe(
       (project) => {
         this.project = project
-        console.log(project);
-        
-        this.getBlocks(id);
+        this.getBlocksByProjectId();
       },
       (err) => console.log
     );
   }
 
-  getBlocks(id: string) {
-    this.publicProjectService.getBlocksByProjectId(id).subscribe(
+  getBlocksByProjectId() {
+    this.publicProjectService.getBlocksByProjectId(this.projectId).subscribe(
       (blocks) => {
         this.blocks = blocks
-        console.log(blocks);
-        console.log(this.blocks);
-        
-        this.getPropertiesByBlock(this.blocks[0].id);
+        this.activeBlock = this.blocks[0];
+        this.getPropertiesByBlockId(this.activeBlock.id);
       },
       (err) => console.log
     );
 
   }
 
-  getPropertiesByBlock(blockId: string) {
+  getPropertiesByBlockId(blockId: string) {
     this.publicProjectService
       .getPropertiesByBlockId(blockId)
       .subscribe(
         (properties) => {
           this.properties = properties
-          console.log(properties);
-          console.log(this.properties);
-          
         }, (err) => console.log);
   }
+
+  changeBlock(block: BlockModel) {
+    this.activeBlock = block;
+    this.getPropertiesByBlockId(this.activeBlock.id);
+  }
+
 }
