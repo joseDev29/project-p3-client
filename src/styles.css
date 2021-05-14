@@ -47,9 +47,23 @@ main {
   }
 }
 
+.fade-in-0 {
+  animation-name: FadeIn;
+  animation-duration: 0.5s;
+  animation-delay: 0ms;
+  animation-timing-function: ease-in-out;
+}
+
 .fade-in {
   animation-name: FadeIn;
   animation-duration: 1s;
+  animation-delay: 0ms;
+  animation-timing-function: ease-in-out;
+}
+
+.fade-in-2 {
+  animation-name: FadeIn;
+  animation-duration: 2s;
   animation-delay: 0ms;
   animation-timing-function: ease-in-out;
 }
