@@ -1,0 +1,166 @@
+.country-card--main {
+    width: 90%;
+    min-width: 300px;
+    max-width: 360px;
+    margin: 0 auto;
+    border-radius: 4px;
+    /*box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.25);*/
+    box-shadow: 0 2px 5px 0 rgb(0 0 0 / 16%), 0 2px 10px 0 rgb(0 0 0 / 12%);
+  }
+  .country__input-text {
+    width: 90%;
+    height: 40px;
+    border-radius: 4px;
+    border: 0.25px solid var(--black-text);
+    box-sizing: border-box;
+    padding-left: 10px;
+    font-size: 1.6rem;
+    line-height: 19px;
+    color: var(--black-text);
+    margin:15px;
+    box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.25);
+  }
+
+  .countries-main__title{
+display: flex;
+flex-direction: column;
+align-items: center;
+  }
+  .countries__title {
+    width: 90%;
+    font-size: 3rem;
+    font-weight: 700;
+    text-align: center;
+    margin-top: 45px;
+  }
+  .countries__subtitle {
+    width: 90%;
+    font-size: 2.5rem;
+    font-weight: 600;
+    text-align: center;
+    
+  }
+  .countries {
+    width: 100%;
+    display: grid;
+    grid-template-columns: 100%;
+    row-gap: 20px;
+    margin: 10px auto;
+  }
+  
+ 
+  .my-pagination {
+    background: white;
+    font-size: 10px;
+    margin: 3rem;
+    display: flex;
+    justify-content: center;
+    
+  }
+  .my-pagination /deep/ .ngx-pagination .current {
+    background: white;
+    font-size: 24px;
+    border-bottom: 3px solid red;
+    color: black;
+  }
+  .my-pagination /deep/ .ngx-pagination {
+    background: white;
+    font-size: 10px;
+    color: black;
+  }
+  .country-card--body {
+    width: 100%;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .country-card--title {
+    text-align: center;
+    font-size: 1.8rem;
+    font-weight: 700;
+  }
+  
+  .country-card--subtitle {
+    text-align: center;
+    font-size: 1.6rem;
+    font-weight: 500;
+    margin-top: 5px;
+  }
+  
+  .country-card--description {
+    display: block;
+    width: 100%;
+    height: 60px;
+    font-size: 1.3rem;
+    font-weight: 400;
+    text-align: center;
+    word-wrap: break-word;
+    margin-top: 10px;
+  }
+  
+  .country-card--btn {
+    display: inline-block;
+    width: 50%;
+    height: 40px;
+    background-color: #5E1895;
+    border-radius: 4px;
+    margin-top: 15px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-decoration: none;
+    color: #fff;
+    font-size: 1.4rem;
+    font-weight: 400;
+  }
+  .country-card-create--btn {
+    display: inline-block;
+    width: 90%;
+    height: 40px;
+    background-color: #2980A3;
+    border-radius: 4px;
+    margin-top: 15px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-decoration: none;
+    color: #fff;
+    font-size: 1.4rem;
+    font-weight: 400;
+  }
+  
+  .country-card--btn:hover {
+    color: #fff;
+  }
+  
+  @media (min-width: 660px) {
+    .country-card--main {
+      width: 300px;
+    }
+    .country__input-text {
+      width: 50%;}
+
+      .country-card-create--btn {
+       
+        width: 50%;}
+    .country-card--img {
+      height: 300px;
+    }
+
+    .countries {
+        width: 620px;
+        grid-template-columns: repeat(2, 300px);
+        column-gap: 20px;
+      }
+  }
+  
+  
+  @media (min-width: 990px) {
+    .countries {
+      width: 940px;
+      grid-template-columns: repeat(3, 300px);
+    }
+  }
+  

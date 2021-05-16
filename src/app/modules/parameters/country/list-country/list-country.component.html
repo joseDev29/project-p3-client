@@ -1,1 +1,21 @@
-<p>list-country works!</p>
+<div class="countries-main__title">
+    <h1 class="countries__title">Zona administrador</h1>
+    <h2 class="countries__subtitle">Paises</h2>
+    <a href="" [routerLink]="['/parameters/country-creation/']" class="country-card-create--btn">Crear</a>
+    <input type="text" class="country__input-text" name="filterPost" placeholder="Buscar..." [(ngModel)]="filterPost">
+</div>
+<div class="countries">
+    <div *ngFor="let country of countries | filter:filterPost | paginate: { itemsPerPage: 6, currentPage: page } " [country]="country"
+        class="country-card--main fade-in">
+        <div class="country-card--body">
+            <h3 class="country-card--subtitle">{{country.name}}</h3>
+            <h2 class="country-card--title">
+                {{country.code}}
+            </h2>
+
+            <a href="" [routerLink]="['/parameters/country-edition/', country.id]" class="country-card--btn">Editar</a>
+        </div>
+    </div>
+</div>
+<pagination-controls class="my-pagination" (pageChange)="page = $event" responsive="true" maxSize="9"
+    previousLabel="Antes" nextLabel="Siguiente" ></pagination-controls>

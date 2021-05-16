@@ -1,1 +1,69 @@
-<p>create-country works!</p>
+<div class="country__main">
+    <div class="country-right fade-in">
+      <form class="country custom-text-color" [formGroup]="aFormGroup" >
+        <h1 class="country__title">Crear país</h1>
+  
+        <div class="country__pair">
+          <input
+            formControlName="code"
+            class="country__input-text"
+            type="code"
+            id="code"
+            name="country"
+            placeholder="Código"
+          />
+          <label class="country__label" for="code">Código</label>
+          <div
+            class="warning-validator"
+            *ngIf="fgv.code.errors && (fgv.code.dirty || fgv.code.touched)"
+          >
+            <strong *ngIf="fgv.code.errors.required">
+              Este campo es requerido
+            </strong>
+            <strong *ngIf="fgv.code.errors.code">
+              Debe ingresar un code correcto
+            </strong>
+          </div>
+        </div>
+  
+        <div class="country__pair">
+          <input
+            formControlName="name"
+            class="country__input-text"
+            type="name"
+            id="name"
+            name="country"
+            placeholder="Nombre"
+          />
+          <label class="country__label" for="name">Nombre</label>
+          <div
+            class="warning-validator"
+            *ngIf="
+              fgv.name.errors && (fgv.name.dirty || fgv.name.touched)
+            "
+          >
+            <strong *ngIf="fgv.name.errors.required">
+              Este campo es requerido
+            </strong>
+          </div>
+        </div>
+  
+        <div class="country__buttons">
+          <input
+            class="country__button cancel"
+            type="button"
+            value="Cancelar"
+            [routerLink]="['/parameters/country/']"
+            />
+            <input
+            class="country__button agree"
+            (click)="LoginUser()"
+            type="button"
+            value="Crear"
+          />
+  
+        </div>
+      </form>
+    </div>
+  </div>
+  

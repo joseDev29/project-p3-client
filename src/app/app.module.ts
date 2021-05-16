@@ -11,6 +11,7 @@ import { HomeHeaderComponent } from './public/shared-components/home-header/home
 import { ProjectModule } from './modules/project/project.module';
 import { ReactiveFormsModule } from '@angular/forms';
 import { NgxCaptchaModule } from 'ngx-captcha';
+import { FilterPipe } from './pipes/filter.pipe';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,7 @@ import { NgxCaptchaModule } from 'ngx-captcha';
     NavbarComponent,
     SidebarComponent,
     CardComponent,
-    HomeHeaderComponent,
+    HomeHeaderComponent
   ],
   imports: [
     BrowserModule,
