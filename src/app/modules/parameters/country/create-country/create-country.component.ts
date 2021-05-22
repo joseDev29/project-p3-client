@@ -31,19 +31,16 @@ export class CreateCountryComponent implements OnInit {
     });
   }
 
-  LoginUser() {
+  createCountry() {
     console.log(this.aFormGroup);
     
     if (this.aFormGroup.invalid) {
       console.log("Invalid form");
     } else {
       this.getCountryData();
-      console.log(this.Country);
-      
       this.service.saveNewCountry(this.Country).subscribe(
         data=>{
-          console.log(data);
-          this.router.navigate(["/country"]);
+          this.router.navigate(["/parameters/country"]);
         },
         err=>{
           console.log('invalid data');

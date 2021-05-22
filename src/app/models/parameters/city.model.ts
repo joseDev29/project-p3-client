@@ -1,6 +1,6 @@
 export interface CityModel{
-    id: String;
+    id?: String;
     name: String;
-    code:String;
+    code?:String;
     countryId:String,
   }

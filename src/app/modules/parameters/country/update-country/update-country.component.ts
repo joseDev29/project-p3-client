@@ -52,14 +52,10 @@ getRecordById(){
 }
 
   editRecord() {
-    console.log(this.aFormGroup);
-    
     if (this.aFormGroup.invalid) {
       console.log("Invalid form");
     } else {
       this.getCountryData();
-      console.log(this.Country);
-      
       this.service.editRecordById(this.Country).subscribe(
         data=>{
           console.log(data);
@@ -80,9 +76,7 @@ getRecordById(){
     }
     this.Country.id = this.fgv.id.value;
     this.Country.code = this.fgv.code.value;
-    this.Country.name = this.fgv.name.value;
-    console.log(this.Country);
-    
+    this.Country.name = this.fgv.name.value; 
   }
   get fgv() {
     return this.aFormGroup.controls;

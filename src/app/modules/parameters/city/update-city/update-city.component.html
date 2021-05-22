@@ -1,1 +1,59 @@
-<p>update-city works!</p>
+<div class="city__main">
+    <div class="city-right fade-in">
+        <form class="city custom-text-color" [formGroup]="aFormGroup">
+            <h1 class="city__title">Crear ciudad</h1>
+
+
+            <div class="city__pair">
+                <input formControlName="id" class="city__input-text" type="id" id="id" name="city"
+                    placeholder="Identificacion" disabled/>
+                <label class="city__label" for="id">Identificacion</label>
+                <div class="warning-validator" *ngIf="
+              fgv.id.errors && (fgv.id.dirty || fgv.id.touched)
+            ">
+                    <strong *ngIf="fgv.id.errors.required">
+                        Este campo es requerido
+                    </strong>
+                </div>
+            </div>
+            <div class="city__pair">
+                <input formControlName="name" class="city__input-text" type="name" id="name" name="city"
+                    placeholder="Nombre" />
+                <label class="city__label" for="name">Nombre</label>
+                <div class="warning-validator" *ngIf="
+              fgv.name.errors && (fgv.name.dirty || fgv.name.touched)
+            ">
+                    <strong *ngIf="fgv.name.errors.required">
+                        Este campo es requerido
+                    </strong>
+                </div>
+            </div>
+            <div class="city__pair">
+                <input formControlName="code" class="city__input-text" type="code" id="code" name="city"
+                    placeholder="Codigo" />
+                <label class="city__label" for="code">Codigo</label>
+                <div class="warning-validator" *ngIf="
+              fgv.code.errors && (fgv.code.dirty || fgv.code.touched)
+            ">
+                    <strong *ngIf="fgv.code.errors.required">
+                        Este campo es requerido
+                    </strong>
+                </div>
+            </div>
+            <div class="city__pair">
+                <label class="city__label" for="name">País</label>
+                <select formControlName="countryId" class="country__blocks-select" name="city" id="countryBlock" >
+                    <option *ngFor="let country of countries" value="{{country.id}}">{{country.name}}</option>
+
+                </select>
+            </div>
+
+            <div class="city__buttons">
+                <input class="city__button cancel" type="button" value="Cancelar"
+                    [routerLink]="['/parameters/city/']" />
+                <input class="city__button agree" (click)="editCity()" type="button" value="Crear" />
+
+            </div>
+        </form>
+    </div>
+</div>
