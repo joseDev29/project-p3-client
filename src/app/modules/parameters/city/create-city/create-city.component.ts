@@ -23,7 +23,7 @@ export class CreateCityComponent implements OnInit {
     private route: ActivatedRoute,
     private service:CityService,
     private router:Router,
-    private cityService:CountryService
+    private countryService:CountryService
   ) { }
   ngOnInit(): void {
     this.FormBuilding();
@@ -64,7 +64,7 @@ export class CreateCityComponent implements OnInit {
   }
 
   getCountries() {
-    this.cityService.getAllRecords().subscribe(
+    this.countryService.getAllRecords().subscribe(
       (countries) => {
         this.countries = countries;
       },

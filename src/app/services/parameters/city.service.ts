@@ -13,6 +13,7 @@ export class CityService {
 
   entity: String = 'cities';
   token: String;
+  country:String='countries'
   constructor(
     private http: HttpClient,
     private securityService: SecurityService,
@@ -23,6 +24,10 @@ export class CityService {
 
     getRecordById(recordId: String): Observable<CityCountryModel> {
       return this.http.get<CityCountryModel>(`${ServiceConfig.BASE_URL}${this.entity}/${recordId}`);
+    }
+
+    getRecordByCountryId(recordId: String): Observable<CityModel[]> {
+      return this.http.get<CityModel[]>(`${ServiceConfig.BASE_URL}/${this.country}/${recordId}/${this.entity}`);
     }
 
     editRecordById(record: CityModel): Observable<CityModel> {

@@ -18,6 +18,7 @@ import { MasterPageComponent } from './master-page/master-page.component';
 import { ProjectRoutingModule } from './project-routing.module';
 import { ListPublicPropertyComponent } from './block/property/list-public-property/list-public-property.component';
 import { PublicBlockSelectorComponent } from './block/public-block-selector/public-block-selector.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -38,7 +39,7 @@ import { PublicBlockSelectorComponent } from './block/public-block-selector/publ
     ListPublicPropertyComponent,
     PublicBlockSelectorComponent,
   ],
-  imports: [CommonModule, RouterModule, ProjectRoutingModule],
+  imports: [CommonModule, RouterModule, ProjectRoutingModule,ReactiveFormsModule],
   exports: [],
 })
 export class ProjectModule {}

@@ -7,5 +7,5 @@ export interface ProjectModel{
     description: string;
     image: string;
     id_city:string;
-    city:CityCountryModel;
+    city?:CityCountryModel;
 }
