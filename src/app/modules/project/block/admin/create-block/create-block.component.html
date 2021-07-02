@@ -1,1 +1,64 @@
-<p>create-block works!</p>
+<div class="block__main">
+    <div class="block-right fade-in">
+        <form class="block custom-text-color" [formGroup]="aFormGroup">
+            <h1 class="block__title">Crear bloque</h1>
+
+
+            <div class="block__pair">
+                <input formControlName="name" class="block__input-text" type="name" id="name" name="block"
+                    placeholder="Nombre" />
+                <label class="block__label" for="name">Nombre</label>
+                <div class="warning-validator" *ngIf="
+              fgv.name.errors && (fgv.name.dirty || fgv.name.touched)
+            ">
+                    <strong *ngIf="fgv.name.errors.required">
+                        Este campo es requerido
+                    </strong>
+                </div>
+            </div>
+            <div class="block__pair">
+                <input formControlName="description" class="block__input-text" type="description" id="description" name="block"
+                    placeholder="Descripción" />
+                <label class="block__label" for="description">Descripción</label>
+                <div class="warning-validator" *ngIf="
+              fgv.description.errors && (fgv.description.dirty || fgv.description.touched)
+            ">
+                    <strong *ngIf="fgv.description.errors.required">
+                        Este campo es requerido
+                    </strong>
+                </div>
+            </div>
+            <div class="block__pair">
+                <label class="block__label" for="country">País</label>
+                <select  class="country__blocks-select" name="blocks" id="countryBlock" (change)="getCitiesByCountryId($event)" >
+                    <option selected>Seleccione país</option>
+                    <option *ngFor="let country of countries" value="{{country.id}}">{{country.name}}</option>
+                    
+                </select>
+            </div>
+            <div class="block__pair">
+                <label class="block__label" for="city">Ciudad</label>
+                <select  class="country__blocks-select" name="blocks" id="countryBlock" (change)="getProjectsByCityId($event)">
+                    <option selected>Seleccione ciudad</option>
+                    <option *ngFor="let city of cities" value="{{city.id}}">{{city.name}}</option>
+                    
+                </select>
+            </div>
+            <div class="block__pair">
+                <label class="block__label" for="city">Proyectos</label>
+                <select formControlName="projectId" class="country__blocks-select" name="blocks" id="countryBlock" >
+                    <option selected>Seleccione proyecto</option>
+                    <option *ngFor="let project of projects" value="{{project.id}}">{{project.name}}</option>
+                    
+                </select>
+            </div>
+
+            <div class="block__buttons">
+                <input class="block__button cancel" type="button" value="Cancelar"
+                    [routerLink]="['/project/']" />
+                <input class="block__button agree" (click)="createBlock()" type="button" value="Crear" />
+
+            </div>
+        </form>
+    </div>
+</div>
