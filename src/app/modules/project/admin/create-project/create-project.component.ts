@@ -6,6 +6,7 @@ import { CountryModel } from 'src/app/models/parameters/country.model';
 import { ProjectModel } from 'src/app/models/project/project.model';
 import { CityService } from 'src/app/services/parameters/city.service';
 import { CountryService } from 'src/app/services/parameters/country.service';
+import { AdminProjectService } from 'src/app/services/project/admin-project.service';
 
 @Component({
   selector: 'app-create-project',
@@ -18,10 +19,11 @@ export class CreateProjectComponent implements OnInit {
   aFormGroup: FormGroup;
   countries: CountryModel[] = [];
   cities:CityModel[]=[];
+  file_name:string = 'Subir un archivo...';
   constructor(
     private formBuilder: FormBuilder,
     private route: ActivatedRoute,
-    private service:CountryService,
+    private service:AdminProjectService,
     private router:Router,
     private countryService:CountryService,
     private cityService:CityService
@@ -33,24 +35,32 @@ export class CreateProjectComponent implements OnInit {
 
   FormBuilding() {
     this.aFormGroup = this.formBuilder.group({
-      code: ['', [Validators.required]],
       name: ['', [Validators.required]],
       description:['', [Validators.required]],
-      countryId:['', [Validators.required]],
-      cityId:['', [Validators.required]]
+      cityId:['', [Validators.required]],
+      image_file: ['', [Validators.required]]
     });
   }
 
   createProject() {
     console.log(this.aFormGroup);
-    
+
+    const formData = new FormData();
+
+    formData.append('name', this.aFormGroup.value.name);
+    formData.append('description', this.aFormGroup.value.description);
+    formData.append('cityId', this.aFormGroup.value.cityId);
+    formData.append('image_file', this.aFormGroup.get('image_file').value);
+
+    console.log(formData.get('cityId'))
+
     if (this.aFormGroup.invalid) {
       console.log("Invalid form");
     } else {
-      this.getCountryData();
-      this.service.saveNewCountry(this.project).subscribe(
+      
+      this.service.saveNewRecord(formData).subscribe(
         data=>{
-          this.router.navigate(["/parameters/country"]);
+          this.router.navigate(["/"]);
         },
         err=>{
           console.log('invalid data');
@@ -60,17 +70,7 @@ export class CreateProjectComponent implements OnInit {
       
     }
   }
-  getCountryData() {
-    this.project={
-      code:"",
-      name:"",
-      description:"",
-      image:"",
-      id_city:""
-    }
-    this.project.code = this.aFormGroup.value.code;
-    this.project.name = this.aFormGroup.value.name;
-  }
+  
   get fgv() {
     return this.aFormGroup.controls;
   }
@@ -96,6 +96,20 @@ export class CreateProjectComponent implements OnInit {
       },
       (err) => console.log
     );
+  }
+
+  onChangeImageFile(event:any){
+
+    if(event.target.value){
+      this.file_name = event.target.value.match(
+        /[\/\\]([\w\d\s\.\-\(\)]+)$/
+      )[1];
+
+      this.aFormGroup.get('image_file').setValue(event.target.files[0])
+    }
+    else{
+      this.file_name = 'Subir un archivo...';
+    } 
   }
 }
 

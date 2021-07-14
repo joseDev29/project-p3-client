@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { ServiceConfig } from 'src/app/config/service-config';
@@ -19,5 +19,9 @@ private city='cities'
     }
     getProjectByCityId(recordId: String): Observable<ProjectModel[]> {
       return this.http.get<ProjectModel[]>(`${ServiceConfig.BASE_URL}${this.city}/${recordId}/${this.entity}`);
+    }
+
+    saveNewRecord(formData:FormData){
+      return this.http.post<any>(`${ServiceConfig.BASE_URL}${this.entity}`, formData)
     }
 }

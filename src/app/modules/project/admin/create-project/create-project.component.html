@@ -30,7 +30,7 @@
             </div>
             <div class="project__pair">
                 <label class="project__label" for="country">País</label>
-                <select formControlName="countryId" class="country__blocks-select" name="blocks" id="countryBlock" (change)="getCitiesByCountryId($event)" >
+                <select class="country__blocks-select" name="blocks" id="countryBlock" (change)="getCitiesByCountryId($event)" >
                     <option *ngFor="let country of countries" value="{{country.id}}">{{country.name}}</option>
                     
                 </select>
@@ -41,6 +41,13 @@
                     <option *ngFor="let city of cities" value="{{city.id}}">{{city.name}}</option>
                     
                 </select>
+            </div>
+            <div class="project__pair">
+                <div class="file-image__container">
+                    <p class="file-image__text">{{file_name}}</p>
+                    <button class="file-image__button" (click)="file_image_input.click()">Subir</button>
+                </div>
+                <input #file_image_input class="file-image__input"  type="file" name="image_file" id="image_file" (change)="onChangeImageFile($event)">
             </div>
 
             <div class="project__buttons">
