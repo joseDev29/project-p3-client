@@ -10,6 +10,7 @@ import { SecurityService } from '../../security.service';
 })
 export class AdminBlockService {
 entity:String='blocks';
+projects='projects'
   constructor(
     private http: HttpClient,
     private securityService: SecurityService){
@@ -22,5 +23,8 @@ entity:String='blocks';
       console.log(`${ServiceConfig.BASE_URL}${this.entity}`);
       
       return this.http.post<BlockModel>(`${ServiceConfig.BASE_URL}${this.entity}`,block);
+    }
+    getBlocksByProjectId(recordId: String): Observable<BlockModel[]> {
+      return this.http.get<BlockModel[]>(`${ServiceConfig.BASE_URL}${this.projects}/${recordId}/${this.entity}`);
     }
 }

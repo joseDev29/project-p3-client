@@ -8,6 +8,9 @@ import { ListProjectComponent } from './admin/list-project/list-project.componen
 import { ListBlockComponent } from './block/admin/list-block/list-block.component';
 import { CreateBlockComponent } from './block/admin/create-block/create-block.component';
 import { UpdateBlockComponent } from './block/admin/update-block/update-block.component';
+import { CreatePropertyComponent } from './block/property/create-property/create-property.component';
+import { UpdatePropertyComponent } from './block/property/update-property/update-property.component';
+import { ListPropertyComponent } from './block/property/list-property/list-property.component';
 
 const routes: Routes = [
   {
@@ -39,6 +42,25 @@ const routes: Routes = [
           path: 'list',
           component:ListBlockComponent
         },{
+          path:'property',
+          children: [{
+            path: 'creation',
+            component: CreatePropertyComponent
+          },
+          {
+            path: 'edition',
+            component: UpdatePropertyComponent
+          },
+          {
+            path: 'list',
+            component:ListPropertyComponent
+          },{
+            path:'**',
+            redirectTo:'list'
+          }
+          ]
+        }
+        ,{
           path:'**',
           redirectTo:'list'
         }
