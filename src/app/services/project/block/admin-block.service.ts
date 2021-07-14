@@ -20,9 +20,10 @@ projects='projects'
       return this.http.get<BlockModel>(`${ServiceConfig.BASE_URL}${this.entity}/${recordId}`);
     }
     saveNewRecord(block: BlockModel): Observable<BlockModel> {
-      console.log(`${ServiceConfig.BASE_URL}${this.entity}`);
-      
       return this.http.post<BlockModel>(`${ServiceConfig.BASE_URL}${this.entity}`,block);
+    }
+    editRecordById(block: BlockModel): Observable<BlockModel> { 
+      return this.http.patch<BlockModel>(`${ServiceConfig.BASE_URL}${this.entity}/${block.id}`,block);
     }
     getBlocksByProjectId(recordId: String): Observable<BlockModel[]> {
       return this.http.get<BlockModel[]>(`${ServiceConfig.BASE_URL}${this.projects}/${recordId}/${this.entity}`);

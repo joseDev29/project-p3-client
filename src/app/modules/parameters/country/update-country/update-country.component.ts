@@ -30,7 +30,6 @@ export class UpdateCountryComponent implements OnInit {
 
   FormBuilding() {
     this.aFormGroup = this.formBuilder.group({
-      id:[{value: '', disabled: true},[,Validators.required]],
       code: ['', [Validators.required]],
       name: ['', [Validators.required]]
     });
@@ -39,7 +38,6 @@ export class UpdateCountryComponent implements OnInit {
 getRecordById(){
   this.service.getRecordById(this.recordId).subscribe(
     data=>{
-      this.fgv.id.setValue(data.id);
       this.fgv.code.setValue(data.code);
       this.fgv.name.setValue(data.name);
     },
@@ -58,7 +56,6 @@ getRecordById(){
       this.getCountryData();
       this.service.editRecordById(this.Country).subscribe(
         data=>{
-          console.log(data);
           this.router.navigate(["/parameters/country"]);
         },
         err=>{
@@ -74,7 +71,6 @@ getRecordById(){
       code:"",
       name:""
     }
-    this.Country.id = this.fgv.id.value;
     this.Country.code = this.fgv.code.value;
     this.Country.name = this.fgv.name.value; 
   }

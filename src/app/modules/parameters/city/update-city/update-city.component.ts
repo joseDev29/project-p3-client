@@ -35,7 +35,6 @@ export class UpdateCityComponent implements OnInit {
 
   FormBuilding() {
     this.aFormGroup = this.formBuilder.group({
-      id: [{ value: ''}, [, Validators.required]],
       code: ['', [Validators.required]],
       name: ['', [Validators.required]],
       countryId: ['', [Validators.required]]
@@ -62,7 +61,6 @@ export class UpdateCityComponent implements OnInit {
   getRecordById() {
     this.service.getRecordById(this.recordId).subscribe(
       data => {
-        this.fgv.id.setValue(data.id);
         this.fgv.code.setValue(data.code);
         this.fgv.name.setValue(data.name);
         this.fgv.countryId.setValue(data.countryId);
@@ -76,13 +74,11 @@ export class UpdateCityComponent implements OnInit {
 
   getCityData() {
     this.City = {
-      id: "",
       code: "",
       name: "",
       countryId: ""
 
     }
-    this.City.id = this.aFormGroup.value.id;
     this.City.code = this.aFormGroup.value.code;
     this.City.name = this.aFormGroup.value.name;
     this.City.countryId = this.aFormGroup.value.countryId;

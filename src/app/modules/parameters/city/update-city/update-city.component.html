@@ -1,21 +1,7 @@
 <div class="city__main">
     <div class="city-right fade-in">
         <form class="city custom-text-color" [formGroup]="aFormGroup">
-            <h1 class="city__title">Crear ciudad</h1>
-
-
-            <div class="city__pair">
-                <input formControlName="id" class="city__input-text" type="id" id="id" name="city"
-                    placeholder="Identificacion" disabled/>
-                <label class="city__label" for="id">Identificacion</label>
-                <div class="warning-validator" *ngIf="
-              fgv.id.errors && (fgv.id.dirty || fgv.id.touched)
-            ">
-                    <strong *ngIf="fgv.id.errors.required">
-                        Este campo es requerido
-                    </strong>
-                </div>
-            </div>
+            <h1 class="city__title">Editar ciudad</h1>
             <div class="city__pair">
                 <input formControlName="name" class="city__input-text" type="name" id="name" name="city"
                     placeholder="Nombre" />

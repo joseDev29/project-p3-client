@@ -17,10 +17,15 @@ private city='cities'
     private securityService: SecurityService){
       //this.token = this.securityService.getToken()
     }
-    getProjectByCityId(recordId: String): Observable<ProjectModel[]> {
+    getProjectsByCityId(recordId: String): Observable<ProjectModel[]> {
       return this.http.get<ProjectModel[]>(`${ServiceConfig.BASE_URL}${this.city}/${recordId}/${this.entity}`);
     }
-
+    getRecordById(recordId: String): Observable<ProjectModel> {
+      return this.http.get<ProjectModel>(`${ServiceConfig.BASE_URL}${this.entity}/${recordId}`);
+    }
+    editRecordById(formData:FormData): Observable<any> { 
+      return this.http.patch<any>(`${ServiceConfig.BASE_URL}${this.entity}/${formData.get('id')}`,formData);
+    }
     saveNewRecord(formData:FormData){
       return this.http.post<any>(`${ServiceConfig.BASE_URL}${this.entity}`, formData)
     }

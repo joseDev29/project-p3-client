@@ -35,14 +35,15 @@ const routes: Routes = [
           component: CreateBlockComponent
         },
         {
-          path: 'edition',
+          path: 'edition/:id',
           component: UpdateBlockComponent
         },
         {
           path: 'list',
-          component:ListBlockComponent
-        },{
-          path:'property',
+          component: ListBlockComponent
+        },
+        {
+          path: 'property',
           children: [{
             path: 'creation',
             component: CreatePropertyComponent
@@ -53,20 +54,19 @@ const routes: Routes = [
           },
           {
             path: 'list',
-            component:ListPropertyComponent
-          },{
-            path:'**',
-            redirectTo:'list'
+            component: ListPropertyComponent
+          }, {
+            path: '**',
+            redirectTo: 'list'
           }
           ]
         }
-        ,{
-          path:'**',
-          redirectTo:'list'
+          , {
+          path: '**',
+          redirectTo: 'list'
         }
         ]
       },
-
       {
         path: '**',
         redirectTo: 'list',

@@ -114,7 +114,7 @@ export class CreatePropertyComponent implements OnInit {
   }
   getProjectsByCityId(event:any){
     let id = event.target.value;
-    this.projectService.getProjectByCityId(id).subscribe(
+    this.projectService.getProjectsByCityId(id).subscribe(
       (projects) => {
         this.projects = projects;
         console.log(this.projects);

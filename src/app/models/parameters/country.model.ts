@@ -1,5 +1,5 @@
 export interface CountryModel{
     id?: String;
-    code:String;
+    code?:String;
     name: String;
 }

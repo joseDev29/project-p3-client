@@ -1,0 +1,61 @@
+<div class="project__main">
+    <div class="project-right fade-in">
+        <form class="project custom-text-color" [formGroup]="aFormGroup">
+            <h1 class="project__title">Editar proyecto</h1>
+
+
+            <div class="project__pair">
+                <input formControlName="name" class="project__input-text" type="name" id="name" name="project"
+                    placeholder="Nombre" />
+                <label class="project__label" for="name">Nombre</label>
+                <div class="warning-validator" *ngIf="
+              fgv.name.errors && (fgv.name.dirty || fgv.name.touched)
+            ">
+                    <strong *ngIf="fgv.name.errors.required">
+                        Este campo es requerido
+                    </strong>
+                </div>
+            </div>
+            <div class="project__pair">
+                <input formControlName="description" class="project__input-text" type="description" id="description" name="project"
+                    placeholder="Descripción" />
+                <label class="project__label" for="description">Descripción</label>
+                <div class="warning-validator" *ngIf="
+              fgv.description.errors && (fgv.description.dirty || fgv.description.touched)
+            ">
+                    <strong *ngIf="fgv.description.errors.required">
+                        Este campo es requerido
+                    </strong>
+                </div>
+            </div>
+            <div class="project__pair">
+                <label class="project__label" for="country">País</label>
+                <select formControlName="countryId" class="country__blocks-select" name="blocks" id="countryBlock" (change)="getCitiesByCountryId($event)" >
+                    <option *ngFor="let country of countries" value="{{country.id}}">{{country.name}}</option>
+                    
+                </select>
+            </div>
+            <div class="project__pair">
+                <label class="project__label" for="city">Ciudad</label>
+                <select formControlName="cityId" class="country__blocks-select" name="blocks" id="countryBlock" >
+                    <option *ngFor="let city of cities" value="{{city.id}}">{{city.name}}</option>
+                    
+                </select>
+            </div>
+            <div class="project__pair">
+                <div class="file-image__container">
+                    <p class="file-image__text">{{file_name}}</p>
+                    <button class="file-image__button" (click)="file_image_input.click()">Subir</button>
+                </div>
+                <input #file_image_input class="file-image__input"  type="file" name="image_file" id="image_file" (change)="onChangeImageFile($event)">
+            </div>
+
+            <div class="project__buttons">
+                <input class="project__button cancel" type="button" value="Cancelar"
+                    [routerLink]="['/project/admin']" />
+                <input class="project__button agree" (click)="editRecord()" type="button" value="Editar" />
+
+            </div>
+        </form>
+    </div>
+</div>

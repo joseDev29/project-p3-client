@@ -14,6 +14,7 @@ export class CityService {
   entity: String = 'cities';
   token: String;
   country:String='countries'
+  project:String='projects'
   constructor(
     private http: HttpClient,
     private securityService: SecurityService,
@@ -27,7 +28,10 @@ export class CityService {
     }
 
     getRecordByCountryId(recordId: String): Observable<CityModel[]> {
-      return this.http.get<CityModel[]>(`${ServiceConfig.BASE_URL}/${this.country}/${recordId}/${this.entity}`);
+      return this.http.get<CityModel[]>(`${ServiceConfig.BASE_URL}${this.country}/${recordId}/${this.entity}`);
+    }
+    getRecordByProjectId(recordId: String): Observable<CityModel> {
+      return this.http.get<CityModel>(`${ServiceConfig.BASE_URL}${this.project}/${recordId}/city`);
     }
 
     editRecordById(record: CityModel): Observable<CityModel> {

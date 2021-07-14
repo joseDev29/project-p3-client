@@ -4,19 +4,6 @@
       <h1 class="country__title">Editar país</h1>
 
       <div class="country__pair">
-        <input formControlName="id" class="country__input-text" type="id" id="id" name="country"
-          placeholder="Identificacion" disabled />
-        <label class="country__label" for="id">Identificacion</label>
-        <div class="warning-validator" *ngIf="fgv.id.errors && (fgv.id.dirty || fgv.id.touched)">
-          <strong *ngIf="fgv.code.errors.required">
-            Este campo es requerido
-          </strong>
-          <strong *ngIf="fgv.code.errors.code">
-            Debe ingresar un code correcto
-          </strong>
-        </div>
-      </div>
-      <div class="country__pair">
         <input formControlName="code" class="country__input-text" type="code" id="code" name="country"
           placeholder="Código" />
         <label class="country__label" for="code">Código</label>

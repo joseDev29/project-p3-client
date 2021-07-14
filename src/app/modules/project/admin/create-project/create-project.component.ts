@@ -79,8 +79,6 @@ export class CreateProjectComponent implements OnInit {
     this.countryService.getAllRecords().subscribe(
       (countries) => {
         this.countries = countries;
-        console.log(this.countries);
-        
       },
       (err) => console.log
     );
@@ -91,8 +89,6 @@ export class CreateProjectComponent implements OnInit {
     this.cityService.getRecordByCountryId(id).subscribe(
       (cities) => {
         this.cities = cities;
-        console.log(this.cities);
-        
       },
       (err) => console.log
     );
