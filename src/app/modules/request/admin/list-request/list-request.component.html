@@ -1,1 +1,21 @@
-<p>list-request works!</p>
+<div class="request-card--main fade-in">
+    <div class="request-card--body">
+      <h4 class="request-card--title">{{ request.code }}</h4>
+      <h3 class="request-card--subtitle">
+        {{ request.property.block.project.name }}
+      </h3>
+      <h3 class="request-card--subtitle">
+        Apartamento {{ request.property.number }} - {{ request.property.block.name }}
+      </h3>
+      <h3 class="request-card--subtitle">
+        {{request.client.name}}
+      </h3>
+      <h3 class="request-card--subtitle">
+        {{request.status}}
+      </h3>
+      
+      <a href="" [routerLink]="['/request', request.id]" class="request-card--btn"
+        >Ver</a
+      >
+    </div>
+  </div>

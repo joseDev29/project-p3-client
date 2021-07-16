@@ -14,6 +14,8 @@ export class HomeListRequestComponent implements OnInit {
   ngOnInit(): void {
     this.RequestService.getAllRecords().subscribe(
       (requests) => {
+        console.log(requests);
+        
         this.requests = requests;
       },
       (err) => console.log

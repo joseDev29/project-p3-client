@@ -1,3 +1,4 @@
+import { ClientModel } from "../client/client.model";
 import { PropertyModel } from "../project/property.model";
 import { UserModel } from "../security/user.model";
 
@@ -14,7 +15,7 @@ export interface RequestModel{
     totalPayment?:string;
     feePayment?:string;
     feeNumber?:string;
-    //client?:;
+    client?:ClientModel;
     seller?:UserModel;
     property?:PropertyModel
 }
