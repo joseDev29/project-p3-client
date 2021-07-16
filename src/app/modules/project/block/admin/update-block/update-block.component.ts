@@ -56,8 +56,6 @@ export class UpdateBlockComponent implements OnInit {
       console.log("Invalid form");
     } else {
       this.getBlockData();
-      console.log(this.block);
-      
       this.service.editRecordById(this.block).subscribe(
         data => {
           this.router.navigate(["/project/admin/block"]);
@@ -77,8 +75,6 @@ export class UpdateBlockComponent implements OnInit {
         this.fgv.description.setValue(data.description);
         this.projectId=data.projectId;
         this.getCityDataByProjectId();
-        console.log(this.cityId);
-
         this.fgv.projectId.setValue(data.projectId);
       },
       error => {
@@ -89,8 +85,6 @@ export class UpdateBlockComponent implements OnInit {
   }
 
   setCountryData(id) {
-    console.log(id);
-    console.log(this.fgv);
     this.fgv.countryId.setValue(id);
     this.getCities(id)
   }
@@ -99,11 +93,6 @@ export class UpdateBlockComponent implements OnInit {
     this.cityService.getRecordByProjectId(this.projectId).subscribe(
       data => {
         this.cityId = data.id;
-        this.setCountryData(data.countryId);
-        
-        console.log(this.fgv);
-        
-        console.log(this.cities);
         this.fgv.cityId.setValue(data.id);
         this.getProjects(data.id)
       },

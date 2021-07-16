@@ -1,0 +1,21 @@
+.requests {
+    width: 100%;
+    display: grid;
+    grid-template-columns: 100%;
+    row-gap: 20px;
+    margin: 10px auto;
+  }
+  @media (min-width: 660px) {
+    .requests {
+      width: 620px;
+      grid-template-columns: repeat(2, 300px);
+      column-gap: 20px;
+    }
+  }
+  
+  @media (min-width: 990px) {
+    .requests {
+      width: 940px;
+      grid-template-columns: repeat(3, 300px);
+    }
+  }
