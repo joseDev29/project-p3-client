@@ -7,6 +7,6 @@ import { RequestModel } from 'src/app/models/request/request.model';
   styleUrls: ['./list-request.component.css']
 })
 export class ListRequestComponent{
-  @Input('request') request: RequestModel;
+  @Input('request') request: any;
 }
 

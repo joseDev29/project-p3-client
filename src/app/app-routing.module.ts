@@ -8,6 +8,11 @@ const routes: Routes = [
       import('./modules/project/project.module').then((m) => m.ProjectModule),
   },
   {
+    path: 'request',
+    loadChildren: () =>
+      import('./modules/request/request.module').then((m) => m.RequestModule),
+  },
+  {
     path: 'security',
     loadChildren: () =>
       import('./modules/security/security.module').then(

@@ -17,7 +17,7 @@ export class RequestService {
       '{"fields":{"id":true,"code":true,"status":true,"offer":true,"firstPayment":true,"totalPayment":true,"feePayment":true, "feeNumber":true,"clientId":true, "propertyId":true},"include":[{"relation":"client"},{"relation":"property","scope": {"include":[{"relation":"block","scope":{"include": [{"relation":"project"}]}}]}}]}';
 
     return this.http.get<RequestModel[]>(
-      `${ServiceConfig.BASE_URL}${this.entity}`
+      `${ServiceConfig.BASE_URL}${this.entity}?filter=${filter}`
     );
   }
 }

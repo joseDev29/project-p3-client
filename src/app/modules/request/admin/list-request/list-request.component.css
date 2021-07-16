@@ -29,7 +29,9 @@
     font-size: 1.8rem;
     font-weight: 700;
   }
-  
+  .red{
+      color:#b00020
+  }
   .request-card--subtitle {
     text-align: center;
     font-size: 1.6rem;
