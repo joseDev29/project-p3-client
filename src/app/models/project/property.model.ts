@@ -1,3 +1,5 @@
+import { BlockModel } from "./block.model";
+
 export interface PropertyModel {
   id?: string;
   code?: string;
@@ -6,4 +8,6 @@ export interface PropertyModel {
   value: number;
   status?: string;
   blockId: string;
+  block?:BlockModel
+
 }
