@@ -19,9 +19,9 @@ export class AdminPropertyService {
   getRecordById(recordId: String): Observable<PropertyModel> {
     return this.http.get<PropertyModel>(`${ServiceConfig.BASE_URL}${this.entity}/${recordId}`);
   }
-  saveNewRecord(block: PropertyModel): Observable<PropertyModel> {
+  saveNewRecord(property: PropertyModel): Observable<PropertyModel> {
     console.log(`${ServiceConfig.BASE_URL}${this.entity}`);
     
-    return this.http.post<PropertyModel>(`${ServiceConfig.BASE_URL}${this.entity}`,block);
+    return this.http.post<PropertyModel>(`${ServiceConfig.BASE_URL}${this.entity}`, property);
   }
 }

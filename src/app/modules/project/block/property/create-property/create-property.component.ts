@@ -43,7 +43,6 @@ export class CreatePropertyComponent implements OnInit {
 
   FormBuilding() {
     this.aFormGroup = this.formBuilder.group({
-      name: ['', [Validators.required]],
       description:['', [Validators.required]],
       value:['', [Validators.required]],
       number:['', [Validators.required]],
@@ -74,13 +73,12 @@ export class CreatePropertyComponent implements OnInit {
   }
   getPropertyData() {
     this.property={
-      name: '',
       description: '',
       number: '',
       value: 0,
       blockId: ''
     }
-    this.property.name = this.aFormGroup.value.name;
+
     this.property.description = this.aFormGroup.value.description;
     this.property.number = this.aFormGroup.value.number;
     this.property.value = this.aFormGroup.value.value;

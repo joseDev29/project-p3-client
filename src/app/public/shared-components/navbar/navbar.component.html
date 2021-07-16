@@ -1,5 +1,5 @@
 <nav class="navbar">
-  <a class="sidebar__dropright-btn" id="sidebarDroprightBtn" href=""></a>
+  <a class="sidebar__dropright-btn" id="sidebarDroprightBtn" href="" (click)="changeSidebar($event)"></a>
   <div class="navbar__left">
     <a class="navbar__logo" routerLink="/" href="">
       <img
@@ -22,3 +22,12 @@
     <a class="navbar__link" href="">Registrase</a>
   </div>
 </nav>
+<div class="sidebar {{ sidebarActive }}" id="sidebar">
+  <a routerLink="/parameters/country" >Paises</a>
+  <a routerLink="/parameters/city" href="">Ciudades</a>
+  <a routerLink="/project/admin/creation">Projectos</a>
+  <a href="">Bloques</a>
+  <a href="">Propiedades</a>
+
+
+</div>

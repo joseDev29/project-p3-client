@@ -82,6 +82,38 @@
   overflow: visible;
   height: 120px;
 }
+
+.sidebar {
+  position: fixed;
+  width: 250px;
+  height: calc(100% - 60px);
+  z-index: 1;
+  left: -250px;
+  background-color: rgb(27, 27, 27);
+  transition-property: left;
+  transition-duration: 200ms;
+  transition-timing-function: ease-in-out;
+  transition-delay: 0ms;
+}
+
+.sidebar-active {
+  left: 0;
+}
+
+.sidebar__dropright-btn {
+  position: absolute;
+  top: calc(50% - 11.5px);
+  right: 50px;
+  z-index: 1;
+  display: inline-block;
+  width: 23px;
+  height: 23px;
+  background-image: url("https://res.cloudinary.com/project-p3/image/upload/v1626406536/inmobi/assets/admin-sidebar-btn-icon-white_a8xwic.svg");
+  background-position: center;
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+
 @media (min-width: 660px) {
   .dropdown-transition {
     transition: none;

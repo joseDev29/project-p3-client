@@ -74,14 +74,15 @@ export class UpdateCityComponent implements OnInit {
 
   getCityData() {
     this.City = {
+      id: "",
       code: "",
       name: "",
       countryId: ""
-
     }
     this.City.code = this.aFormGroup.value.code;
     this.City.name = this.aFormGroup.value.name;
     this.City.countryId = this.aFormGroup.value.countryId;
+    this.City.id = this.recordId;
   }
 
   getCountries() {

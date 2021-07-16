@@ -7,6 +7,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class NavbarComponent implements OnInit {
   dropdownActive: string = '';
+  sidebarActive:string = '';
 
   constructor() {}
 
@@ -19,5 +20,14 @@ export class NavbarComponent implements OnInit {
       return (this.dropdownActive = 'dropdown-active');
 
     this.dropdownActive = '';
+  }
+
+  changeSidebar(e) {
+    e.preventDefault();
+
+    if (this.sidebarActive === '')
+      return (this.sidebarActive = 'sidebar-active');
+
+    this.sidebarActive = '';
   }
 }

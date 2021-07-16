@@ -4,20 +4,21 @@
             <h1 class="property__title">Crear inmueble</h1>
 
 
+            
             <div class="property__pair">
-                <input formControlName="name" class="property__input-text" type="name" id="name" name="property"
-                    placeholder="Nombre" />
-                <label class="property__label" for="name">Nombre</label>
+                <input formControlName="number" class="property__input-text" type="text" id="number" name="number"
+                    placeholder="Numero" />
+                <label class="property__label" for="number">Numero</label>
                 <div class="warning-validator" *ngIf="
-              fgv.name.errors && (fgv.name.dirty || fgv.name.touched)
+              fgv.number.errors && (fgv.number.dirty || fgv.number.touched)
             ">
-                    <strong *ngIf="fgv.name.errors.required">
+                    <strong *ngIf="fgv.number.errors.required">
                         Este campo es requerido
                     </strong>
                 </div>
             </div>
             <div class="property__pair">
-                <input formControlName="description" class="property__input-text" type="description" id="description" name="property"
+                <input formControlName="description" class="property__input-text" type="text" id="description" name="property"
                     placeholder="Descripción" />
                 <label class="property__label" for="description">Descripción</label>
                 <div class="warning-validator" *ngIf="
@@ -29,7 +30,7 @@
                 </div>
             </div>
             <div class="property__pair">
-                <input formControlName="value" class="property__input-text" type="value" id="value" name="value"
+                <input formControlName="value" class="property__input-text" type="number" id="value" name="value"
                     placeholder="Valor" />
                 <label class="property__label" for="value">Valor</label>
                 <div class="warning-validator" *ngIf="

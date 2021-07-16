@@ -68,11 +68,13 @@ getRecordById(){
   }
   getCountryData() {
     this.Country={
+      id: "",
       code:"",
       name:""
     }
     this.Country.code = this.fgv.code.value;
-    this.Country.name = this.fgv.name.value; 
+    this.Country.name = this.fgv.name.value;
+    this.Country.id = this.recordId; 
   }
   get fgv() {
     return this.aFormGroup.controls;
