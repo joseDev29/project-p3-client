@@ -6,8 +6,10 @@ import { ListClientComponent } from './admin/list-client/list-client.component';
 import { CreateFinancesComponent } from './finances/create-finances/create-finances.component';
 import { UpdateFinancesComponent } from './finances/update-finances/update-finances.component';
 import { ListFinancesComponent } from './finances/list-finances/list-finances.component';
-
-
+import { FilterPipe } from 'src/app/pipes/filter.pipe';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { NgxPaginationModule } from 'ngx-pagination';
+import { ClientRoutingModule } from './client-routing.module';
 
 @NgModule({
   declarations: [
@@ -16,10 +18,14 @@ import { ListFinancesComponent } from './finances/list-finances/list-finances.co
     ListClientComponent,
     CreateFinancesComponent,
     UpdateFinancesComponent,
-    ListFinancesComponent
+    ListFinancesComponent,
   ],
   imports: [
-    CommonModule
-  ]
+    CommonModule,
+    ReactiveFormsModule,
+    FormsModule,
+    NgxPaginationModule,
+    ClientRoutingModule,
+  ],
 })
-export class ClientModule { }
+export class ClientModule {}

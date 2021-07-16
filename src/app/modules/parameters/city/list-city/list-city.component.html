@@ -1,24 +1,53 @@
 <div class="cities-main__title">
   <h1 class="cities__title">Zona administrador</h1>
   <h2 class="cities__subtitle">Ciudades</h2>
-  <a href="" [routerLink]="['/parameters/city-creation/']" class="city-card-create--btn">Crear</a>
-  <input type="text" class="city__input-text" name="filterPost" placeholder="Buscar..." [(ngModel)]="filterPost">
+  <a
+    href=""
+    [routerLink]="['/parameters/city-creation/']"
+    class="city-card-create--btn"
+    >Crear</a
+  >
+  <input
+    type="text"
+    class="city__input-text"
+    name="filterPost"
+    placeholder="Buscar..."
+    [(ngModel)]="filterPost"
+  />
 </div>
 <div class="cities">
-  <div *ngFor="let city of cities | filter:filterPost | paginate: { itemsPerPage: 6, currentPage: page } " [city]="city"
-      class="city-card--main fade-in">
-      <div class="city-card--body">
-          <h3 class="city-card--title">{{city.code}}</h3>
-          <h2 class="city-card--subtitle">
-              {{city.name}}
-          </h2>
-          <h2 class="city-card--subtitle">
-              {{city.country.name}}
-          </h2>
+  <div
+    *ngFor="
+      let city of cities
+        | filter: filterPost
+        | paginate: { itemsPerPage: 6, currentPage: page }
+    "
+    [city]="city"
+    class="city-card--main fade-in"
+  >
+    <div class="city-card--body">
+      <h3 class="city-card--title">{{ city.code }}</h3>
+      <h2 class="city-card--subtitle">
+        {{ city.name }}
+      </h2>
+      <h2 class="city-card--subtitle">
+        {{ city.country.name }}
+      </h2>
 
-          <a href="" [routerLink]="['/parameters/city-edition/', city.id]" class="city-card--btn">Editar</a>
-      </div>
+      <a
+        href=""
+        [routerLink]="['/parameters/city-edition/', city.id]"
+        class="city-card--btn"
+        >Editar</a
+      >
+    </div>
   </div>
 </div>
-<pagination-controls class="my-pagination" (pageChange)="page = $event" responsive="true" maxSize="9"
-  previousLabel="Antes" nextLabel="Siguiente" ></pagination-controls>
+<pagination-controls
+  class="my-pagination"
+  (pageChange)="page = $event"
+  responsive="true"
+  maxSize="9"
+  previousLabel="Antes"
+  nextLabel="Siguiente"
+></pagination-controls>

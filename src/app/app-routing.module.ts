@@ -22,15 +22,22 @@ const routes: Routes = [
       ),
   },
   {
+    path: 'clients',
+    loadChildren: () =>
+      import('./modules/client/client.module').then((m) => m.ClientModule),
+  },
+  {
     path: '**',
     redirectTo: 'project/home',
   },
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes,{
-    scrollPositionRestoration:'top'
-  })],
+  imports: [
+    RouterModule.forRoot(routes, {
+      scrollPositionRestoration: 'top',
+    }),
+  ],
   exports: [RouterModule],
 })
 export class AppRoutingModule {}

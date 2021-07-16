@@ -20,7 +20,7 @@ import { FilterPipe } from './pipes/filter.pipe';
     NavbarComponent,
     SidebarComponent,
     CardComponent,
-    HomeHeaderComponent
+    HomeHeaderComponent,
   ],
   imports: [
     BrowserModule,

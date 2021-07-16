@@ -12,7 +12,6 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NgxPaginationModule } from 'ngx-pagination';
 import { FilterPipe } from 'src/app/pipes/filter.pipe';
 
-
 @NgModule({
   declarations: [
     CreateCityComponent,
@@ -21,14 +20,14 @@ import { FilterPipe } from 'src/app/pipes/filter.pipe';
     CreateCountryComponent,
     UpdateCountryComponent,
     ListCountryComponent,
-    FilterPipe
+    FilterPipe,
   ],
   imports: [
     CommonModule,
     ParametersRoutingModule,
     ReactiveFormsModule,
     FormsModule,
-    NgxPaginationModule
-  ]
+    NgxPaginationModule,
+  ],
 })
-export class ParametersModule { }
+export class ParametersModule {}

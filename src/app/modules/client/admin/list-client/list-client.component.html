@@ -1,1 +1,54 @@
-<p>list-client works!</p>
+<div class="cities-main__title">
+  <h1 class="cities__title">Zona administrador</h1>
+  <h2 class="cities__subtitle">Ciudades</h2>
+  <a
+    href=""
+    [routerLink]="['/parameters/city-creation/']"
+    class="city-card-create--btn"
+    >Crear</a
+  >
+  <input
+    type="text"
+    class="city__input-text"
+    name="filterPost"
+    placeholder="Buscar..."
+    [(ngModel)]="filterPost"
+  />
+</div>
+<div class="cities">
+  <div
+    *ngFor="
+      let client of clients | paginate: { itemsPerPage: 6, currentPage: page }
+    "
+    [city]="city"
+    class="city-card--main fade-in"
+  >
+    <div class="city-card--body">
+      <h3 class="city-card--title">{{ client.document }}</h3>
+      <h2 class="city-card--subtitle">
+        {{ client.name }}
+      </h2>
+      <h2 class="city-card--subtitle">
+        {{ client.email }}
+      </h2>
+      <h2 class="city-card--subtitle">
+        {{ client.phone }}
+      </h2>
+
+      <a
+        href=""
+        [routerLink]="['/parameters/city-edition/', client.id]"
+        class="city-card--btn"
+        >Editar</a
+      >
+    </div>
+  </div>
+</div>
+<pagination-controls
+  class="my-pagination"
+  (pageChange)="page = $event"
+  responsive="true"
+  maxSize="9"
+  previousLabel="Antes"
+  nextLabel="Siguiente"
+></pagination-controls>
