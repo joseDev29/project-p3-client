@@ -20,4 +20,17 @@ export class RequestService {
       `${ServiceConfig.BASE_URL}${this.entity}?filter=${filter}`
     );
   }
+  getRecordById(id:string): Observable<RequestModel> {
+    const filter: String =
+      '{"fields":{"id":true,"code":true,"status":true,"offer":true,"firstPayment":true,"totalPayment":true,"feePayment":true, "feeNumber":true,"clientId":true, "propertyId":true,"date":true},"include":[{"relation":"client"},{"relation":"property","scope": {"include":[{"relation":"block","scope":{"include": [{"relation":"project"}]}}]}}]}';
+
+    return this.http.get<RequestModel>(
+      `${ServiceConfig.BASE_URL}${this.entity}/${id}?filter=${filter}`
+    );
+  }
+  editRecordById(record:RequestModel): Observable<RequestModel> {
+    return this.http.patch<RequestModel>(
+      `${ServiceConfig.BASE_URL}${this.entity}/${record.id}`,record
+    );
+  }
 }

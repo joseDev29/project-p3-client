@@ -10,11 +10,15 @@
       <h3 class="request-card--subtitle">
         {{request.client.name}}
       </h3>
-      <h3 class="request-card--subtitle">
+      <h3 [ngClass]="{
+        'text-success':request.status === 'accepted',
+        'text-review':request.status === 'review',
+        'text-rejected':request.status === 'rejected'
+      }" class="request-card--subtitle">
         {{request.status}}
       </h3>
       
-      <a href="" [routerLink]="['/request', request.id]" class="request-card--btn"
+      <a href="" [routerLink]="['/request/list', request.id]" class="request-card--btn"
         >Ver</a
       >
     </div>

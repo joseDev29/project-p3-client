@@ -15,7 +15,15 @@
     border-radius: 4px 4px 0 0;
     object-fit: cover;
   }
-  
+  .text-success{
+    color:#1BDE5D;
+}
+.text-review{
+    color:#3043EE;
+}
+.text-rejected{
+    color:#DB0028;
+}
   .request-card--body {
     width: 100%;
     padding: 10px;

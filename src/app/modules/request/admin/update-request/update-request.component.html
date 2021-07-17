@@ -1,1 +1,121 @@
-<p>update-request works!</p>
+<h2 class="request-title">Zona vendedor</h2>
+<div class="requests custom-text-color">
+    <div>
+        <h4 class="request-card--title">Solicitud</h4>
+        <div class="request-card--main fade-in">
+            <div class="request-card--body">
+                <h3 class="request-card--subtitle">
+                    Codigo
+                </h3>
+                <h3 class="request-card--subtitle2">
+                    {{request.code}}
+                </h3>
+                <hr class="separator" />
+                <h3 class="request-card--subtitle">
+                    Estado
+                </h3>
+                <h3 [ngClass]="{
+                    'text-success':request.status === 'accepted',
+                    'text-review':request.status === 'review',
+                    'text-rejected':request.status === 'rejected'
+                  }"class="request-card--subtitle2 status">
+                    {{request.status}}
+                </h3>
+                <hr class="separator" />
+                <h3 class="request-card--subtitle">
+                    Oferta
+                </h3>
+                <h3 class="request-card--subtitle2">
+                    ${{request.offer}}
+                </h3>
+                <hr class="separator" />
+                <h3 class="request-card--subtitle">
+                    Fecha
+                </h3>
+                <h3 class="request-card--subtitle2">
+                    {{request.date}}
+                </h3>
+                <hr class="separator" />
+                <h3 class="request-card--subtitle">
+                    Numero de cuotas
+                </h3>
+                <h3 class="request-card--subtitle2">
+                    {{request.feeNumber}}
+                </h3>
+            </div>
+        </div>
+    </div>
+    <div>
+        <h4 class="request-card--title">Datos del inmueble</h4>
+        <div class="request-card--main fade-in">
+            <div class="request-card--body">
+                <h3 class="request-card--subtitle">
+                    Codigo
+                </h3>
+                <h3 class="request-card--subtitle2">
+                    {{request.property.code}}
+                </h3>
+                <hr class="separator" />
+                <h3 class="request-card--subtitle">
+                    Valor
+                </h3>
+                <h3 class="request-card--subtitle2">
+                    {{request.property.value}}
+                </h3>
+                <hr class="separator" />
+                <h3 class="request-card--subtitle">
+                    Bloque
+                </h3>
+                <h3 class="request-card--subtitle2">
+                    {{request.property.block.name}}
+                </h3>
+                <hr class="separator" />
+                <h3 class="request-card--subtitle">
+                    Proyecto
+                </h3>
+                <h3 class="request-card--subtitle2">
+                    {{request.property.block.project.name}}
+                </h3>
+            </div>
+        </div>
+    </div>
+    <div>
+        <h4 class="request-card--title">Datos del cliente</h4>
+        <div class="request-card--main fade-in">
+            <div class="request-card--body">
+                <h3 class="request-card--subtitle">
+                    Nombre
+                </h3>
+                <h3 class="request-card--subtitle2">
+                    {{request.client.name}}
+                </h3>
+                <hr class="separator" />
+                <h3 class="request-card--subtitle">
+                    Documento
+                </h3>
+                <h3 class="request-card--subtitle2">
+                    {{request.client.document}}
+                </h3>
+                <hr class="separator" />
+                <h3 class="request-card--subtitle">
+                    Email
+                </h3>
+                <h3 class="request-card--subtitle2">
+                    {{request.client.email}}
+                </h3>
+                <hr class="separator" />
+                <h3 class="request-card--subtitle">
+                    Telefono
+                </h3>
+                <h3 class="request-card--subtitle2">
+                    {{request.client.phone}}
+                </h3>
+            </div>
+        </div>
+    </div>
+</div>
+<div *ngIf="request.status!='accepted'&&request.status!='rejected'" class="request__buttons">
+    <input class="request__button cancel" type="button" (click)="rejectedRequest()" value="Rechazar" />
+    <input class="request__button agree" type="button" (click)="acceptedRequest()"  value="Aceptar"/>
+
+</div>
