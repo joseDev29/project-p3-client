@@ -16,4 +16,11 @@ export class ClientService {
       `${ServiceConfig.BASE_URL}${this.entity}`
     );
   }
+
+  saveNewRecord(client: FormData) {
+    return this.http.post<any>(
+      `${ServiceConfig.BASE_URL}${this.entity}`,
+      client
+    );
+  }
 }

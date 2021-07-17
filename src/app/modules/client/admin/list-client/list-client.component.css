@@ -1,4 +1,4 @@
-.city-card--main {
+.client-card--main {
   width: 90%;
   min-width: 300px;
   max-width: 360px;
@@ -7,7 +7,7 @@
   /*box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.25);*/
   box-shadow: 0 2px 5px 0 rgb(0 0 0 / 16%), 0 2px 10px 0 rgb(0 0 0 / 12%);
 }
-.city__input-text {
+.client__input-text {
   width: 90%;
   height: 40px;
   border-radius: 4px;
@@ -21,25 +21,25 @@
   box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.25);
 }
 
-.cities-main__title {
+.clients-main__title {
   display: flex;
   flex-direction: column;
   align-items: center;
 }
-.cities__title {
+.clients__title {
   width: 90%;
   font-size: 3rem;
   font-weight: 700;
   text-align: center;
   margin-top: 45px;
 }
-.cities__subtitle {
+.clients__subtitle {
   width: 90%;
   font-size: 2.5rem;
   font-weight: 600;
   text-align: center;
 }
-.cities {
+.clients {
   width: 100%;
   display: grid;
   grid-template-columns: 100%;
@@ -65,7 +65,7 @@
   font-size: 10px;
   color: black;
 }
-.city-card--body {
+.client-card--body {
   width: 100%;
   padding: 10px;
   display: flex;
@@ -73,20 +73,20 @@
   align-items: center;
 }
 
-.city-card--title {
+.client-card--title {
   text-align: center;
   font-size: 1.8rem;
   font-weight: 700;
 }
 
-.city-card--subtitle {
+.client-card--subtitle {
   text-align: center;
   font-size: 1.6rem;
   font-weight: 500;
   margin-top: 5px;
 }
 
-.city-card--description {
+.client-card--description {
   display: block;
   width: 100%;
   height: 60px;
@@ -97,7 +97,7 @@
   margin-top: 10px;
 }
 
-.city-card--btn {
+.client-card--btn {
   display: inline-block;
   width: 50%;
   height: 40px;
@@ -112,7 +112,7 @@
   font-size: 1.4rem;
   font-weight: 400;
 }
-.city-card-create--btn {
+.client-card-create--btn {
   display: inline-block;
   width: 90%;
   height: 40px;
@@ -128,26 +128,26 @@
   font-weight: 400;
 }
 
-.city-card--btn:hover {
+.client-card--btn:hover {
   color: #fff;
 }
 
 @media (min-width: 660px) {
-  .city-card--main {
+  .client-card--main {
     width: 300px;
   }
-  .city__input-text {
+  .client__input-text {
     width: 50%;
   }
 
-  .city-card-create--btn {
+  .client-card-create--btn {
     width: 50%;
   }
-  .city-card--img {
+  .client-card--img {
     height: 300px;
   }
 
-  .cities {
+  .clients {
     width: 620px;
     grid-template-columns: repeat(2, 300px);
     column-gap: 20px;
@@ -155,7 +155,7 @@
 }
 
 @media (min-width: 990px) {
-  .cities {
+  .clients {
     width: 940px;
     grid-template-columns: repeat(3, 300px);
   }

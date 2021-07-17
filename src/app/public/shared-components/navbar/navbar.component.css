@@ -89,7 +89,7 @@
   height: calc(100% - 60px);
   z-index: 1;
   left: -250px;
-  background-color: rgb(27, 27, 27);
+  background-color: #b00020;
   transition-property: left;
   transition-duration: 200ms;
   transition-timing-function: ease-in-out;

@@ -1,44 +1,44 @@
-<div class="cities-main__title">
-  <h1 class="cities__title">Zona administrador</h1>
-  <h2 class="cities__subtitle">Ciudades</h2>
+<div class="clients-main__title">
+  <h1 class="clients__title">Zona Vendedor</h1>
+  <h2 class="clients__subtitle">Clientes</h2>
   <a
     href=""
-    [routerLink]="['/parameters/city-creation/']"
-    class="city-card-create--btn"
+    [routerLink]="['/clients/creation']"
+    class="client-card-create--btn"
     >Crear</a
   >
   <input
     type="text"
-    class="city__input-text"
+    class="client__input-text"
     name="filterPost"
     placeholder="Buscar..."
     [(ngModel)]="filterPost"
   />
 </div>
-<div class="cities">
+<div class="clients">
   <div
     *ngFor="
       let client of clients | paginate: { itemsPerPage: 6, currentPage: page }
     "
-    [city]="city"
-    class="city-card--main fade-in"
+    [client]="client"
+    class="client-card--main fade-in"
   >
-    <div class="city-card--body">
-      <h3 class="city-card--title">{{ client.document }}</h3>
-      <h2 class="city-card--subtitle">
+    <div class="client-card--body">
+      <h3 class="client-card--title">{{ client.document }}</h3>
+      <h2 class="client-card--subtitle">
         {{ client.name }}
       </h2>
-      <h2 class="city-card--subtitle">
+      <h2 class="client-card--subtitle">
         {{ client.email }}
       </h2>
-      <h2 class="city-card--subtitle">
+      <h2 class="client-card--subtitle">
         {{ client.phone }}
       </h2>
 
       <a
         href=""
-        [routerLink]="['/parameters/city-edition/', client.id]"
-        class="city-card--btn"
+        [routerLink]="['/parameters/client-edition/', client.id]"
+        class="client-card--btn"
         >Editar</a
       >
     </div>

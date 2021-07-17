@@ -11,23 +11,22 @@ import { AdminProjectService } from 'src/app/services/project/admin-project.serv
 @Component({
   selector: 'app-create-project',
   templateUrl: './create-project.component.html',
-  styleUrls: ['./create-project.component.css']
+  styleUrls: ['./create-project.component.css'],
 })
 export class CreateProjectComponent implements OnInit {
-  
-  project:ProjectModel;
+  project: ProjectModel;
   aFormGroup: FormGroup;
   countries: CountryModel[] = [];
-  cities:CityModel[]=[];
-  file_name:string = 'Subir un archivo...';
+  cities: CityModel[] = [];
+  file_name: string = 'Subir un archivo...';
   constructor(
     private formBuilder: FormBuilder,
     private route: ActivatedRoute,
-    private service:AdminProjectService,
-    private router:Router,
-    private countryService:CountryService,
-    private cityService:CityService
-  ) { }
+    private service: AdminProjectService,
+    private router: Router,
+    private countryService: CountryService,
+    private cityService: CityService
+  ) {}
   ngOnInit(): void {
     this.FormBuilding();
     this.getCountries();
@@ -36,9 +35,9 @@ export class CreateProjectComponent implements OnInit {
   FormBuilding() {
     this.aFormGroup = this.formBuilder.group({
       name: ['', [Validators.required]],
-      description:['', [Validators.required]],
-      cityId:['', [Validators.required]],
-      image_file: ['', [Validators.required]]
+      description: ['', [Validators.required]],
+      cityId: ['', [Validators.required]],
+      image_file: ['', [Validators.required]],
     });
   }
 
@@ -52,25 +51,22 @@ export class CreateProjectComponent implements OnInit {
     formData.append('cityId', this.aFormGroup.value.cityId);
     formData.append('image_file', this.aFormGroup.get('image_file').value);
 
-    console.log(formData.get('cityId'))
+    console.log(formData.get('cityId'));
 
     if (this.aFormGroup.invalid) {
-      console.log("Invalid form");
+      console.log('Invalid form');
     } else {
-      
       this.service.saveNewRecord(formData).subscribe(
-        data=>{
-          this.router.navigate(["/"]);
+        (data) => {
+          this.router.navigate(['/']);
         },
-        err=>{
+        (err) => {
           console.log('invalid data');
-          
         }
-      )
-      
+      );
     }
   }
-  
+
   get fgv() {
     return this.aFormGroup.controls;
   }
@@ -84,7 +80,7 @@ export class CreateProjectComponent implements OnInit {
     );
   }
 
-  getCitiesByCountryId(event:any){
+  getCitiesByCountryId(event: any) {
     let id = event.target.value;
     this.cityService.getRecordByCountryId(id).subscribe(
       (cities) => {
@@ -94,18 +90,15 @@ export class CreateProjectComponent implements OnInit {
     );
   }
 
-  onChangeImageFile(event:any){
-
-    if(event.target.value){
+  onChangeImageFile(event: any) {
+    if (event.target.value) {
       this.file_name = event.target.value.match(
         /[\/\\]([\w\d\s\.\-\(\)]+)$/
       )[1];
 
-      this.aFormGroup.get('image_file').setValue(event.target.files[0])
-    }
-    else{
+      this.aFormGroup.get('image_file').setValue(event.target.files[0]);
+    } else {
       this.file_name = 'Subir un archivo...';
-    } 
+    }
   }
 }
-
