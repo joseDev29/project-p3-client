@@ -10,6 +10,7 @@ import { FilterPipe } from 'src/app/pipes/filter.pipe';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NgxPaginationModule } from 'ngx-pagination';
 import { ClientRoutingModule } from './client-routing.module';
+import { ClientPageComponent } from './admin/client-page/client-page.component';
 
 @NgModule({
   declarations: [
@@ -19,6 +20,7 @@ import { ClientRoutingModule } from './client-routing.module';
     CreateFinancesComponent,
     UpdateFinancesComponent,
     ListFinancesComponent,
+    ClientPageComponent
   ],
   imports: [
     CommonModule,
