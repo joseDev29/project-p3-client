@@ -56,7 +56,7 @@
 }
 
 .select-row-icon-red {
-  /*background-image: url(../assets/icons/row-select-red.svg);*/
+  background-image: url("https://res.cloudinary.com/project-p3/image/upload/v1626579812/inmobi/assets/row-select-red_ly6qy1.svg");
   background-repeat: no-repeat;
   background-position: center;
   background-size: contain;

@@ -80,7 +80,7 @@
 
 .dropdown-active {
   overflow: visible;
-  height: 120px;
+  height: 60px;
 }
 
 .sidebar {
@@ -89,7 +89,7 @@
   height: calc(100% - 60px);
   z-index: 1;
   left: -250px;
-  background-color: #b00020;
+  background-color: #202124;
   transition-property: left;
   transition-duration: 200ms;
   transition-timing-function: ease-in-out;
@@ -120,7 +120,7 @@
   }
 
   .sidebar__dropright-btn {
-    right: 260px;
+    right: 130px;
   }
 
   .navbar {
@@ -135,7 +135,7 @@
   .navbar__right {
     top: 0;
     right: 0;
-    width: 250px;
+    width: 125px;
     height: 60px;
     flex-direction: row;
     overflow: visible;
@@ -143,7 +143,7 @@
   }
 
   .navbar__link {
-    width: 50%;
+    width: 100%;
   }
 
   .navbar__dropdown-btn {

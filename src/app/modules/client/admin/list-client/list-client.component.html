@@ -1,28 +1,13 @@
 <div class="clients-main__title">
   <h1 class="clients__title">Zona Vendedor</h1>
   <h2 class="clients__subtitle">Clientes</h2>
-  <a
-    href=""
-    [routerLink]="['/clients/creation']"
-    class="client-card-create--btn"
-    >Crear</a
-  >
-  <input
-    type="text"
-    class="client__input-text"
-    name="filterPost"
-    placeholder="Buscar..."
-    [(ngModel)]="filterPost"
-  />
+  <a href="" [routerLink]="['/clients/creation']" class="client-card-create--btn">Crear</a>
+  <input type="text" class="client__input-text" name="filterPost" placeholder="Buscar..." [(ngModel)]="filterPost" />
 </div>
 <div class="clients">
-  <div
-    *ngFor="
+  <div *ngFor="
       let client of clients | paginate: { itemsPerPage: 6, currentPage: page }
-    "
-    [client]="client"
-    class="client-card--main fade-in"
-  >
+    " [client]="client" class="client-card--main fade-in">
     <div class="client-card--body">
       <h3 class="client-card--title">{{ client.document }}</h3>
       <h2 class="client-card--subtitle">
@@ -35,20 +20,9 @@
         {{ client.phone }}
       </h2>
 
-      <a
-        href=""
-        [routerLink]="['/parameters/client-edition/', client.id]"
-        class="client-card--btn"
-        >Editar</a
-      >
+      <a href="" [routerLink]="['/parameters/client-edition/', client.id]" class="client-card--btn">Editar</a>
     </div>
   </div>
 </div>
-<pagination-controls
-  class="my-pagination"
-  (pageChange)="page = $event"
-  responsive="true"
-  maxSize="9"
-  previousLabel="Antes"
-  nextLabel="Siguiente"
-></pagination-controls>
+<pagination-controls class="my-pagination" (pageChange)="page = $event" responsive="true" maxSize="9"
+  previousLabel="Antes" nextLabel="Siguiente"></pagination-controls>
