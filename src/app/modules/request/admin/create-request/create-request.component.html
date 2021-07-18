@@ -1,1 +1,99 @@
-<p>create-request works!</p>
+<div class="request__main">
+    <div class="request-right fade-in">
+        <form class="request custom-text-color" [formGroup]="aFormGroup">
+            <h1 class="request__title">Crear Solicitud</h1>
+
+            <div class="request__pair">
+                <input formControlName="offer" class="request__input-text" type="text" id="offer"
+                    name="request" placeholder="Oferta" />
+                <label class="request__label" for="offer">Oferta</label>
+                <div class="warning-validator" *ngIf="
+              fgv.offer.errors && (fgv.offer.dirty || fgv.offer.touched)
+            ">
+                    <strong *ngIf="fgv.offer.errors.required">
+                        Este campo es requerido
+                    </strong>
+                </div>
+            </div>
+            <div class="request__pair">
+                <input formControlName="clientDoc" class="request__input-text" type="text" id="clientDoc"
+                    name="request" placeholder="Oferta" />
+                <label class="request__label" for="clientDoc">Documento del cliente</label>
+                <div class="warning-validator" *ngIf="
+              fgv.clientDoc.errors && (fgv.clientDoc.dirty || fgv.clientDoc.touched)
+            ">
+                    <strong *ngIf="fgv.clientDoc.errors.required">
+                        Este campo es requerido
+                    </strong>
+                </div>
+            </div>
+
+            <div class="request__pair">
+                <input formControlName="propertyCode" class="request__input-text" type="text" id="propertyCode"
+                    name="request" placeholder="Código de la propiedad" />
+                <label class="request__label" for="propertyCode">Código de la propiedad</label>
+                <div class="warning-validator" *ngIf="
+              fgv.propertyCode.errors && (fgv.propertyCode.dirty || fgv.propertyCode.touched)
+            ">
+                    <strong *ngIf="fgv.propertyCode.errors.required">
+                        Este campo es requerido
+                    </strong>
+                </div>
+            </div>
+
+            <div class="request__pair">
+                <input formControlName="sellerID" class="request__input-text" type="text" id="sellerId"
+                    name="request" placeholder="Seller ID" />
+                <label class="request__label" for="sellerID">Seller ID</label>
+                <div class="warning-validator" *ngIf="
+              fgv.sellerID.errors && (fgv.sellerID.dirty || fgv.sellerID.touched)
+            ">
+                    <strong *ngIf="fgv.sellerID.errors.required">
+                        Este campo es requerido
+                    </strong>
+                </div>
+            </div>
+            <div class="request__pair">
+                <input formControlName="feeNumber" class="request__input-text" type="number" id="feeNumber"
+                    name="request" placeholder="Número de cuotas" />
+                <label class="request__label" for="feeNumber">Número de cuotas</label>
+                <div class="warning-validator" *ngIf="
+              fgv.feeNumber.errors && (fgv.feeNumber.dirty || fgv.feeNumber.touched)
+            ">
+                    <strong *ngIf="fgv.feeNumber.errors.required">
+                        Este campo es requerido
+                    </strong>
+                </div>
+            </div>
+            
+            <div class="request__pair">
+                <input formControlName="date" class="request__input-text" type="date" id="date"
+                    name="request" placeholder="Fecha"/>
+                <label class="request__label" for="date">Fecha</label>
+                <div class="warning-validator" *ngIf="
+              fgv.date.errors && (fgv.date.dirty || fgv.date.touched)
+            ">
+                    <strong *ngIf="fgv.date.errors.required">
+                        Este campo es requerido
+                    </strong>
+                </div>
+            </div>
+
+            <div class="request__pair">
+                <div class="file-image__container">
+                    <p class="file-image__text">{{file_name}}</p>
+                    <button class="file-image__button" (click)="file_image_input.click()">Subir</button>
+                </div>
+                <input #file_image_input class="file-image__input" type="file" name="image_file" id="image_file"
+                    (change)="onChangeImageFile($event)">
+            </div>
+
+            <div class="request__buttons">
+                <input class="request__button cancel" type="button" value="Cancelar"
+                    [routerLink]="['/request/admin']" />
+                <input class="request__button agree" type="button" value="Crear" />
+
+            </div>
+        </form>
+    </div>
+</div>

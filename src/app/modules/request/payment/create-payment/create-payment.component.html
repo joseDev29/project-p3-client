@@ -1,1 +1,48 @@
-<p>create-payment works!</p>
+<div class="payment__main">
+    <div class="payment-right fade-in">
+        <form class="payment custom-text-color" [formGroup]="aFormGroup">
+            <h1 class="payment__title">Información de pago</h1>
+
+            <div class="payment__pair">
+                <input formControlName="name" class="payment__input-text" type="name" id="name" name="payment"
+                    placeholder="Nombre" />
+                <label class="payment__label" for="name">Valor</label>
+                <div class="warning-validator" *ngIf="
+              fgv.name.errors && (fgv.name.dirty || fgv.name.touched)
+            ">
+                    <strong *ngIf="fgv.name.errors.required">
+                        Este campo es requerido
+                    </strong>
+                </div>
+            </div>
+            <div class="payment__pair">
+                <input formControlName="date" class="payment__input-text" type="date" id="date" name="date"
+                    placeholder="Fecha" />
+                <label class="payment__label" for="date">Fecha de pago</label>
+                <div class="warning-validator" *ngIf="
+              fgv.date.errors && (fgv.date.dirty || fgv.date.touched)
+            ">
+                    <strong *ngIf="fgv.date.errors.required">
+                        Este campo es requerido
+                    </strong>
+                </div>
+            </div>
+           
+           
+            <div class="payment__pair">
+                <div class="file-image__container">
+                    <p class="file-image__text">{{file_name}}</p>
+                    <button class="file-image__button" (click)="file_image_input.click()">Subir</button>
+                </div>
+                <input #file_image_input class="file-image__input"  type="file" name="image_file" id="image_file" (change)="onChangeImageFile($event)">
+            </div>
+
+            <div class="payment__buttons">
+                <input class="payment__button cancel" type="button" value="Cancelar"
+                    [routerLink]="['/payment/']" />
+                <input class="payment__button agree" (click)="createPayment()" type="button" value="Agregar pago" />
+
+            </div>
+        </form>
+    </div>
+</div>

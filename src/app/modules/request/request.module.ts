@@ -9,6 +9,7 @@ import { HomeListRequestComponent } from './home-list-request/home-list-request.
 import { CreatePaymentComponent } from './payment/create-payment/create-payment.component';
 import { UpdatePaymentComponent } from './payment/update-payment/update-payment.component';
 import { ListPaymentComponent } from './payment/list-payment/list-payment.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -19,11 +20,14 @@ import { ListPaymentComponent } from './payment/list-payment/list-payment.compon
     HomeListRequestComponent,
     CreatePaymentComponent,
     UpdatePaymentComponent,
-    ListPaymentComponent
+    ListPaymentComponent,
+    
   ],
   imports: [
     CommonModule,
     RequestRoutingModule,
+    FormsModule,
+        ReactiveFormsModule
     
   ]
 })
