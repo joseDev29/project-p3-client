@@ -37,5 +37,6 @@ export class RequestService {
   saveNewRecord(formData:FormData){
     return this.http.post<any>(`${ServiceConfig.BASE_URL}${this.entity}`, formData)
   }
+  
 
 }

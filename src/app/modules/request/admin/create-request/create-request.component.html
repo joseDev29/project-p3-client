@@ -17,7 +17,7 @@
             </div>
             <div class="request__pair">
                 <input formControlName="clientDoc" class="request__input-text" type="text" id="clientDoc" name="request"
-                    placeholder="Oferta" />
+                    placeholder="Documento del cliente" />
                 <label class="request__label" for="clientDoc">Documento del cliente</label>
                 <div class="warning-validator" *ngIf="
               fgv.clientDoc.errors && (fgv.clientDoc.dirty || fgv.clientDoc.touched)
@@ -65,25 +65,9 @@
                     </strong>
                 </div>
             </div>
-
-            <div class="request__pair">
-                <input formControlName="date" class="request__input-text" type="date" id="date" name="request"
-                    placeholder="Fecha" />
-                <label class="request__label" for="date">Fecha</label>
-                <div class="warning-validator" *ngIf="
-              fgv.date.errors && (fgv.date.dirty || fgv.date.touched)
-            ">
-                    <strong *ngIf="fgv.date.errors.required">
-                        Este campo es requerido
-                    </strong>
-                </div>
-            </div>
-
-
-
             <div class="request__buttons">
                 <input class="request__button cancel" type="button" value="Cancelar"
-                    [routerLink]="['/request/admin']" />
+                    [routerLink]="['/request']" />
                 <input class="request__button agree" type="button" value="Crear" (click)="createRequest()" />
 
             </div>

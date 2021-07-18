@@ -31,7 +31,6 @@ export class CreateRequestComponent implements OnInit {
   FormBuilding() {
     this.aFormGroup = this.formBuilder.group({
       offer: ['', [Validators.required]],
-      date: ['', [Validators.required]],
       clientDoc: ['', [Validators.required]],
       propertyCode: ['', [Validators.required]],
       sellerID: ['', [Validators.required]],
@@ -48,7 +47,7 @@ export class CreateRequestComponent implements OnInit {
       feeNumber:  this.aFormGroup.value.feeNumber,
       propertyCode: this.aFormGroup.value.propertyCode,
       offer: this.aFormGroup.value.offer,
-      date: new Date(this.aFormGroup.value.date).toJSON()
+      date: new Date().toJSON()
     }
    
 
@@ -57,7 +56,7 @@ export class CreateRequestComponent implements OnInit {
     } else {
       this.service.saveNewRecord(this.request).subscribe(
         (data) => {
-          this.router.navigate(['/']);
+          this.router.navigate(['/request']);
         },
         (err) => {
           console.log('invalid data');

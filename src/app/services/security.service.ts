@@ -45,7 +45,11 @@ export class SecurityService {
   setUserData(value: UserModel) {
     this.userData.next(value);
   }
-
+resetPassword(model:UserModel):Observable<UserModel>{
+  return this.http.post<UserModel>(`${ServiceConfig.BASE_URL}reset-password`, model, {
+    headers: new HttpHeaders({})
+  })
+}
   /**
    * 
    * @returns user data

@@ -3,6 +3,6 @@ export class UserModel{
     username: String;
     password?: String;
     role?: Number;
-    isLogged: Boolean = false;
+    isLogged?: Boolean = false;
     token?: String;
 }

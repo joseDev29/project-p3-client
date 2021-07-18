@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { Subscription } from 'rxjs';
+import { UserModel } from 'src/app/models/security/user.model';
+import { SecurityService } from 'src/app/services/security.service';
 
 @Component({
   selector: 'app-navbar',
@@ -8,10 +11,18 @@ import { Component, OnInit } from '@angular/core';
 export class NavbarComponent implements OnInit {
   dropdownActive: string = '';
   sidebarActive:string = '';
+  isLoggedIn: Boolean = false;
+  subsription: Subscription = new Subscription();
 
-  constructor() {}
+  constructor(private service: SecurityService) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.subsription = this.service.getUserData().subscribe((datos: UserModel) => {
+      console.log(datos);
+      this.isLoggedIn = datos.isLogged;
+    });
+  }
+  
 
   changeDropdown(e) {
     e.preventDefault();
