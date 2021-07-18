@@ -3,7 +3,8 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    height: 100vh;
+    margin-top: 4rem;
+  margin-bottom: 4rem;
     justify-content: center;
   }
   
@@ -148,8 +149,7 @@
 
   @media (min-width: 1150px) {
     .block__main {
-      height: calc(100vh - 60px);
-      min-height: 550px;
+      
       flex-direction: row;
     }
   

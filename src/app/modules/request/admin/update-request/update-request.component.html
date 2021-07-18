@@ -1,4 +1,5 @@
 <h2 class="request-title">Zona vendedor</h2>
+
 <div class="requests custom-text-color">
     <div>
         <h4 class="request-card--title">Solicitud</h4>
@@ -18,7 +19,7 @@
                     'text-success':request.status === 'accepted',
                     'text-review':request.status === 'review',
                     'text-rejected':request.status === 'rejected'
-                  }"class="request-card--subtitle2 status">
+                  }" class="request-card--subtitle2 status">
                     {{request.status}}
                 </h3>
                 <hr class="separator" />
@@ -113,6 +114,9 @@
             </div>
         </div>
     </div>
+</div>
+<div *ngIf="request.status=='accepted'" class="request__buttons">
+    <input class="request__button create" type="button" value="Anexar Pago" routerLink="/request/view/{{request.id}}/payment" />
 </div>
 <div *ngIf="request.status!='accepted'&&request.status!='rejected'" class="request__buttons">
     <input class="request__button cancel" type="button" (click)="rejectedRequest()" value="Rechazar" />
