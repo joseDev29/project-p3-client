@@ -5,6 +5,7 @@ import { RequestModel } from 'src/app/models/request/request.model';
 import { CityService } from 'src/app/services/parameters/city.service';
 import { CountryService } from 'src/app/services/parameters/country.service';
 import { AdminProjectService } from 'src/app/services/project/admin-project.service';
+import { RequestService } from 'src/app/services/requests/request.service';
 
 @Component({
   selector: 'app-create-request',
@@ -12,13 +13,13 @@ import { AdminProjectService } from 'src/app/services/project/admin-project.serv
   styleUrls: ['./create-request.component.css']
 })
 export class CreateRequestComponent implements OnInit {
-  request:RequestModel ;
+  request:RequestModel | any ;
   aFormGroup: FormGroup;
   file_name: string = 'Subir un archivo...';
   constructor(
     private formBuilder: FormBuilder,
     private route: ActivatedRoute,
-    private service: AdminProjectService,
+    private service: RequestService,
     private router: Router,
     private countryService: CountryService,
     private cityService: CityService
@@ -35,32 +36,26 @@ export class CreateRequestComponent implements OnInit {
       propertyCode: ['', [Validators.required]],
       sellerID: ['', [Validators.required]],
       feeNumber: ['', [Validators.required]],
-      image_file: ['', [Validators.required]],
     });
   }
 
-  createProject() {
-    console.log(this.aFormGroup);
-
-    const formData = new FormData();
-  
-    formData.append('offer', this.aFormGroup.value.offer);
-    formData.append('client_id', this.aFormGroup.value.clientDoc);
-    formData.append('property_id', this.aFormGroup.value.propertyCode);
-    formData.append('seller_id', this.aFormGroup.value.sellerID);
-    formData.append('feeNumber', this.aFormGroup.value.feeNumber);
+  createRequest() {
     
-    formData.append('image_file', this.aFormGroup.get('image_file').value);
-    formData.append(
-      'date',
-      new Date(this.aFormGroup.value.date).toJSON()
-    );
+
+    this.request = {
+      clientDocument: this.aFormGroup.value.clientDoc,
+      seller_id:this.aFormGroup.value.sellerID,
+      feeNumber:  this.aFormGroup.value.feeNumber,
+      propertyCode: this.aFormGroup.value.propertyCode,
+      offer: this.aFormGroup.value.offer,
+      date: new Date(this.aFormGroup.value.date).toJSON()
+    }
    
 
     if (this.aFormGroup.invalid) {
       console.log('Invalid form');
     } else {
-      this.service.saveNewRecord(formData).subscribe(
+      this.service.saveNewRecord(this.request).subscribe(
         (data) => {
           this.router.navigate(['/']);
         },

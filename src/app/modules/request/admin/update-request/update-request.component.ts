@@ -38,7 +38,7 @@ export class UpdateRequestComponent implements OnInit {
       id:this.request.id,
       status:''
     }
-    record.status = 'accepted'
+    record.status = 'ACEPTADA'
     console.log(this.request.status);
     
     this.editRecord(record);
@@ -48,7 +48,7 @@ export class UpdateRequestComponent implements OnInit {
       id:this.request.id,
       status:''
     }
-    record.status = 'rejected'
+    record.status = 'RECHAZADA'
     console.log(this.request.status);
     
     this.editRecord(record);

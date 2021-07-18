@@ -26,7 +26,7 @@ private city='cities'
     editRecordById(formData:FormData): Observable<any> { 
       return this.http.patch<any>(`${ServiceConfig.BASE_URL}${this.entity}/${formData.get('id')}`,formData);
     }
-    saveNewRecord(formData:FormData){
-      return this.http.post<any>(`${ServiceConfig.BASE_URL}${this.entity}`, formData)
+    saveNewRecord(request:any){
+      return this.http.post<any>(`${ServiceConfig.BASE_URL}${this.entity}`, request)
     }
 }

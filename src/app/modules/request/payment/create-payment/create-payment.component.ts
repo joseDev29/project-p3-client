@@ -2,7 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder,  FormGroup,  Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { PaymentModel } from 'src/app/models/payment/payment.model';
+import { RequestModel } from 'src/app/models/request/request.model';
 import { AdminPaymentService } from 'src/app/services/payment/admin-payment.service';
+import { RequestService } from 'src/app/services/requests/request.service';
 
 @Component({
   selector: 'app-create-payment',
@@ -13,14 +15,17 @@ export class CreatePaymentComponent implements OnInit {
   payment: PaymentModel;
   aFormGroup: FormGroup;
   file_name: string = 'Subir un archivo...';
+  request:RequestModel
   constructor(
     private formBuilder: FormBuilder,
     private route: ActivatedRoute,
     private service: AdminPaymentService,
-    private router: Router
+    private router: Router,
+    private requestService:RequestService
   ) {}
   ngOnInit(): void {
     this.FormBuilding();
+    const request = this.requestService.getRecordById(this.route.snapshot.params["id"]).subscribe(request => this.request = request, err => console.log)
   }
 
   FormBuilding() {
@@ -39,6 +44,13 @@ export class CreatePaymentComponent implements OnInit {
       'date',
       new Date(this.aFormGroup.value.date).toJSON()
     );
+    
+    formData.append('requestCode', this.request.code)
+
+    console.log(this.request.code)
+    console.log(this.aFormGroup.value.name)
+    console.log(this.aFormGroup.get('image_file').value)
+    console.log(new Date(this.aFormGroup.value.date).toJSON())
    
     if (this.aFormGroup.invalid) {
       console.log('Invalid form');

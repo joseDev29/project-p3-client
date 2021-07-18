@@ -16,9 +16,9 @@
                     Estado
                 </h3>
                 <h3 [ngClass]="{
-                    'text-success':request.status === 'accepted',
-                    'text-review':request.status === 'review',
-                    'text-rejected':request.status === 'rejected'
+                    'text-success':request.status === 'ACEPTADA',
+                    'text-review':request.status === 'EN ESTUDIO',
+                    'text-rejected':request.status === 'RECHAZADA'
                   }" class="request-card--subtitle2 status">
                     {{request.status}}
                 </h3>
@@ -115,11 +115,12 @@
         </div>
     </div>
 </div>
-<div *ngIf="request.status=='accepted'" class="request__buttons">
-    <input class="request__button create" type="button" value="Anexar Pago" routerLink="/request/view/{{request.id}}/payment" />
+<div *ngIf="request.status=='ACEPTADA'" class="request__buttons">
+    <input class="request__button create" type="button" value="Anexar Pago"
+        routerLink="/request/view/{{request.id}}/payment" />
 </div>
-<div *ngIf="request.status!='accepted'&&request.status!='rejected'" class="request__buttons">
+<div *ngIf="request.status!='ACEPTADA'&&request.status!='RECHAZADA'" class="request__buttons">
     <input class="request__button cancel" type="button" (click)="rejectedRequest()" value="Rechazar" />
-    <input class="request__button agree" type="button" (click)="acceptedRequest()"  value="Aceptar"/>
+    <input class="request__button agree" type="button" (click)="acceptedRequest()" value="Aceptar" />
 
 </div>

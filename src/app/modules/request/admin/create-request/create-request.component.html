@@ -4,8 +4,8 @@
             <h1 class="request__title">Crear Solicitud</h1>
 
             <div class="request__pair">
-                <input formControlName="offer" class="request__input-text" type="text" id="offer"
-                    name="request" placeholder="Oferta" />
+                <input formControlName="offer" class="request__input-text" type="text" id="offer" name="request"
+                    placeholder="Oferta" />
                 <label class="request__label" for="offer">Oferta</label>
                 <div class="warning-validator" *ngIf="
               fgv.offer.errors && (fgv.offer.dirty || fgv.offer.touched)
@@ -16,8 +16,8 @@
                 </div>
             </div>
             <div class="request__pair">
-                <input formControlName="clientDoc" class="request__input-text" type="text" id="clientDoc"
-                    name="request" placeholder="Oferta" />
+                <input formControlName="clientDoc" class="request__input-text" type="text" id="clientDoc" name="request"
+                    placeholder="Oferta" />
                 <label class="request__label" for="clientDoc">Documento del cliente</label>
                 <div class="warning-validator" *ngIf="
               fgv.clientDoc.errors && (fgv.clientDoc.dirty || fgv.clientDoc.touched)
@@ -42,8 +42,8 @@
             </div>
 
             <div class="request__pair">
-                <input formControlName="sellerID" class="request__input-text" type="text" id="sellerId"
-                    name="request" placeholder="Seller ID" />
+                <input formControlName="sellerID" class="request__input-text" type="text" id="sellerId" name="request"
+                    placeholder="Seller ID" />
                 <label class="request__label" for="sellerID">Seller ID</label>
                 <div class="warning-validator" *ngIf="
               fgv.sellerID.errors && (fgv.sellerID.dirty || fgv.sellerID.touched)
@@ -65,10 +65,10 @@
                     </strong>
                 </div>
             </div>
-            
+
             <div class="request__pair">
-                <input formControlName="date" class="request__input-text" type="date" id="date"
-                    name="request" placeholder="Fecha"/>
+                <input formControlName="date" class="request__input-text" type="date" id="date" name="request"
+                    placeholder="Fecha" />
                 <label class="request__label" for="date">Fecha</label>
                 <div class="warning-validator" *ngIf="
               fgv.date.errors && (fgv.date.dirty || fgv.date.touched)
@@ -79,19 +79,12 @@
                 </div>
             </div>
 
-            <div class="request__pair">
-                <div class="file-image__container">
-                    <p class="file-image__text">{{file_name}}</p>
-                    <button class="file-image__button" (click)="file_image_input.click()">Subir</button>
-                </div>
-                <input #file_image_input class="file-image__input" type="file" name="image_file" id="image_file"
-                    (change)="onChangeImageFile($event)">
-            </div>
+
 
             <div class="request__buttons">
                 <input class="request__button cancel" type="button" value="Cancelar"
                     [routerLink]="['/request/admin']" />
-                <input class="request__button agree" type="button" value="Crear" />
+                <input class="request__button agree" type="button" value="Crear" (click)="createRequest()" />
 
             </div>
         </form>
