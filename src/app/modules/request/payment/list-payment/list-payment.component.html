@@ -1,1 +1,14 @@
-<p>list-payment works!</p>
+<h2 class="request__subtitle">Lista de pagos</h2>
+
+<div *ngIf="payments.length" class="request__payments">
+  <div
+    *ngFor="let payment of payments"
+    class="request__payment-card box-shadow fade-in-0"
+  >
+    <h4 class="payment-card__title">{{ payment.code }}</h4>
+    <hr class="separator" />
+    <p class="payment-card__description">{{payment.date | date}}</p>
+    <p class="payment-card__value">$ {{ payment.value | number }}</p>
+    <a href="{{payment.receiptPayment}}"  target="_blank" class="payment-card__btn" download >Descargar</a>
+  </div>
+</div>

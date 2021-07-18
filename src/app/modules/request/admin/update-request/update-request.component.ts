@@ -1,8 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
+import { PaymentModel } from 'src/app/models/payment/payment.model';
 import { RequestModel } from 'src/app/models/request/request.model';
 import { CountryService } from 'src/app/services/parameters/country.service';
+import { AdminPaymentService } from 'src/app/services/payment/admin-payment.service';
 import { RequestService } from 'src/app/services/requests/request.service';
 
 @Component({
@@ -15,42 +17,55 @@ export class UpdateRequestComponent implements OnInit {
   request: any;
   aFormGroup: FormGroup;
   recordId: string = '';
-
+  payments: PaymentModel[]=[];
   constructor(
     private formBuilder: FormBuilder,
     private route: ActivatedRoute,
     private service: RequestService,
-    private router: Router
+    private router: Router,
+    private paymentService: AdminPaymentService
   ) {
     this.recordId = this.route.snapshot.params["id"];
   }
   ngOnInit(): void {
     this.FormBuilding();
     this.getRecordById();
+    this.getPayments();
   }
 
   FormBuilding() {
 
   }
-
+  getPayments() {
+    this.paymentService.getRecordsByRequestId(this.recordId).subscribe(
+      data => { 
+        this.payments = data 
+        console.log(data);
+        
+      },
+      (err) => { 
+        console.log(err) 
+      }
+    );
+  }
   acceptedRequest() {
-    let record={
-      id:this.request.id,
-      status:''
+    let record = {
+      id: this.request.id,
+      status: ''
     }
     record.status = 'ACEPTADA'
     console.log(this.request.status);
-    
+
     this.editRecord(record);
   }
   rejectedRequest() {
-    let record={
-      id:this.request.id,
-      status:''
+    let record = {
+      id: this.request.id,
+      status: ''
     }
     record.status = 'RECHAZADA'
     console.log(this.request.status);
-    
+
     this.editRecord(record);
   }
 
@@ -70,19 +85,19 @@ export class UpdateRequestComponent implements OnInit {
 
   editRecord(record) {
     console.log(this.request);
-    
-    
-      this.service.editRecordById(record).subscribe(
-        data => {
-          this.router.navigate(["/request/homelist"]);
-        },
-        err => {
-          console.log('invalid data');
 
-        }
-      )
 
-    
+    this.service.editRecordById(record).subscribe(
+      data => {
+        this.router.navigate(["/request/homelist"]);
+      },
+      err => {
+        console.log('invalid data');
+
+      }
+    )
+
+
   }
   getRequestData() {
     this.request = {
