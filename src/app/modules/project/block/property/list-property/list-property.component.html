@@ -1,1 +1,15 @@
-<p>list-property works!</p>
+
+<h2 class="project__title">Propiedades disponibles en este bloque</h2>
+<a href="" [routerLink]="['/project/admin/block/property/creation']" class="property-card-create--btn">Crear propiedad</a>
+<div *ngIf="properties.length" class="project__properties">
+  <div
+    *ngFor="let property of properties"
+    class="project__property-card box-shadow fade-in-0"
+  >
+    <h4 class="property-card__title">Propiedad {{ property.number }}</h4>
+    <hr class="separator" />
+    <p class="property-card__description">{{ property.description }}</p>
+    <p class="property-card__value">$ {{ property.value | number }}</p>
+    <a  [routerLink]="['/project/admin/block/property/edition/',property.id]" class="property-card__btn">Editar</a>
+  </div>
+</div>

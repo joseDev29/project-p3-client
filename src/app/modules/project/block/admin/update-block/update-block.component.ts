@@ -90,9 +90,11 @@ export class UpdateBlockComponent implements OnInit {
   }
 
   getCityDataByProjectId() {
+
     this.cityService.getRecordByProjectId(this.projectId).subscribe(
       data => {
         this.cityId = data.id;
+        this.setCountryData(data.countryId)
         this.fgv.cityId.setValue(data.id);
         this.getProjects(data.id)
       },

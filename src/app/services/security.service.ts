@@ -13,7 +13,7 @@ export class SecurityService {
 
   constructor(private http: HttpClient) {
     this.verifyActiveSession();
-   }
+  }
 
   /**
    * 
@@ -22,7 +22,7 @@ export class SecurityService {
    */
   loginUser(model: UserModel): Observable<UserModel> {
     console.log(model);
-    
+
     return this.http.post<UserModel>(`${ServiceConfig.BASE_URL}login`, model, {
       headers: new HttpHeaders({})
     })
@@ -45,11 +45,11 @@ export class SecurityService {
   setUserData(value: UserModel) {
     this.userData.next(value);
   }
-resetPassword(model:UserModel):Observable<UserModel>{
-  return this.http.post<UserModel>(`${ServiceConfig.BASE_URL}reset-password`, model, {
-    headers: new HttpHeaders({})
-  })
-}
+  resetPassword(model: UserModel): Observable<UserModel> {
+    return this.http.post<UserModel>(`${ServiceConfig.BASE_URL}reset-password`, model, {
+      headers: new HttpHeaders({})
+    })
+  }
   /**
    * 
    * @returns user data
@@ -66,23 +66,28 @@ resetPassword(model:UserModel):Observable<UserModel>{
       return false;
     } else {
       console.log(sessionData);
-      
-      sessionData.isLogged=true;
-      let data:UserModel={
+
+      sessionData.isLogged = true;
+      let data: UserModel = {
         id: sessionData.id,
-        username:sessionData.username,
-        token:sessionData.token,
-        isLogged:sessionData.isLogged,
-        role:sessionData.role
+        username: sessionData.username,
+        token: sessionData.token,
+        isLogged: sessionData.isLogged,
+        role: sessionData.role
       };
-      localStorage.setItem('session',JSON.stringify(data));
+      localStorage.setItem('session', JSON.stringify(data));
       this.setUserData(data);
       return true;
     }
   }
 
 
-
+isUserRol(roleId):Boolean{
+  let currentSession=this.getSession();
+  console.log(JSON.parse(currentSession).role);
+  
+  return JSON.parse(currentSession).role==roleId;
+}
   /**
    * 
    * @returns current data session
@@ -96,13 +101,13 @@ resetPassword(model:UserModel):Observable<UserModel>{
   }
 
 
-logout(){
-  localStorage.removeItem('session');
-  this.setUserData(new UserModel());
-}
+  logout() {
+    localStorage.removeItem('session');
+    this.setUserData(new UserModel());
+  }
 
-getToken(): String {
-  let currentSession = this.getSession();
-  return JSON.parse(currentSession).token;
-}
+  getToken(): String {
+    let currentSession = this.getSession();
+    return JSON.parse(currentSession).token;
+  }
 }

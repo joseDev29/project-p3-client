@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { AuthenticatedAdminGuard } from './guards/authenticated-admin.guard';
 
 const routes: Routes = [
   {
@@ -25,6 +26,7 @@ const routes: Routes = [
       import('./modules/parameters/parameters.module').then(
         (m) => m.ParametersModule
       ),
+      canActivate:[AuthenticatedAdminGuard]
   },
   {
     path: 'clients',

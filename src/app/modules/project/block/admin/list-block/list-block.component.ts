@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+
+import { BlockModel } from 'src/app/models/project/block.model';
 
 @Component({
   selector: 'app-list-block',
@@ -6,10 +8,22 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./list-block.component.css']
 })
 export class ListBlockComponent implements OnInit {
+  @Input() blocks: BlockModel[] = [];
+  @Input() activeBlock: BlockModel;
+  @Output() onChangeBlock:EventEmitter<BlockModel>=new EventEmitter()
+  constructor() {
 
-  constructor() { }
+  }
 
   ngOnInit(): void {
   }
-
+  changeBlock(event: any) {
+    let id = event.target.value;
+    for (let i = 0; i < this.blocks.length; i++) {
+      if (id == this.blocks[i].id) {
+        this.onChangeBlock.emit(this.blocks[i])
+        break;
+      }
+    }
+  }
 }

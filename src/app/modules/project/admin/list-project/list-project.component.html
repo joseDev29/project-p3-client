@@ -1,1 +1,22 @@
-<p>list-project works!</p>
+<div class="projects-main__title">
+    <h1 class="projects__title">Zona administrador</h1>
+    <h2 class="projects__subtitle">Proyectos</h2>
+    <a href="" [routerLink]="['/project/admin/creation']" class="project-card-create--btn">Crear</a>
+    
+</div>
+<div class="projects">
+    <div *ngFor="let project of projects  | paginate: { itemsPerPage: 6, currentPage: page } " [project]="project"
+        class="project-card--main fade-in">
+        <div class="project-card--body">
+            <h2 class="project-card--title">
+                {{project.code}}
+            </h2>
+            <h3 class="project-card--subtitle">{{project.name}}</h3>
+            <h3 class="project-card--subtitle">{{project.city.country.name}} - {{project.city.name}}</h3>
+
+            <a href="" [routerLink]="['/project/admin/view/', project.id]" class="project-card--btn">Ver</a>
+        </div>
+    </div>
+</div>
+<pagination-controls class="my-pagination" (pageChange)="page = $event" responsive="true" maxSize="9"
+    previousLabel="Antes" nextLabel="Siguiente" ></pagination-controls>

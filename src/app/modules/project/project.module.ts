@@ -19,6 +19,8 @@ import { ProjectRoutingModule } from './project-routing.module';
 import { ListPublicPropertyComponent } from './block/property/list-public-property/list-public-property.component';
 import { PublicBlockSelectorComponent } from './block/public-block-selector/public-block-selector.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { NgxPaginationModule } from 'ngx-pagination';
+import { ViewProjectComponent } from './admin/view-project/view-project.component';
 
 @NgModule({
   declarations: [
@@ -38,8 +40,9 @@ import { ReactiveFormsModule } from '@angular/forms';
     MasterPageComponent,
     ListPublicPropertyComponent,
     PublicBlockSelectorComponent,
+    ViewProjectComponent,
   ],
-  imports: [CommonModule, RouterModule, ProjectRoutingModule,ReactiveFormsModule],
+  imports: [CommonModule, RouterModule, ProjectRoutingModule,ReactiveFormsModule,NgxPaginationModule],
   exports: [],
 })
 export class ProjectModule {}
