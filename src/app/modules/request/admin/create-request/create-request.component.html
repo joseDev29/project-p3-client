@@ -41,18 +41,7 @@
                 </div>
             </div>
 
-            <div class="request__pair">
-                <input formControlName="sellerID" class="request__input-text" type="text" id="sellerId" name="request"
-                    placeholder="Seller ID" />
-                <label class="request__label" for="sellerID">Seller ID</label>
-                <div class="warning-validator" *ngIf="
-              fgv.sellerID.errors && (fgv.sellerID.dirty || fgv.sellerID.touched)
-            ">
-                    <strong *ngIf="fgv.sellerID.errors.required">
-                        Este campo es requerido
-                    </strong>
-                </div>
-            </div>
+           
             <div class="request__pair">
                 <input formControlName="feeNumber" class="request__input-text" type="number" id="feeNumber"
                     name="request" placeholder="Número de cuotas" />

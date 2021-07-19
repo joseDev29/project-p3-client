@@ -57,7 +57,7 @@ export class CreatePaymentComponent implements OnInit {
     } else {
       this.service.saveNewRecord(formData).subscribe(
         (data) => {
-          this.router.navigate(['/payment/']);
+          this.router.navigate(['/request/view/',this.request.id]);
         },
         (err) => {
           console.log('invalid data');

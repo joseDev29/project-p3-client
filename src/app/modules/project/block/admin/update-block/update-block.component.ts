@@ -58,7 +58,7 @@ export class UpdateBlockComponent implements OnInit {
       this.getBlockData();
       this.service.editRecordById(this.block).subscribe(
         data => {
-          this.router.navigate(["/project/admin/block"]);
+          this.router.navigate(["/project/admin/view/",this.block.projectId]);
         },
         err => {
           console.log('invalid data');
@@ -79,7 +79,7 @@ export class UpdateBlockComponent implements OnInit {
       },
       error => {
         console.log(error);
-        this.router.navigate(["/parameters/country"]);
+        this.router.navigate(["/"]);
       }
     )
   }

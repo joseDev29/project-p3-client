@@ -61,7 +61,7 @@ export class CreatePropertyComponent implements OnInit {
       
       this.service.saveNewRecord(this.property).subscribe(
         data=>{
-          this.router.navigate(["/project/admin/property"]);
+          this.router.navigate(["/project/admin/"]);
         },
         err=>{
           console.log('invalid data');
@@ -93,7 +93,7 @@ export class CreatePropertyComponent implements OnInit {
     this.countryService.getAllRecords().subscribe(
       (countries) => {
         this.countries = countries;
-        console.log(this.countries);
+        
         
       },
       (err) => console.log

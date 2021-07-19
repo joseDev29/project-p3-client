@@ -30,7 +30,7 @@
             <div class="block__pair">
                 <label class="block__label" for="country">País</label>
                 <select  class="country__blocks-select" name="blocks" id="countryBlock" (change)="getCitiesByCountryId($event)" >
-                    <option selected>Seleccione país</option>
+                    <option selected disabled>Seleccione país</option>
                     <option *ngFor="let country of countries" value="{{country.id}}">{{country.name}}</option>
                     
                 </select>
@@ -38,7 +38,7 @@
             <div class="block__pair">
                 <label class="block__label" for="city">Ciudad</label>
                 <select  class="country__blocks-select" name="blocks" id="countryBlock" (change)="getProjectsByCityId($event)">
-                    <option selected>Seleccione ciudad</option>
+                    <option selected disabled>Seleccione ciudad</option>
                     <option *ngFor="let city of cities" value="{{city.id}}">{{city.name}}</option>
                     
                 </select>
@@ -46,7 +46,7 @@
             <div class="block__pair">
                 <label class="block__label" for="city">Proyectos</label>
                 <select formControlName="projectId" class="country__blocks-select" name="blocks" id="countryBlock" >
-                    <option selected>Seleccione proyecto</option>
+                    <option selected disabled>Seleccione proyecto</option>
                     <option *ngFor="let project of projects" value="{{project.id}}">{{project.name}}</option>
                     
                 </select>
@@ -54,7 +54,7 @@
 
             <div class="block__buttons">
                 <input class="block__button cancel" type="button" value="Cancelar"
-                    [routerLink]="['/project/']" />
+                    [routerLink]="['/project/admin/']" />
                 <input class="block__button agree" (click)="createBlock()" type="button" value="Crear" />
 
             </div>

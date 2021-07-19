@@ -35,7 +35,7 @@ export class CityService {
     }
 
     editRecordById(record: CityModel): Observable<CityModel> {
-      return this.http.put<CityModel>(`${ServiceConfig.BASE_URL}${this.entity}/${record.id}`, record, {
+      return this.http.patch<CityModel>(`${ServiceConfig.BASE_URL}${this.entity}/${record.id}`, record, {
         /*headers: new HttpHeaders({
           Authorization: `Bearer ${this.token}`
         })

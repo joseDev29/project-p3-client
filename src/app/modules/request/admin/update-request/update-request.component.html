@@ -90,7 +90,8 @@
     </div>
   </div>
 </div>
-<div *ngIf="request.status == 'ACEPTADA'" class="request__buttons">
+
+<div *ngIf="request.status == 'ACEPTADA' && request.totalPayment>0" class="request__buttons">
   <input
     class="request__button create"
     type="button"

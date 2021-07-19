@@ -78,7 +78,7 @@ export class UpdateRequestComponent implements OnInit {
       error => {
         console.log(error);
 
-        this.router.navigate(["/parameters/request"]);
+        this.router.navigate(["/request/view/",this.recordId]);
       }
     )
   }
@@ -89,7 +89,7 @@ export class UpdateRequestComponent implements OnInit {
 
     this.service.editRecordById(record).subscribe(
       data => {
-        this.router.navigate(["/request/homelist"]);
+        this.router.navigate(["/request/"]);
       },
       err => {
         console.log('invalid data');
