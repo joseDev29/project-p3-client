@@ -1,115 +1,125 @@
 <h2 class="request-title">Zona vendedor</h2>
 
 <div class="requests custom-text-color">
-    <div *ngIf="client">
-        <h4 class="request-card--title">Informacion Personal</h4>
-        <div class="request-card--main fade-in">
-            <div class="request-card--body">
-                <h3 class="request-card--subtitle">
-                    Nombre
-                </h3>
-                <h3 class="request-card--subtitle2">
-                    {{client.name}}
-                </h3>
-                <hr class="separator" />
-                <h3 class="request-card--subtitle">
-                    Documento
-                </h3>
-                <h3 class="request-card--subtitle2">
-                    {{client.document}}
-                </h3>
-                <hr class="separator" />
-                <h3 class="request-card--subtitle">
-                    Correo
-                </h3>
-                <h3 class="request-card--subtitle2">
-                    ${{client.email}}
-                </h3>
-                <hr class="separator" />
-                <h3 class="request-card--subtitle">
-                    Telefono
-                </h3>
-                <h3 class="request-card--subtitle2">
-                    {{client.phone}}
-                </h3>
-            </div>
-        </div>
-    </div>
+  <dir
+    *ngIf="client"
+    style="display: flex; justify-content: center; align-items: center"
+  >
+    <img
+      src="{{ client.image }}"
+      alt=""
+      style="
+        width: 200px;
+        height: 200px;
+        object-fit: cover;
+        border-radius: 100%;
+      "
+    />
+  </dir>
 
-    <div *ngIf="finances">
-        <h4 class="request-card--title">Informacion Financiera</h4>
-        <div class="request-card--main fade-in">
-            <div class="request-card--body">
-                <h3 class="request-card--subtitle">
-                    Ingresos Totales
-                </h3>
-                <h3 class="request-card--subtitle2">
-                    {{finances.totalIncome}}
-                </h3>
-                <hr class="separator" />
-                <h3 class="request-card--subtitle">
-                    Permanencia Laboral
-                </h3>
-                <h3 class="request-card--subtitle2">
-                    {{finances.jobDataTime}}
-                </h3>
-                <hr class="separator" />
-                <h3 class="request-card--subtitle">
-                    Referencia Familiar
-                </h3>
-                <h3 class="request-card--subtitle2">
-                    ${{finances.familyReference}}
-                </h3>
-                <hr class="separator" />
-                <h3 class="request-card--subtitle">
-                    Telefono Referencia Familiar
-                </h3>
-                <h3 class="request-card--subtitle2">
-                    {{finances.familyReferencePhone}}
-                </h3>
-                <hr class="separator" />
-                <h3 class="request-card--subtitle">
-                    Referencia Personal
-                </h3>
-                <h3 class="request-card--subtitle2">
-                    ${{finances.personalReference}}
-                </h3>
-                <hr class="separator" />
-                <h3 class="request-card--subtitle">
-                    Telefono Referencia Personal
-                </h3>
-                <h3 class="request-card--subtitle2">
-                    {{finances.personalReferencePhone}}
-                </h3>
-            </div>
-        </div>
+  <div *ngIf="client">
+    <h4 class="request-card--title">Informacion Personal</h4>
+    <div class="request-card--main fade-in">
+      <div class="request-card--body">
+        <h3 class="request-card--subtitle">Nombre</h3>
+        <h3 class="request-card--subtitle2">
+          {{ client.name }}
+        </h3>
+        <hr class="separator" />
+        <h3 class="request-card--subtitle">Documento</h3>
+        <h3 class="request-card--subtitle2">
+          {{ client.document }}
+        </h3>
+        <hr class="separator" />
+        <h3 class="request-card--subtitle">Correo</h3>
+        <h3 class="request-card--subtitle2">{{ client.email }}</h3>
+        <hr class="separator" />
+        <h3 class="request-card--subtitle">Telefono</h3>
+        <h3 class="request-card--subtitle2">
+          {{ client.phone }}
+        </h3>
+      </div>
     </div>
+  </div>
+
+  <div *ngIf="finances">
+    <h4 class="request-card--title">Informacion Financiera</h4>
+    <div class="request-card--main fade-in">
+      <div class="request-card--body">
+        <h3 class="request-card--subtitle">Ingresos Totales</h3>
+        <h3 class="request-card--subtitle2">
+          {{ finances.totalIncome }}
+        </h3>
+        <hr class="separator" />
+        <h3 class="request-card--subtitle">Permanencia Laboral</h3>
+        <h3 class="request-card--subtitle2">
+          {{ finances.jobDataTime }}
+        </h3>
+        <hr class="separator" />
+        <h3 class="request-card--subtitle">Referencia Familiar</h3>
+        <h3 class="request-card--subtitle2">${{ finances.familyReference }}</h3>
+        <hr class="separator" />
+        <h3 class="request-card--subtitle">Telefono Referencia Familiar</h3>
+        <h3 class="request-card--subtitle2">
+          {{ finances.familyReferencePhone }}
+        </h3>
+        <hr class="separator" />
+        <h3 class="request-card--subtitle">Referencia Personal</h3>
+        <h3 class="request-card--subtitle2">
+          {{ finances.personalReference }}
+        </h3>
+        <hr class="separator" />
+        <h3 class="request-card--subtitle">Telefono Referencia Personal</h3>
+        <h3 class="request-card--subtitle2">
+          {{ finances.personalReferencePhone }}
+        </h3>
+      </div>
+    </div>
+  </div>
+
+  <div
+    *ngIf="!finances"
+    style="display: flex; justify-content: center; align-items: center"
+  >
+    <button type="button" class="request__button agree">
+      Añadir Informacion Financiera
+    </button>
+  </div>
 </div>
 
 <h2 class="request-title">Solicitudes</h2>
 
-<div *ngFor="let request of requests">
+<div class="requests custom-text-color">
+  <div *ngFor="let request of requests">
     <div class="request-card--main fade-in">
-        <div class="request-card--body">
-            <h4 class="request-card--title">{{ request.code }}</h4>
-            <h3 class="request-card--subtitle">
-                {{ request.property.block.project.name }}
-            </h3>
-            <h3 class="request-card--subtitle">
-                Apartamento {{ request.property.number }} - {{ request.property.block.name }}
-            </h3>
-            <h3 class="request-card--subtitle">
-                {{request.client.name}}
-            </h3>
-            <h3 [ngClass]="{
-              'text-success':request.status === 'ACEPTADA',
-              'text-review':request.status === 'EN ESTUDIO',
-              'text-rejected':request.status === 'RECHAZADA'
-            }" class="request-card--subtitle">
-                {{request.status}}
-            </h3>
+      <div class="request-card--body">
+        <h4 class="request-card--title">{{ request.code }}</h4>
+        <h3 class="request-card--subtitle">
+          {{ request.property.block.project.name }}
+        </h3>
+        <h3 class="request-card--subtitle">
+          Propiedad {{ request.property.number }} - Bloque
+          {{ request.property.block.name }}
+        </h3>
+        <h3 class="request-card--subtitle"></h3>
+        <h3
+          [ngClass]="{
+            'text-success': request.status === 'ACEPTADA',
+            'text-review': request.status === 'EN ESTUDIO',
+            'text-rejected': request.status === 'RECHAZADA'
+          }"
+          class="request-card--subtitle"
+        >
+          {{ request.status }}
+        </h3>
 
-            <a href="" [routerLink]="['/request/view', request.id]" class="request-card--btn">Ver</a>
-        </div>
+        <a
+          href=""
+          [routerLink]="['/request/view', request.id]"
+          class="request-card--btn"
+          >Ver</a
+        >
+      </div>
     </div>
+  </div>
 </div>

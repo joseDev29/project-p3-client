@@ -26,18 +26,24 @@ export class ClientService {
     );
   }
 
-  getRecordById(id:string){
-    return this.http.get<ClientModel>(`${ServiceConfig.BASE_URL}${this.entity}/${id}`)
+  getRecordById(id: string) {
+    return this.http.get<ClientModel>(
+      `${ServiceConfig.BASE_URL}${this.entity}/${id}`
+    );
   }
 
-  getFinancesByClientId(clientId:string){
-    return this.http.get<FinancesModel>(`${ServiceConfig.BASE_URL}finances/${clientId}`)
+  getFinancesByClientId(clientId: string) {
+    return this.http.get<FinancesModel>(
+      `${ServiceConfig.BASE_URL}finances/${clientId}`
+    );
   }
 
-  getRequestsByClientId(clientId:string){
+  getRequestsByClientId(clientId: string) {
     const filter: string =
-    '{"fields":{"id":true,"code":true,"status":true,"offer":true,"firstPayment":true,"totalPayment":true,"feePayment":true, "feeNumber":true,"clientId":true, "propertyId":true},"include":[{"relation":"client"},{"relation":"property","scope": {"include":[{"relation":"block","scope":{"include": [{"relation":"project"}]}}]}}]}'
+      '{"where": {"clientId":"60792ff12d90f9255002dbda"},"fields": {"id": true,"code":true,"date": true,"status": true,"offer": true,"firstPayment": true,"totalPayment": true,"feePayment": true,"feeNumber": true,"propertyId": true,"clientId": true,"userId": true},"include":[{"relation":"property","scope": {"include":[{"relation":"block","scope":{"include":[{"relation":"project"}]}}]}}]}';
 
-    return this.http.get<RequestModel[]>(`${ServiceConfig.BASE_URL}${this.entity}/${clientId}/requests?filter=${filter}`);
+    return this.http.get<RequestModel[]>(
+      `${ServiceConfig.BASE_URL}requests?filter=${filter}`
+    );
   }
 }

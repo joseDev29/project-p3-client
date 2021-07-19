@@ -2,9 +2,17 @@
   <h1 class="payments__title">Zona vendedor</h1>
   <h2 class="payments__subtitle">Solicitudes</h2>
   <div class="request__buttons">
-    <input class="request__button create" type="button" value="Crear" routerLink="/request/create" />
+    <input
+      class="request__button create"
+      type="button"
+      value="Crear"
+      routerLink="/request/create"
+    />
   </div>
 </div>
-<div class="requests custom-text-color">
-  <app-list-request *ngFor="let request of requests" [request]="request"></app-list-request>
+<div>
+  <app-list-request
+    *ngFor="let request of requests"
+    [request]="request"
+  ></app-list-request>
 </div>
