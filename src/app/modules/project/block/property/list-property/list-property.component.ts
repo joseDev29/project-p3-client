@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { PropertyModel } from 'src/app/models/project/property.model';
 
 @Component({
   selector: 'app-list-property',
@@ -6,7 +7,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./list-property.component.css']
 })
 export class ListPropertyComponent implements OnInit {
-
+  @Input('properties') properties: PropertyModel[] = [];
   constructor() { }
 
   ngOnInit(): void {

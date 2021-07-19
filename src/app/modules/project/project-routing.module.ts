@@ -11,6 +11,9 @@ import { UpdateBlockComponent } from './block/admin/update-block/update-block.co
 import { CreatePropertyComponent } from './block/property/create-property/create-property.component';
 import { UpdatePropertyComponent } from './block/property/update-property/update-property.component';
 import { ListPropertyComponent } from './block/property/list-property/list-property.component';
+import { AuthenticatedAdminGuard } from 'src/app/guards/authenticated-admin.guard';
+import { ViewProjectComponent } from './admin/view-project/view-project.component';
+
 
 const routes: Routes = [
   {
@@ -27,6 +30,10 @@ const routes: Routes = [
       {
         path: 'edition/:id',
         component: UpdateProjectComponent,
+      },
+      {
+        path: 'view/:id',
+        component: ViewProjectComponent
       },
       {
         path: 'block',
@@ -49,7 +56,7 @@ const routes: Routes = [
             component: CreatePropertyComponent
           },
           {
-            path: 'edition',
+            path: 'edition/:id',
             component: UpdatePropertyComponent
           },
           {
