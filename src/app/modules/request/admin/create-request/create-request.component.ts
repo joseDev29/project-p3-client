@@ -6,6 +6,7 @@ import { CityService } from 'src/app/services/parameters/city.service';
 import { CountryService } from 'src/app/services/parameters/country.service';
 import { AdminProjectService } from 'src/app/services/project/admin-project.service';
 import { RequestService } from 'src/app/services/requests/request.service';
+import { SecurityService } from 'src/app/services/security.service';
 
 @Component({
   selector: 'app-create-request',
@@ -16,13 +17,15 @@ export class CreateRequestComponent implements OnInit {
   request:RequestModel | any ;
   aFormGroup: FormGroup;
   file_name: string = 'Subir un archivo...';
+  seller:any;
   constructor(
     private formBuilder: FormBuilder,
     private route: ActivatedRoute,
     private service: RequestService,
     private router: Router,
     private countryService: CountryService,
-    private cityService: CityService
+    private cityService: CityService,
+    private securityService:SecurityService
   ) {}
   ngOnInit(): void {
     this.FormBuilding();
@@ -33,17 +36,24 @@ export class CreateRequestComponent implements OnInit {
       offer: ['', [Validators.required]],
       clientDoc: ['', [Validators.required]],
       propertyCode: ['', [Validators.required]],
-      sellerID: ['', [Validators.required]],
       feeNumber: ['', [Validators.required]],
     });
   }
 
   createRequest() {
     
-
+this.securityService.getUserData().subscribe(
+  (data)=>{
+    console.log(data);
+    
+    this.seller=data;
+  },
+  (err)=>{console.log(err);}
+  
+)
     this.request = {
       clientDocument: this.aFormGroup.value.clientDoc,
-      seller_id:this.aFormGroup.value.sellerID,
+      seller_id:this.seller.id,
       feeNumber:  this.aFormGroup.value.feeNumber,
       propertyCode: this.aFormGroup.value.propertyCode,
       offer: this.aFormGroup.value.offer,

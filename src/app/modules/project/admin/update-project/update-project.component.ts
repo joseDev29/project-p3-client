@@ -65,7 +65,7 @@ export class UpdateProjectComponent implements OnInit {
       
       this.service.editRecordById(formData).subscribe(
         data=>{
-          this.router.navigate(["/"]);
+          this.router.navigate(["/project/admin/view/",this.recordId]);
         },
         err=>{
           console.log('invalid data');
@@ -110,7 +110,7 @@ export class UpdateProjectComponent implements OnInit {
       },
       error => {
         console.log(error);
-        this.router.navigate(["/parameters/country"]);
+        this.router.navigate(["/project/admin"]);
       }
     )
   }

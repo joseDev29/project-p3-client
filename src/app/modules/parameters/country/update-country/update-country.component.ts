@@ -54,6 +54,8 @@ getRecordById(){
       console.log("Invalid form");
     } else {
       this.getCountryData();
+      console.log(this.Country);
+      
       this.service.editRecordById(this.Country).subscribe(
         data=>{
           this.router.navigate(["/parameters/country"]);

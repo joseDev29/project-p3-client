@@ -25,7 +25,7 @@ export class CountryService {
     }
 
     editRecordById(record: CountryModel): Observable<CountryModel> {
-      return this.http.put<CountryModel>(`${ServiceConfig.BASE_URL}${this.entity}/${record.id}`, record, {
+      return this.http.patch<CountryModel>(`${ServiceConfig.BASE_URL}${this.entity}/${record.id}`, record, {
         /*headers: new HttpHeaders({
           Authorization: `Bearer ${this.token}`
         })

@@ -56,7 +56,7 @@ export class CreateBlockComponent implements OnInit {
       
       this.service.saveNewRecord(this.block).subscribe(
         data=>{
-          this.router.navigate(["/project/admin/block"]);
+          this.router.navigate(["/project/admin/view/",this.block.projectId]);
         },
         err=>{
           console.log('invalid data');

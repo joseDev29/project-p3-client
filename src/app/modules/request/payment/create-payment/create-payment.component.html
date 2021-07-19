@@ -39,7 +39,7 @@
 
             <div class="payment__buttons">
                 <input class="payment__button cancel" type="button" value="Cancelar"
-                    [routerLink]="['/payment/']" />
+                    [routerLink]="['/request/view/',request.id]" />
                 <input class="payment__button agree" (click)="createPayment()" type="button" value="Agregar pago" />
 
             </div>
