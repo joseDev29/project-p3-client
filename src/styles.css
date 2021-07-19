@@ -5,6 +5,8 @@
   --primary-red: #b00020;
   --secondary-green: #00b090;
   --cancel-red: #db0028;
+  --create-blue: #2980a3;
+  --update-purple: #5e1895;
 }
 
 * {

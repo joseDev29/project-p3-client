@@ -24,14 +24,14 @@ export class ClientPageComponent implements OnInit {
   ) {}
 
   ngOnInit() {
+    this.clientId = this.route.snapshot.params['id'];
+    console.log(this.clientId);
     this.getClient();
     this.getFinances();
     this.getRequests();
   }
 
   getClient() {
-    this.clientId = this.route.snapshot.params['id'];
-
     this.clientService.getRecordById(this.clientId).subscribe(
       (client) => (this.client = client),
       (err) => console.log

@@ -1,33 +1,52 @@
 <div *ngIf="project" class="project__main fade-in">
-    <h1 class="project__title">Zona Administrador</h1>
-    <h2 class="project__subtitle">{{ project.name }}</h2>
-  
-    <div class="project__data">
+  <h1 class="project__title">Zona Administrador</h1>
+  <h2 class="project__subtitle">{{ project.name }}</h2>
+
+  <div class="project__data">
+    <div>
       <img
         class="project__image fade-in-2"
         [src]="project.image"
         alt="Imagen de Valle del bombu"
       />
-  
-      <div class="project__data-right">
-        <h3 class="project__location">
-          {{ project.city.name }}, {{ project.city.country.name }}
-        </h3>
-        <p class="project__description">
-          {{ project.description }}
-        </p>
-        <a href="" [routerLink]="['/project/admin/block/creation']" class="project-card-create--btn">Crear Bloque</a>
-        <app-list-block
+      <a
+        href=""
+        [routerLink]="['/project/admin/edition/', project.id]"
+        class="project-card-create--btn"
+        style="background-color: var(--update-purple); width: 100%"
+        >Editar Proyecto</a
+      >
+    </div>
+
+    <div class="project__data-right">
+      <h3 class="project__location">
+        {{ project.city.name }}, {{ project.city.country.name }}
+      </h3>
+      <p class="project__description">
+        {{ project.description }}
+      </p>
+      <a
+        href=""
+        [routerLink]="['/project/admin/block/creation']"
+        class="project-card-create--btn"
+        style="background-color: var(--create-blue)"
+        >Crear Bloque</a
+      >
+      <app-list-block
         [ngStyle]="{ width: '90%', 'min-width': '300px', 'max-width': '400px' }"
         [blocks]="blocks"
         [activeBlock]="activeBlock"
         (onChangeBlock)="changeBlock($event)"
-        ></app-list-block>
-        <a href="" [routerLink]="['/project/admin/block/edition/',activeBlock.id]" class="project-card-create--btn">Editar Bloque</a>
-      </div>
+      ></app-list-block>
+      <a
+        href=""
+        [routerLink]="['/project/admin/block/edition/', activeBlock.id]"
+        class="project-card-create--btn"
+        style="background-color: var(--update-purple)"
+        >Editar Bloque</a
+      >
     </div>
-  
-    <app-list-property
-      [properties]="properties"
-    ></app-list-property>
   </div>
+
+  <app-list-property [properties]="properties"></app-list-property>
+</div>

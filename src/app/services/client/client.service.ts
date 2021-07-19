@@ -39,8 +39,7 @@ export class ClientService {
   }
 
   getRequestsByClientId(clientId: string) {
-    const filter: string =
-      '{"where": {"clientId":"60792ff12d90f9255002dbda"},"fields": {"id": true,"code":true,"date": true,"status": true,"offer": true,"firstPayment": true,"totalPayment": true,"feePayment": true,"feeNumber": true,"propertyId": true,"clientId": true,"userId": true},"include":[{"relation":"property","scope": {"include":[{"relation":"block","scope":{"include":[{"relation":"project"}]}}]}}]}';
+    const filter: string = `{"where": {"clientId":"${clientId}"},"fields": {"id": true,"code":true,"date": true,"status": true,"offer": true,"firstPayment": true,"totalPayment": true,"feePayment": true,"feeNumber": true,"propertyId": true,"clientId": true,"userId": true},"include":[{"relation":"property","scope": {"include":[{"relation":"block","scope":{"include":[{"relation":"project"}]}}]}}]}`;
 
     return this.http.get<RequestModel[]>(
       `${ServiceConfig.BASE_URL}requests?filter=${filter}`

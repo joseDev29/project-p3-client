@@ -101,7 +101,7 @@
   display: inline-block;
   width: 50%;
   height: 40px;
-  background-color: #5e1895;
+  background-color: var(--primary-red);
   border-radius: 4px;
   margin-top: 15px;
   display: flex;
