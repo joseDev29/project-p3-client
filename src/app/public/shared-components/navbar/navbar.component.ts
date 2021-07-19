@@ -10,19 +10,22 @@ import { SecurityService } from 'src/app/services/security.service';
 })
 export class NavbarComponent implements OnInit {
   dropdownActive: string = '';
-  sidebarActive:string = '';
+  sidebarActive: string = '';
   isLoggedIn: Boolean = false;
   subsription: Subscription = new Subscription();
+  sessionData: any;
 
   constructor(private service: SecurityService) {}
 
   ngOnInit(): void {
-    this.subsription = this.service.getUserData().subscribe((datos: UserModel) => {
-      console.log(datos);
-      this.isLoggedIn = datos.isLogged;
-    });
+    this.subsription = this.service
+      .getUserData()
+      .subscribe((datos: UserModel) => {
+        console.log(datos);
+        this.sessionData = datos;
+        this.isLoggedIn = datos.isLogged;
+      });
   }
-  
 
   changeDropdown(e) {
     e.preventDefault();

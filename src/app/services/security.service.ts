@@ -1,14 +1,14 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { BehaviorSubject, Observable } from 'rxjs';
+import { BehaviorSubject, ObjectUnsubscribedError, Observable } from 'rxjs';
 import { UserModel } from '../models/security/user.model';
 import { ServiceConfig } from 'src/app/config/service-config';
+import { ChangePasswordModel } from '../models/security/change-password.model';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class SecurityService {
-
   userData = new BehaviorSubject<UserModel>(new UserModel());
 
   constructor(private http: HttpClient) {
@@ -16,16 +16,16 @@ export class SecurityService {
   }
 
   /**
-   * 
+   *
    * @param model posting user model
-   * @returns 
+   * @returns
    */
   loginUser(model: UserModel): Observable<UserModel> {
     console.log(model);
 
     return this.http.post<UserModel>(`${ServiceConfig.BASE_URL}login`, model, {
-      headers: new HttpHeaders({})
-    })
+      headers: new HttpHeaders({}),
+    });
   }
   /**
    * verify if the session is active and setting user data
@@ -39,30 +39,32 @@ export class SecurityService {
   }
 
   /**
-   * 
+   *
    * @param value setting user data
    */
   setUserData(value: UserModel) {
     this.userData.next(value);
   }
   resetPassword(model: UserModel): Observable<UserModel> {
-    return this.http.post<UserModel>(`${ServiceConfig.BASE_URL}reset-password`, model, {
-      headers: new HttpHeaders({})
-    })
+    return this.http.post<UserModel>(
+      `${ServiceConfig.BASE_URL}reset-password`,
+      model,
+      {
+        headers: new HttpHeaders({}),
+      }
+    );
   }
   /**
-   * 
+   *
    * @returns user data
    */
   getUserData() {
     return this.userData.asObservable();
   }
 
-
-
   saveSession(sessionData: any): Boolean {
     if (this.getSession()) {
-      console.log("Already session exists");
+      console.log('Already session exists');
       return false;
     } else {
       console.log(sessionData);
@@ -73,7 +75,7 @@ export class SecurityService {
         username: sessionData.username,
         token: sessionData.token,
         isLogged: sessionData.isLogged,
-        role: sessionData.role
+        role: sessionData.role,
       };
       localStorage.setItem('session', JSON.stringify(data));
       this.setUserData(data);
@@ -81,15 +83,14 @@ export class SecurityService {
     }
   }
 
+  isUserRol(roleId): Boolean {
+    let currentSession = this.getSession();
+    console.log(JSON.parse(currentSession).role);
 
-isUserRol(roleId):Boolean{
-  let currentSession=this.getSession();
-  console.log(JSON.parse(currentSession).role);
-  
-  return JSON.parse(currentSession).role==roleId;
-}
+    return JSON.parse(currentSession).role == roleId;
+  }
   /**
-   * 
+   *
    * @returns current data session
    */
   getSession() {
@@ -97,9 +98,8 @@ isUserRol(roleId):Boolean{
   }
 
   sessionExists(): Boolean {
-    return (this.getSession()) ? true : false;
+    return this.getSession() ? true : false;
   }
-
 
   logout() {
     localStorage.removeItem('session');
@@ -109,5 +109,12 @@ isUserRol(roleId):Boolean{
   getToken(): String {
     let currentSession = this.getSession();
     return JSON.parse(currentSession).token;
+  }
+
+  changePassword(data: ChangePasswordModel) {
+    return this.http.post<any>(
+      `${ServiceConfig.BASE_URL}change-password`,
+      data
+    );
   }
 }

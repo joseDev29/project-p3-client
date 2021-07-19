@@ -1,22 +1,52 @@
 <nav class="navbar">
-  <a *ngIf="isLoggedIn" class="sidebar__dropright-btn" id="sidebarDroprightBtn" href="" (click)="changeSidebar($event)"></a>
+  <a
+    *ngIf="isLoggedIn"
+    class="sidebar__dropright-btn"
+    id="sidebarDroprightBtn"
+    href=""
+    (click)="changeSidebar($event)"
+  ></a>
   <div class="navbar__left">
     <a class="navbar__logo" routerLink="/" href="">
-      <img class="navbar__logo-img"
-        src="https://res.cloudinary.com/project-p3/image/upload/v1618872693/inmobi-logo-navbar_zpo2rq.svg" alt="" />
+      <img
+        class="navbar__logo-img"
+        src="https://res.cloudinary.com/project-p3/image/upload/v1618872693/inmobi-logo-navbar_zpo2rq.svg"
+        alt=""
+      />
     </a>
-    <a class="navbar__dropdown-btn" (click)="changeDropdown($event)" href=""></a>
+    <a
+      class="navbar__dropdown-btn"
+      (click)="changeDropdown($event)"
+      href=""
+    ></a>
   </div>
-  <div class="navbar__right dropdown-transition {{ dropdownActive }}" id="navbarRight">
-    <a *ngIf="!isLoggedIn" class="navbar__link" routerLink="/security/login">Iniciar Sesion</a>
-    <a *ngIf="isLoggedIn" class="navbar__link" routerLink="/security/logout">Cerrar Sesion</a>
+  <div
+    class="navbar__right dropdown-transition {{ dropdownActive }}"
+    id="navbarRight"
+  >
+    <a *ngIf="!isLoggedIn" class="navbar__link" routerLink="/security/login"
+      >Iniciar Sesion</a
+    >
+    <a *ngIf="isLoggedIn" class="navbar__link" routerLink="/security/logout"
+      >Cerrar Sesion</a
+    >
   </div>
 </nav>
 <div *ngIf="isLoggedIn" class="sidebar {{ sidebarActive }}" id="sidebar">
-  <a routerLink="/parameters/country">Paises</a>
-  <a routerLink="/parameters/city">Ciudades</a>
-  <a routerLink="/project/admin/list">Projectos</a>
-  <a routerLink="/project/admin/block/creation">Bloques</a>
-  <a routerLink="/project/admin/block/property/creation">Propiedades</a>
-  <a routerLink="/clients">Clientes</a>
+  <p *ngIf="sessionData.role === 1" class="sidebar-title">Administrador</p>
+  <p *ngIf="sessionData.role === 2" class="sidebar-title">Vendedor</p>
+  <p class="sidebar-subtitle">{{ sessionData.username }}</p>
+  <div class="sidebar-separator"></div>
+  <a routerLink="/security/change-password" class="sidebar-link"
+    >Cambiar contraseña</a
+  >
+  <a routerLink="/security/reset-password" class="sidebar-link"
+    >Recuperar contraseña</a
+  >
+  <div class="sidebar-separator"></div>
+  <a routerLink="/parameters/country" class="sidebar-link">Paises</a>
+  <a routerLink="/parameters/city" class="sidebar-link">Ciudades</a>
+  <a routerLink="/project/admin/list" class="sidebar-link">Proyectos</a>
+  <a routerLink="/clients" class="sidebar-link">Clientes</a>
+  <a routerLink="/request" class="sidebar-link">Solicitudes</a>
 </div>

@@ -6,30 +6,28 @@ import { LoginComponent } from './login/login.component';
 import { LogoutComponent } from './logout/logout.component';
 import { ResetPasswordComponent } from './reset-password/reset-password.component';
 
-const routes: Routes = [{
-  path: 'login',
-  component: LoginComponent,
-  canActivate:[UnauthenticatedGuard]
-  
-},
-{
-  path: 'logout',
-  component: LogoutComponent
- 
-},
-{
-  path: 'reset-password',
-  component: ResetPasswordComponent
-  
-},
-{
-  path: 'change-password',
-  component: ChangePasswordComponent
-  
-}];
+const routes: Routes = [
+  {
+    path: 'login',
+    component: LoginComponent,
+    canActivate: [UnauthenticatedGuard],
+  },
+  {
+    path: 'logout',
+    component: LogoutComponent,
+  },
+  {
+    path: 'reset-password',
+    component: ResetPasswordComponent,
+  },
+  {
+    path: 'change-password',
+    component: ChangePasswordComponent,
+  },
+];
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class SecurityRoutingModule { }
+export class SecurityRoutingModule {}

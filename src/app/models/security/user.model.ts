@@ -1,8 +1,8 @@
-export class UserModel{
-    id?: String;
-    username: String;
-    password?: String;
-    role?: Number;
-    isLogged?: Boolean = false;
-    token?: String;
+export class UserModel {
+  id?: string;
+  username: string;
+  password?: string;
+  role?: number;
+  isLogged?: boolean = false;
+  token?: string;
 }
