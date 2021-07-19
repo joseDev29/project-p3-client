@@ -13,18 +13,17 @@ import { AdminBlockService } from 'src/app/services/project/block/admin-block.se
 @Component({
   selector: 'app-update-block',
   templateUrl: './update-block.component.html',
-  styleUrls: ['./update-block.component.css']
+  styleUrls: ['./update-block.component.css'],
 })
 export class UpdateBlockComponent implements OnInit {
-
   block: BlockModel;
   aFormGroup: FormGroup;
   countries: CountryModel[] = [];
   cities: CityModel[] = [];
   projects: ProjectModel[] = [];
   recordId: string = '';
-  cityId: String='';
-  projectId: String='';
+  cityId: String = '';
+  projectId: String = '';
   constructor(
     private formBuilder: FormBuilder,
     private route: ActivatedRoute,
@@ -33,12 +32,13 @@ export class UpdateBlockComponent implements OnInit {
     private countryService: CountryService,
     private cityService: CityService,
     private projectService: AdminProjectService
-  ) { this.recordId = this.route.snapshot.params["id"]; }
+  ) {
+    this.recordId = this.route.snapshot.params['id'];
+  }
   ngOnInit(): void {
     this.FormBuilding();
     this.getCountries();
     this.getRecordById();
-
   }
 
   FormBuilding() {
@@ -47,77 +47,71 @@ export class UpdateBlockComponent implements OnInit {
       description: ['', [Validators.required]],
       countryId: ['', [Validators.required]],
       cityId: ['', [Validators.required]],
-      projectId: ['', [Validators.required]]
+      projectId: ['', [Validators.required]],
     });
   }
 
   editRecord() {
     if (this.aFormGroup.invalid) {
-      console.log("Invalid form");
+      console.log('Invalid form');
     } else {
       this.getBlockData();
       this.service.editRecordById(this.block).subscribe(
-        data => {
-          this.router.navigate(["/project/admin/view/",this.block.projectId]);
+        (data) => {
+          this.router.navigate(['/project/admin/view/', this.block.projectId]);
         },
-        err => {
+        (err) => {
           console.log('invalid data');
-
         }
-      )
-
+      );
     }
   }
   getRecordById() {
     this.service.getRecordById(this.recordId).subscribe(
-      data => {
+      (data) => {
         this.fgv.name.setValue(data.name);
         this.fgv.description.setValue(data.description);
-        this.projectId=data.projectId;
+        this.projectId = data.projectId;
         this.getCityDataByProjectId();
         this.fgv.projectId.setValue(data.projectId);
       },
-      error => {
+      (error) => {
         console.log(error);
-        this.router.navigate(["/"]);
+        this.router.navigate(['/']);
       }
-    )
+    );
   }
 
   setCountryData(id) {
     this.fgv.countryId.setValue(id);
-    this.getCities(id)
+    this.getCities(id);
   }
 
   getCityDataByProjectId() {
-
     this.cityService.getRecordByProjectId(this.projectId).subscribe(
-      data => {
+      (data) => {
         this.cityId = data.id;
-        this.setCountryData(data.countryId)
+        this.setCountryData(data.countryId);
         this.fgv.cityId.setValue(data.id);
-        this.getProjects(data.id)
+        this.getProjects(data.id);
       },
-      error => {
+      (error) => {
         console.log(error);
-
       }
-    )
-
+    );
   }
 
   getBlockData() {
     this.block = {
-      id:"",
-      name: "",
-      description: "",
-      projectId: "",
-    }
-    this.block.id=this.recordId;
+      id: '',
+      name: '',
+      description: '',
+      projectId: '',
+    };
+    this.block.id = this.recordId;
     this.block.name = this.aFormGroup.value.name;
     this.block.description = this.aFormGroup.value.description;
     this.block.projectId = this.aFormGroup.value.projectId;
-
   }
   get fgv() {
     return this.aFormGroup.controls;
@@ -128,7 +122,6 @@ export class UpdateBlockComponent implements OnInit {
       (countries) => {
         this.countries = countries;
         console.log(this.countries);
-
       },
       (err) => console.log
     );
@@ -148,7 +141,6 @@ export class UpdateBlockComponent implements OnInit {
       (cities) => {
         this.cities = cities;
         console.log(cities);
-        
       },
       (err) => console.log
     );

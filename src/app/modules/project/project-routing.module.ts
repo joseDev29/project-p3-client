@@ -13,7 +13,7 @@ import { UpdatePropertyComponent } from './block/property/update-property/update
 import { ListPropertyComponent } from './block/property/list-property/list-property.component';
 import { AuthenticatedAdminGuard } from 'src/app/guards/authenticated-admin.guard';
 import { ViewProjectComponent } from './admin/view-project/view-project.component';
-
+import { PublicClientRequestComponent } from './public-client-request/public-client-request.component';
 
 const routes: Routes = [
   {
@@ -33,46 +33,49 @@ const routes: Routes = [
       },
       {
         path: 'view/:id',
-        component: ViewProjectComponent
+        component: ViewProjectComponent,
       },
       {
         path: 'block',
-        children: [{
-          path: 'creation',
-          component: CreateBlockComponent
-        },
-        {
-          path: 'edition/:id',
-          component: UpdateBlockComponent
-        },
-        {
-          path: 'list',
-          component: ListBlockComponent
-        },
-        {
-          path: 'property',
-          children: [{
+        children: [
+          {
             path: 'creation',
-            component: CreatePropertyComponent
+            component: CreateBlockComponent,
           },
           {
             path: 'edition/:id',
-            component: UpdatePropertyComponent
+            component: UpdateBlockComponent,
           },
           {
             path: 'list',
-            component: ListPropertyComponent
-          }, {
+            component: ListBlockComponent,
+          },
+          {
+            path: 'property',
+            children: [
+              {
+                path: 'creation',
+                component: CreatePropertyComponent,
+              },
+              {
+                path: 'edition/:id',
+                component: UpdatePropertyComponent,
+              },
+              {
+                path: 'list',
+                component: ListPropertyComponent,
+              },
+              {
+                path: '**',
+                redirectTo: 'list',
+              },
+            ],
+          },
+          {
             path: '**',
-            redirectTo: 'list'
-          }
-          ]
-        }
-          , {
-          path: '**',
-          redirectTo: 'list'
-        }
-        ]
+            redirectTo: 'list',
+          },
+        ],
       },
       {
         path: '**',
@@ -89,6 +92,10 @@ const routes: Routes = [
     component: ProjectPageComponent,
   },
   {
+    path: 'public-request/:id',
+    component: PublicClientRequestComponent,
+  },
+  {
     path: '**',
     redirectTo: 'home',
   },
@@ -98,4 +105,4 @@ const routes: Routes = [
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule],
 })
-export class ProjectRoutingModule { }
+export class ProjectRoutingModule {}

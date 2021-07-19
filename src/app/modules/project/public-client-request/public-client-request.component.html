@@ -1,0 +1,110 @@
+<div class="property__main">
+  <div *ngIf="property">
+    <h1>Informacion del inmueble</h1>
+    <p>Propiedad {{ property.number }}</p>
+    <p>Bloque {{ property.block.name }}</p>
+    <p>Proyecto {{ property.block.project.name }}</p>
+  </div>
+  <div class="property-right fade-in">
+    <form class="property custom-text-color" [formGroup]="aFormGroup">
+      <h1 class="property__title">Solicitar Informacion</h1>
+
+      <div class="property__pair">
+        <input
+          formControlName="name"
+          class="property__input-text"
+          type="text"
+          id="name"
+          name="name"
+          placeholder="Nombre"
+        />
+        <label class="property__label" for="name">Nombre</label>
+        <div
+          class="warning-validator"
+          *ngIf="fgv.name.errors && (fgv.name.dirty || fgv.name.touched)"
+        >
+          <strong *ngIf="fgv.name.errors.required">
+            Este campo es requerido
+          </strong>
+        </div>
+      </div>
+
+      <div class="property__pair">
+        <input
+          formControlName="lastname"
+          class="property__input-text"
+          type="text"
+          id="lastname"
+          name="lastname"
+          placeholder="Apellido"
+        />
+        <label class="property__label" for="lastname">Apellido</label>
+        <div
+          class="warning-validator"
+          *ngIf="
+            fgv.lastname.errors && (fgv.lastname.dirty || fgv.lastname.touched)
+          "
+        >
+          <strong *ngIf="fgv.lastname.errors.required">
+            Este campo es requerido
+          </strong>
+        </div>
+      </div>
+
+      <div class="property__pair">
+        <input
+          formControlName="email"
+          class="property__input-text"
+          type="email"
+          id="email"
+          name="email"
+          placeholder="Correo"
+        />
+        <label class="property__label" for="email">Correo</label>
+        <div
+          class="warning-validator"
+          *ngIf="fgv.email.errors && (fgv.email.dirty || fgv.email.touched)"
+        >
+          <strong *ngIf="fgv.email.errors.required">
+            Este campo es requerido
+          </strong>
+        </div>
+      </div>
+
+      <div class="property__pair">
+        <input
+          formControlName="phone"
+          class="property__input-text"
+          type="text"
+          id="phone"
+          name="phone"
+          placeholder="Telefono"
+        />
+        <label class="property__label" for="phone">Telefono</label>
+        <div
+          class="warning-validator"
+          *ngIf="fgv.phone.errors && (fgv.phone.dirty || fgv.phone.touched)"
+        >
+          <strong *ngIf="fgv.phone.errors.required">
+            Este campo es requerido
+          </strong>
+        </div>
+      </div>
+
+      <div class="property__buttons">
+        <input
+          class="property__button cancel"
+          type="button"
+          value="Cancelar"
+          [routerLink]="['/project/']"
+        />
+        <input
+          class="property__button agree"
+          (click)="sendRequest()"
+          type="button"
+          value="Crear"
+        />
+      </div>
+    </form>
+  </div>
+</div>

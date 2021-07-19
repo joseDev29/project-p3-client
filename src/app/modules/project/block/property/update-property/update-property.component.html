@@ -1,1 +1,100 @@
-<p>update-property works!</p>
+<div class="block__main">
+  <div class="block-right fade-in">
+    <form class="block custom-text-color" [formGroup]="aFormGroup">
+      <h1 class="block__title">Editar propiedad</h1>
+
+      <div class="block__pair">
+        <input
+          formControlName="number"
+          class="block__input-text"
+          type="text"
+          id="number"
+          name="number"
+          placeholder="Numero"
+        />
+        <label class="block__label" for="number">Numero</label>
+        <div
+          class="warning-validator"
+          *ngIf="fgv.number.errors && (fgv.number.dirty || fgv.number.touched)"
+        >
+          <strong *ngIf="fgv.number.errors.required">
+            Este campo es requerido
+          </strong>
+        </div>
+      </div>
+
+      <div class="block__pair">
+        <input
+          formControlName="description"
+          class="block__input-text"
+          type="text"
+          id="description"
+          name="block"
+          placeholder="Descripción"
+        />
+        <label class="block__label" for="description">Descripción</label>
+        <div
+          class="warning-validator"
+          *ngIf="
+            fgv.description.errors &&
+            (fgv.description.dirty || fgv.description.touched)
+          "
+        >
+          <strong *ngIf="fgv.description.errors.required">
+            Este campo es requerido
+          </strong>
+        </div>
+      </div>
+
+      <div class="block__pair">
+        <input
+          formControlName="value"
+          class="block__input-text"
+          type="number"
+          id="value"
+          name="value"
+          placeholder="Valor"
+        />
+        <label class="block__label" for="value">Valor</label>
+        <div
+          class="warning-validator"
+          *ngIf="fgv.value.errors && (fgv.value.dirty || fgv.value.touched)"
+        >
+          <strong *ngIf="fgv.value.errors.required">
+            Este campo es requerido
+          </strong>
+        </div>
+      </div>
+
+      <div class="block__pair">
+        <label class="block__label" for="city">Bloque</label>
+        <select
+          formControlName="blockId"
+          class="country__blocks-select"
+          name="blocks"
+          id="blockId"
+        >
+          <option selected>Seleccione proyecto</option>
+          <option *ngFor="let block of blocks" value="{{ block.id }}">
+            {{ block.name }}
+          </option>
+        </select>
+      </div>
+
+      <div class="block__buttons">
+        <input
+          class="block__button cancel"
+          type="button"
+          value="Cancelar"
+          [routerLink]="['/project/admin']"
+        />
+        <input
+          class="block__button agree"
+          (click)="editRecord()"
+          type="button"
+          value="Editar"
+        />
+      </div>
+    </form>
+  </div>
+</div>

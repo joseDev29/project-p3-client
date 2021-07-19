@@ -21,6 +21,7 @@ import { PublicBlockSelectorComponent } from './block/public-block-selector/publ
 import { ReactiveFormsModule } from '@angular/forms';
 import { NgxPaginationModule } from 'ngx-pagination';
 import { ViewProjectComponent } from './admin/view-project/view-project.component';
+import { PublicClientRequestComponent } from './public-client-request/public-client-request.component';
 
 @NgModule({
   declarations: [
@@ -41,8 +42,15 @@ import { ViewProjectComponent } from './admin/view-project/view-project.componen
     ListPublicPropertyComponent,
     PublicBlockSelectorComponent,
     ViewProjectComponent,
+    PublicClientRequestComponent,
   ],
-  imports: [CommonModule, RouterModule, ProjectRoutingModule,ReactiveFormsModule,NgxPaginationModule],
+  imports: [
+    CommonModule,
+    RouterModule,
+    ProjectRoutingModule,
+    ReactiveFormsModule,
+    NgxPaginationModule,
+  ],
   exports: [],
 })
 export class ProjectModule {}
