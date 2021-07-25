@@ -9,6 +9,18 @@
     <hr class="separator" />
     <p class="property-card__description">{{ property.description }}</p>
     <p class="property-card__value">$ {{ property.value | number }}</p>
-    <a class="property-card__btn">Ver mas</a>
+    <a
+      *ngIf="property.status === 'DISPONIBLE'"
+      class="property-card__btn"
+      [routerLink]="['/project/public-request', property.id]"
+      >Ver mas</a
+    >
+    <p
+      *ngIf="property.status === 'VENDIDA'"
+      class="property-card__value"
+      style="color: var(--cancel-red)"
+    >
+      VENDIDA
+    </p>
   </div>
 </div>

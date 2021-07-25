@@ -65,7 +65,10 @@ export class PublicClientRequestComponent implements OnInit {
       .sendPublicRequest(this.propertyId, this.model)
       .subscribe(
         (res) => {
-          this.router.navigate([]);
+          this.router.navigate([
+            '/project/home',
+            this.property.block.projectId,
+          ]);
         },
         (err) => console.log
       );
