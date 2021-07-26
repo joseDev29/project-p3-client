@@ -91,7 +91,20 @@
   </div>
 </div>
 
-<div *ngIf="request.status == 'ACEPTADA' && request.totalPayment>0" class="request__buttons">
+<div style="max-width: 650px; margin: 20px auto">
+  <app-chart
+    class="chart-main"
+    *ngIf="request.status === 'ACEPTADA'"
+    [labels]="chartData.labels"
+    [data]="chartData.data"
+    [setColors]="chartData.colors"
+  ></app-chart>
+</div>
+
+<div
+  *ngIf="request.status == 'ACEPTADA' && request.totalPayment > 0"
+  class="request__buttons"
+>
   <input
     class="request__button create"
     type="button"
