@@ -40,7 +40,10 @@ export class ClientPageComponent implements OnInit {
 
   getFinances() {
     this.clientService.getFinancesByClientId(this.clientId).subscribe(
-      (finances) => (this.finances = finances),
+      (finances) => {
+        this.finances = finances;
+        console.log(finances);
+      },
       (err) => console.log
     );
   }

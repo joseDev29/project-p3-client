@@ -1,0 +1,212 @@
+.client__main {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 4rem;
+  margin-bottom: 4rem;
+  justify-content: center;
+}
+
+.client-left__logo {
+  height: 50px;
+  margin-top: 120px;
+}
+
+.client-right {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  height: fit-content;
+}
+
+.client {
+  width: 90%;
+  min-width: 320px;
+  max-width: 450px;
+  bottom: 180px;
+  padding: 16px;
+  border-radius: 4px;
+  background-color: white;
+  box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.25);
+  opacity: 0.9;
+}
+.cancel {
+  background-color: #db0028;
+}
+.agree {
+  background-color: #2980a3;
+}
+.client__title {
+  margin: 16px 0;
+  font-size: 2.6rem;
+  font-weight: 800;
+  line-height: 33px;
+  text-align: center;
+  color: #414141;
+}
+
+.client__pair {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  margin-top: 12px;
+}
+
+.client__input-text {
+  width: 100%;
+  height: 40px;
+  border-radius: 4px;
+  border: 0.25px solid var(--black-text);
+  box-sizing: border-box;
+  padding-left: 10px;
+  font-size: 1.6rem;
+  line-height: 19px;
+  color: var(--black-text);
+}
+
+.client__label {
+  order: -1;
+  font-size: 1.4rem;
+  color: var(--black-text);
+  margin-bottom: 5px;
+}
+
+.client__input-text:focus ~ .client__label {
+  font-weight: 700;
+}
+
+.client__input-text:focus {
+  outline-color: var(--black-text);
+}
+
+.warning-validator {
+  margin-top: 4px;
+  font-size: 1.2rem;
+  color: var(--cancel-red);
+}
+
+.client__captcha {
+  display: flex;
+  justify-content: center;
+  margin-top: 25px;
+}
+
+.client__buttons {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-end;
+  justify-content: flex-end;
+  margin-top: 25px;
+  text-align: center;
+}
+
+.client__button {
+  cursor: pointer;
+  margin: 0.3rem;
+  width: 30%;
+  height: 45px;
+  border: none;
+  border-radius: 4px;
+  font-size: 1.6rem;
+  font-weight: 500;
+  opacity: 1;
+  color: #fff;
+}
+
+.forgot-pass {
+  display: block;
+  margin-top: 25px;
+  cursor: pointer;
+  color: #828282;
+  font-size: 1.6rem;
+}
+
+.forgot-pass:hover,
+.client__button:hover {
+  text-decoration: underline;
+}
+
+.country__blocks-select {
+  width: 100%;
+  height: 40px;
+  border: 0.25px solid var(--black-text);
+  border-radius: 4px;
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: var(--black-text);
+}
+
+.country__blocks-select:focus {
+  outline: none;
+}
+
+.country__blocks-select:hover {
+  cursor: pointer;
+}
+
+.file-image__container {
+  width: 100%;
+  height: 40px;
+  display: flex;
+  margin-top: 10px;
+}
+
+.file-image__text {
+  width: 70%;
+  height: 100%;
+  border-radius: 4px 0 0 4px;
+  border: 0.25px solid var(--black-text);
+  border-right: none;
+  display: flex;
+  align-items: center;
+  padding-left: 8px;
+  font-size: 1.6rem;
+  overflow-x: hidden;
+}
+
+.file-image__input {
+  display: none;
+}
+
+.file-image__button {
+  width: 30%;
+  height: 100%;
+  border-radius: 0 4px 4px 0;
+  border: 0.25px solid var(--black-text);
+  font-size: 1.6rem;
+  font-weight: 500;
+}
+
+.file-image__button:hover {
+  cursor: pointer;
+}
+
+@media (min-width: 1150px) {
+  .client__main {
+    flex-direction: row;
+  }
+
+  .client-left {
+    width: 50%;
+    height: 100%;
+    align-items: center;
+    border-radius: 0;
+  }
+
+  .client-left__logo {
+    margin-top: 0;
+  }
+
+  .client-right {
+    width: 50%;
+    align-items: center;
+  }
+
+  .client {
+    width: 420px;
+    bottom: 0;
+    opacity: 1;
+  }
+}

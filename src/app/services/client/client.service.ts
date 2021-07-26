@@ -34,7 +34,7 @@ export class ClientService {
 
   getFinancesByClientId(clientId: string) {
     return this.http.get<FinancesModel>(
-      `${ServiceConfig.BASE_URL}finances/${clientId}`
+      `${ServiceConfig.BASE_URL}clients/${clientId}/finances`
     );
   }
 
@@ -44,5 +44,9 @@ export class ClientService {
     return this.http.get<RequestModel[]>(
       `${ServiceConfig.BASE_URL}requests?filter=${filter}`
     );
+  }
+
+  addFinances(finances: any) {
+    return this.http.post<any>(`${ServiceConfig.BASE_URL}finances`, finances);
   }
 }

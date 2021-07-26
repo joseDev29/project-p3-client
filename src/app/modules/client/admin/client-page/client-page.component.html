@@ -1,6 +1,8 @@
 <h2 class="request-title">Zona vendedor</h2>
-
-<div class="requests custom-text-color">
+<h2 style="font-size: 2.8rem; text-align: center; margin-bottom: 15px">
+  Cliente
+</h2>
+<div class="requests custom-text-color fade-in">
   <dir
     *ngIf="client"
     style="display: flex; justify-content: center; align-items: center"
@@ -57,7 +59,7 @@
         </h3>
         <hr class="separator" />
         <h3 class="request-card--subtitle">Referencia Familiar</h3>
-        <h3 class="request-card--subtitle2">${{ finances.familyReference }}</h3>
+        <h3 class="request-card--subtitle2">{{ finances.familyReference }}</h3>
         <hr class="separator" />
         <h3 class="request-card--subtitle">Telefono Referencia Familiar</h3>
         <h3 class="request-card--subtitle2">
@@ -81,9 +83,13 @@
     *ngIf="!finances"
     style="display: flex; justify-content: center; align-items: center"
   >
-    <button type="button" class="request__button agree">
+    <a
+      class="request__button agree"
+      [routerLink]="['/clients/add-finances', client.id]"
+      style="text-align: center"
+    >
       Añadir Informacion Financiera
-    </button>
+    </a>
   </div>
 </div>
 

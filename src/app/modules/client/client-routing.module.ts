@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { ClientPageComponent } from './admin/client-page/client-page.component';
 import { CreateClientComponent } from './admin/create-client/create-client.component';
 import { ListClientComponent } from './admin/list-client/list-client.component';
+import { CreateFinancesComponent } from './finances/create-finances/create-finances.component';
 
 const routes: Routes = [
   {
@@ -14,9 +15,13 @@ const routes: Routes = [
     component: CreateClientComponent,
   },
   {
-    path: "view/:id",
-    component: ClientPageComponent
-  }
+    path: 'view/:id',
+    component: ClientPageComponent,
+  },
+  {
+    path: 'add-finances/:id',
+    component: CreateFinancesComponent,
+  },
 ];
 
 @NgModule({
