@@ -40,14 +40,11 @@
   <a routerLink="/security/change-password" class="sidebar-link"
     >Cambiar contraseña</a
   >
-  <a routerLink="/security/reset-password" class="sidebar-link"
-    >Recuperar contraseña</a
-  >
   <div class="sidebar-separator"></div>
   <a *ngIf="sessionData.role === 1"  routerLink="/parameters/country" class="sidebar-link">Paises</a>
   <a *ngIf="sessionData.role === 1"  routerLink="/parameters/city" class="sidebar-link">Ciudades</a>
   <a routerLink="/project/admin/list" class="sidebar-link">Proyectos</a>
   <a *ngIf="sessionData.role === 2"  routerLink="/clients" class="sidebar-link">Clientes</a>
   <a routerLink="/request" class="sidebar-link">Solicitudes</a>
-  <a *ngIf="sessionData.role === 1" routerLink="/request" class="sidebar-link">Crear usuario</a>
+  <a *ngIf="sessionData.role === 1" routerLink="/users/create-user" class="sidebar-link">Crear usuario</a>
 </div>

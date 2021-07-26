@@ -36,6 +36,12 @@ const routes: Routes = [
       canActivate:[AuthenticatedUserGuard]
   },
   {
+    path: 'users',
+    loadChildren: () =>
+      import('./modules/user/user.module').then((m) => m.UserModule),
+      canActivate:[AuthenticatedAdminGuard]
+  },
+  {
     path: '**',
     redirectTo: 'project/home',
   },
