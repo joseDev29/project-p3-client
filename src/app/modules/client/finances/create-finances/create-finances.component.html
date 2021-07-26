@@ -1,1 +1,199 @@
-<p>create-finances works!</p>
+<div class="client__main">
+  <div class="client-right fade-in">
+    <form class="client custom-text-color" [formGroup]="aFormGroup">
+      <h1 class="client__title">Agregar informacion financiera</h1>
+
+      <!--  totalIncome input -->
+      <div class="client__pair">
+        <input
+          formControlName="totalIncome"
+          class="client__input-text"
+          type="number"
+          id="totalIncome"
+          name="totalIncome"
+          placeholder="Ingresos totales"
+        />
+        <label class="client__label" for="totalIncome">Ingresos totales</label>
+        <div
+          class="warning-validator"
+          *ngIf="
+            fgv.totalIncome.errors &&
+            (fgv.totalIncome.dirty || fgv.totalIncome.touched)
+          "
+        >
+          <strong *ngIf="fgv.totalIncome.errors.required">
+            Este campo es requerido
+          </strong>
+        </div>
+      </div>
+
+      <!--  jobDataTime input -->
+      <div class="client__pair">
+        <input
+          formControlName="jobDataTime"
+          class="client__input-text"
+          type="text"
+          id="jobDataTime"
+          name="jobDataTime"
+          placeholder="Tiempo de trabajo"
+        />
+        <label class="client__label" for="jobDataTime">Tiempo de trabajo</label>
+        <div
+          class="warning-validator"
+          *ngIf="
+            fgv.jobDataTime.errors &&
+            (fgv.jobDataTime.dirty || fgv.jobDataTime.touched)
+          "
+        >
+          <strong *ngIf="fgv.jobDataTime.errors.required">
+            Este campo es requerido
+          </strong>
+        </div>
+      </div>
+
+      <!--  Document input -->
+      <div class="client__pair">
+        <input
+          formControlName="familyReference"
+          class="client__input-text"
+          type="text"
+          id="familyReference"
+          name="familyReference"
+          placeholder="Referencia familiar"
+        />
+        <label class="client__label" for="familyReference"
+          >Referencia familiar</label
+        >
+        <div
+          class="warning-validator"
+          *ngIf="
+            fgv.familyReference.errors &&
+            (fgv.familyReference.dirty || fgv.familyReference.touched)
+          "
+        >
+          <strong *ngIf="fgv.familyReference.errors.required">
+            Este campo es requerido
+          </strong>
+        </div>
+      </div>
+
+      <!--  Document input -->
+      <div class="client__pair">
+        <input
+          formControlName="familyReferencePhone"
+          class="client__input-text"
+          type="text"
+          id="familyReferencePhone"
+          name="familyReferencePhone"
+          placeholder="Telefono referencia familiar"
+        />
+        <label class="client__label" for="familyReferencePhone"
+          >Telefono referencia familiar</label
+        >
+        <div
+          class="warning-validator"
+          *ngIf="
+            fgv.familyReferencePhone.errors &&
+            (fgv.familyReferencePhone.dirty || fgv.familyReferencePhone.touched)
+          "
+        >
+          <strong *ngIf="fgv.familyReferencePhone.errors.required">
+            Este campo es requerido
+          </strong>
+        </div>
+      </div>
+
+      <!--  Document input -->
+      <div class="client__pair">
+        <input
+          formControlName="personalReference"
+          class="client__input-text"
+          type="text"
+          id="personalReference"
+          name="personalReference"
+          placeholder="Referencia personal"
+        />
+        <label class="client__label" for="personalReference"
+          >Referencia personal</label
+        >
+        <div
+          class="warning-validator"
+          *ngIf="
+            fgv.personalReference.errors &&
+            (fgv.personalReference.dirty || fgv.personalReference.touched)
+          "
+        >
+          <strong *ngIf="fgv.personalReference.errors.required">
+            Este campo es requerido
+          </strong>
+        </div>
+      </div>
+
+      <!--  Document input -->
+      <div class="client__pair">
+        <input
+          formControlName="personalReferencePhone"
+          class="client__input-text"
+          type="text"
+          id="personalReferencePhone"
+          name="personalReferencePhone"
+          placeholder="Telefono referencia personal"
+        />
+        <label class="client__label" for="personalReferencePhone"
+          >Telefono referencia personal</label
+        >
+        <div
+          class="warning-validator"
+          *ngIf="
+            fgv.personalReferencePhone.errors &&
+            (fgv.personalReferencePhone.dirty ||
+              fgv.personalReferencePhone.touched)
+          "
+        >
+          <strong *ngIf="fgv.personalReferencePhone.errors.required">
+            Este campo es requerido
+          </strong>
+        </div>
+      </div>
+
+      <!--  Document input -->
+      <div class="client__pair">
+        <input
+          formControlName="clientId"
+          class="client__input-text"
+          type="text"
+          id="clientId"
+          name="clientId"
+          placeholder="Id del cliente"
+          disabled
+        />
+        <label class="client__label" for="clientId">Id del cliente</label>
+        <div
+          class="warning-validator"
+          *ngIf="
+            fgv.clientId.errors && (fgv.clientId.dirty || fgv.clientId.touched)
+          "
+        >
+          <strong *ngIf="fgv.clientId.errors.required">
+            Este campo es requerido
+          </strong>
+        </div>
+      </div>
+
+      <div class="client__buttons">
+        <input
+          class="client__button cancel"
+          type="button"
+          value="Cancelar"
+          [routerLink]="['/clients/view', clientId]"
+        />
+        <input
+          class="client__button agree"
+          (click)="createClient()"
+          type="button"
+          value="Crear"
+        />
+      </div>
+    </form>
+  </div>
+</div>
