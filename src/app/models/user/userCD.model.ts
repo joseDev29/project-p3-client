@@ -4,11 +4,11 @@ export interface UserModel {
   id?: string;
   name: string;
   lastname: string;
-  document: string;
-  phone: number;
+  document: number;
+  phone: string;
   email: string;
   password?: string;
-  role:number;
+  role: number;
   cityId: string;
   city?: CityModel;
 }

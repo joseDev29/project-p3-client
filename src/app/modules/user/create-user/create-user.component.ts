@@ -12,7 +12,7 @@ import { UserService } from 'src/app/services/user/user.service';
 @Component({
   selector: 'app-create-user',
   templateUrl: './create-user.component.html',
-  styleUrls: ['./create-user.component.css']
+  styleUrls: ['./create-user.component.css'],
 })
 export class CreateUserComponent implements OnInit {
   user: UserModel;
@@ -64,32 +64,30 @@ export class CreateUserComponent implements OnInit {
     );
   }
 
- 
   getUserData() {
-    this.user={
+    this.user = {
       name: '',
       lastname: '',
-      document: '',
-      phone: 0,
+      document: 0,
+      phone: '',
       email: '',
       role: 0,
       cityId: '',
-    }
+    };
     this.user.name = this.aFormGroup.value.name;
     this.user.lastname = this.aFormGroup.value.lastname;
     this.user.document = this.aFormGroup.value.document;
     this.user.phone = this.aFormGroup.value.phone;
     this.user.email = this.aFormGroup.value.email;
-    this.user.role = this.aFormGroup.value.role;
+    this.user.role = Number(this.aFormGroup.value.role);
     this.user.cityId = this.aFormGroup.value.cityId;
-
   }
   createUser() {
     if (this.aFormGroup.invalid) {
       console.log('Invalid form');
     } else {
-      
       this.getUserData();
+      console.log(this.user);
       this.service.saveNewRecord(this.user).subscribe(
         (data) => {
           this.router.navigate(['/']);
