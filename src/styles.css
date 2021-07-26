@@ -40,6 +40,10 @@ main {
   min-height: calc(100vh - 60px);
 }
 
+.chart-main {
+  width: 100%;
+}
+
 @keyframes FadeIn {
   from {
     opacity: 0;
@@ -68,4 +72,16 @@ main {
   animation-duration: 2s;
   animation-delay: 0ms;
   animation-timing-function: ease-in-out;
+}
+
+@media (min-width: 660px) {
+  .chart-main {
+    width: 70%;
+  }
+}
+
+@media (min-width: 1150px) {
+  .chart-main {
+    width: 35%;
+  }
 }

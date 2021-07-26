@@ -1,6 +1,14 @@
-<div class="payments-main__title">
+<div *ngIf="requests.length" class="payments-main__title">
   <h1 class="payments__title">Zona vendedor</h1>
   <h2 class="payments__subtitle">Solicitudes</h2>
+
+  <app-chart
+    class="chart-main"
+    [labels]="chartData.labels"
+    [data]="chartData.data"
+    [setColors]="chartData.colors"
+  ></app-chart>
+
   <div class="request__buttons">
     <input
       class="request__button create"

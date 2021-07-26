@@ -10,7 +10,7 @@ import { CreatePaymentComponent } from './payment/create-payment/create-payment.
 import { UpdatePaymentComponent } from './payment/update-payment/update-payment.component';
 import { ListPaymentComponent } from './payment/list-payment/list-payment.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-
+import { ChartsModule } from '../charts/charts.module';
 
 @NgModule({
   declarations: [
@@ -21,14 +21,13 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     CreatePaymentComponent,
     UpdatePaymentComponent,
     ListPaymentComponent,
-    
   ],
   imports: [
     CommonModule,
     RequestRoutingModule,
     FormsModule,
-        ReactiveFormsModule
-    
-  ]
+    ReactiveFormsModule,
+    ChartsModule,
+  ],
 })
-export class RequestModule { }
+export class RequestModule {}
