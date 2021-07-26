@@ -20,11 +20,12 @@
 
     <div class="project__data-right">
       <app-chart
-      class="chart-main"
-      [labels]="chartData.labels"
-      [data]="chartData.data"
-      [setColors]="chartData.colors"
-    ></app-chart>
+        class="chart-main"
+        style="max-width: 400px"
+        [labels]="chartData.labels"
+        [data]="chartData.data"
+        [setColors]="chartData.colors"
+      ></app-chart>
       <h3 class="project__location">
         {{ project.city.name }}, {{ project.city.country.name }}
       </h3>

@@ -73,20 +73,3 @@ main {
   animation-delay: 0ms;
   animation-timing-function: ease-in-out;
 }
-
-@media (min-width: 660px) {
-  .chart-main {
-    width: 70%;
-  }
-}
-
-@media (min-width: 1150px) {
-  .chart-main {
-    width: 35%;
-  }
-}
-@media (min-width: 1330px) {
-  .chart-main {
-    width: 100%;
-  }
-}
