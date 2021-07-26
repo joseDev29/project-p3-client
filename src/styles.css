@@ -85,3 +85,8 @@ main {
     width: 35%;
   }
 }
+@media (min-width: 1330px) {
+  .chart-main {
+    width: 100%;
+  }
+}

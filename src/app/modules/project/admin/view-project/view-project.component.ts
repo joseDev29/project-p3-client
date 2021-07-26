@@ -17,6 +17,11 @@ export class ViewProjectComponent implements OnInit {
   properties: PropertyModel[] = [];
   projectId: string = '';
   activeBlock: BlockModel;
+  chartData = {
+    labels: ['Disponible', 'Vendida'],
+    data: [0, 0],
+    colors: ['#5497d1', '#54d188'],
+  };
 
   constructor(
     private ProjectService: AdminProjectService,
@@ -56,6 +61,7 @@ export class ViewProjectComponent implements OnInit {
       .subscribe(
         (properties) => {
           this.properties = properties
+          this.calculateChartData();
         }, (err) => console.log);
   }
 
@@ -64,4 +70,23 @@ export class ViewProjectComponent implements OnInit {
     this.getPropertiesByBlockId(this.activeBlock.id);
   }
 
+  calculateChartData() {
+    this.chartData.data=[0,0];
+    this.properties.forEach((property) => {
+      console.log(property);
+      
+      switch (property.status) {
+        case 'DISPONIBLE':
+          this.chartData.data[0]++;
+          break;
+        case 'VENDIDA':
+          this.chartData.data[1]++;
+          break;
+        default:
+          break;
+      }
+    });
+
+    console.log(this.chartData);
+  }
 }
