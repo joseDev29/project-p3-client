@@ -22,6 +22,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { NgxPaginationModule } from 'ngx-pagination';
 import { ViewProjectComponent } from './admin/view-project/view-project.component';
 import { PublicClientRequestComponent } from './public-client-request/public-client-request.component';
+import { ChartsModule } from '../charts/charts.module';
 
 @NgModule({
   declarations: [
@@ -50,6 +51,7 @@ import { PublicClientRequestComponent } from './public-client-request/public-cli
     ProjectRoutingModule,
     ReactiveFormsModule,
     NgxPaginationModule,
+    ChartsModule
   ],
   exports: [],
 })
