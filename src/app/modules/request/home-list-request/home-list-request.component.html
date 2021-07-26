@@ -10,8 +10,9 @@
     [setColors]="chartData.colors"
   ></app-chart>
 
-  <div class="request__buttons">
-    <input
+  <div *ngIf="sessionData.role === 2" class="request__buttons">
+    
+    <input 
       class="request__button create"
       type="button"
       value="Crear"
