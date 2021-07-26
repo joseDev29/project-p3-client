@@ -1,6 +1,6 @@
 
 <h2 class="project__title">Propiedades disponibles en este bloque</h2>
-<a href="" [routerLink]="['/project/admin/block/property/creation']" class="property-card-create--btn">Crear propiedad</a>
+<a href="" *ngIf="sessionData.role === 1" [routerLink]="['/project/admin/block/property/creation']" class="property-card-create--btn">Crear propiedad</a>
 <div *ngIf="properties.length" class="project__properties">
   <div
     *ngFor="let property of properties"
@@ -10,6 +10,6 @@
     <hr class="separator" />
     <p class="property-card__description">{{ property.description }}</p>
     <p class="property-card__value">$ {{ property.value | number }}</p>
-    <a  [routerLink]="['/project/admin/block/property/edition/',property.id]" class="property-card__btn">Editar</a>
+    <a *ngIf="sessionData.role === 1" [routerLink]="['/project/admin/block/property/edition/',property.id]" class="property-card__btn">Editar</a>
   </div>
 </div>

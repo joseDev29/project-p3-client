@@ -1,9 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { Subscription } from 'rxjs';
 import { BlockModel } from 'src/app/models/project/block.model';
 import { ProjectModel } from 'src/app/models/project/project.model';
 import { PropertyModel } from 'src/app/models/project/property.model';
+import { UserModel } from 'src/app/models/security/user.model';
 import { AdminProjectService } from 'src/app/services/project/admin-project.service';
+import { SecurityService } from 'src/app/services/security.service';
 
 @Component({
   selector: 'app-view-project',
@@ -22,15 +25,25 @@ export class ViewProjectComponent implements OnInit {
     data: [0, 0],
     colors: ['#5497d1', '#54d188'],
   };
-
+  isLoggedIn: Boolean = false;
+  subsription: Subscription = new Subscription();
+  sessionData: any;
   constructor(
     private ProjectService: AdminProjectService,
-    private route: ActivatedRoute) {
+    private route: ActivatedRoute,
+    private service: SecurityService) {
     this.projectId = this.route.snapshot.params["id"];
   }
 
   ngOnInit(): void {
     this.getProject();
+    this.subsription = this.service
+      .getUserData()
+      .subscribe((datos: UserModel) => {
+        console.log(datos);
+        this.sessionData = datos;
+        this.isLoggedIn = datos.isLogged;
+      });
   }
 
   getProject() {

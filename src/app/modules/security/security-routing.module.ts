@@ -19,10 +19,12 @@ const routes: Routes = [
   {
     path: 'reset-password',
     component: ResetPasswordComponent,
+    canActivate:[UnauthenticatedGuard]
   },
   {
     path: 'change-password',
     component: ChangePasswordComponent,
+   
   },
 ];
 

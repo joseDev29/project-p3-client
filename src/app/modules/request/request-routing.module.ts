@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { AuthenticatedUserGuard } from 'src/app/guards/authenticated-user.guard';
 import { CreateRequestComponent } from './admin/create-request/create-request.component';
 import { UpdateRequestComponent } from './admin/update-request/update-request.component';
 import { HomeListRequestComponent } from './home-list-request/home-list-request.component';
@@ -20,7 +21,9 @@ const routes: Routes = [
   },
   {
     path:'create',
-    component:CreateRequestComponent
+    component:CreateRequestComponent,
+    canActivate:[AuthenticatedUserGuard]
+    
   }
 
 ];

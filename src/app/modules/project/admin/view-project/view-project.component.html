@@ -1,5 +1,6 @@
 <div *ngIf="project" class="project__main fade-in">
-  <h1 class="project__title">Zona Administrador</h1>
+  <h1 *ngIf="sessionData.role === 1" class="project__title">Zona Administrador</h1>
+  <h1 *ngIf="sessionData.role === 2" class="project__title">Zona Vendedor</h1>
   <h2 class="project__subtitle">{{ project.name }}</h2>
 
   <div class="project__data">
@@ -10,7 +11,7 @@
         alt="Imagen de Valle del bombu"
       />
       <a
-        href=""
+        *ngIf="sessionData.role === 1"
         [routerLink]="['/project/admin/edition/', project.id]"
         class="project-card-create--btn"
         style="background-color: var(--update-purple); width: 100%"
@@ -34,6 +35,7 @@
       </p>
       <a
         href=""
+        *ngIf="sessionData.role === 1"
         [routerLink]="['/project/admin/block/creation']"
         class="project-card-create--btn"
         style="background-color: var(--create-blue)"
@@ -47,6 +49,7 @@
       ></app-list-block>
       <a
         href=""
+        *ngIf="sessionData.role === 1"
         [routerLink]="['/project/admin/block/edition/', activeBlock.id]"
         class="project-card-create--btn"
         style="background-color: var(--update-purple)"
