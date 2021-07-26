@@ -1,11 +1,14 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
+import { Subscription } from 'rxjs';
 import { PaymentModel } from 'src/app/models/payment/payment.model';
 import { RequestModel } from 'src/app/models/request/request.model';
+import { UserModel } from 'src/app/models/security/user.model';
 import { CountryService } from 'src/app/services/parameters/country.service';
 import { AdminPaymentService } from 'src/app/services/payment/admin-payment.service';
 import { RequestService } from 'src/app/services/requests/request.service';
+import { SecurityService } from 'src/app/services/security.service';
 
 @Component({
   selector: 'app-update-request',
@@ -22,12 +25,16 @@ export class UpdateRequestComponent implements OnInit {
     data: [0, 0],
     colors: ['#d1a954', '#8254d1'],
   };
+  isLoggedIn: Boolean = false;
+  subsription: Subscription = new Subscription();
+  sessionData: any;
   constructor(
     private formBuilder: FormBuilder,
     private route: ActivatedRoute,
     private service: RequestService,
     private router: Router,
-    private paymentService: AdminPaymentService
+    private paymentService: AdminPaymentService,
+    private SecurityService: SecurityService
   ) {
     this.recordId = this.route.snapshot.params['id'];
   }
@@ -35,6 +42,13 @@ export class UpdateRequestComponent implements OnInit {
     this.FormBuilding();
     this.getRecordById();
     this.getPayments();
+    this.subsription = this.SecurityService
+      .getUserData()
+      .subscribe((datos: UserModel) => {
+        console.log(datos);
+        this.sessionData = datos;
+        this.isLoggedIn = datos.isLogged;
+      });
   }
 
   FormBuilding() {}

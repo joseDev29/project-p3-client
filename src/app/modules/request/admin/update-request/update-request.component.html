@@ -11,14 +11,11 @@
         </h3>
         <hr class="separator" />
         <h3 class="request-card--subtitle">Estado</h3>
-        <h3
-          [ngClass]="{
+        <h3 [ngClass]="{
             'text-success': request.status === 'ACEPTADA',
             'text-review': request.status === 'EN ESTUDIO',
             'text-rejected': request.status === 'RECHAZADA'
-          }"
-          class="request-card--subtitle2 status"
-        >
+          }" class="request-card--subtitle2 status">
           {{ request.status }}
         </h3>
         <hr class="separator" />
@@ -92,42 +89,21 @@
 </div>
 
 <div style="max-width: 650px; margin: 20px auto">
-  <app-chart
-    class="chart-main"
-    *ngIf="request.status === 'ACEPTADA'"
-    [labels]="chartData.labels"
-    [data]="chartData.data"
-    [setColors]="chartData.colors"
-  ></app-chart>
+  <app-chart class="chart-main" *ngIf="request.status === 'ACEPTADA'" [labels]="chartData.labels"
+    [data]="chartData.data" [setColors]="chartData.colors"></app-chart>
 </div>
 
-<div
-  *ngIf="request.status == 'ACEPTADA' && request.totalPayment > 0"
-  class="request__buttons"
->
-  <input
-    class="request__button create"
-    type="button"
-    value="Anexar Pago"
-    routerLink="/request/view/{{ request.id }}/payment"
-  />
+<div *ngIf="(request.status == 'ACEPTADA' && request.totalPayment > 0) && sessionData.role === 2 "
+  class="request__buttons">
+  <input class="request__button create" type="button" value="Anexar Pago"
+    routerLink="/request/view/{{ request.id }}/payment" />
 </div>
-<div
-  *ngIf="request.status != 'ACEPTADA' && request.status != 'RECHAZADA'"
-  class="request__buttons"
->
-  <input
-    class="request__button cancel"
-    type="button"
-    (click)="rejectedRequest()"
-    value="Rechazar"
-  />
-  <input
-    class="request__button agree"
-    type="button"
-    (click)="acceptedRequest()"
-    value="Aceptar"
-  />
+<div *ngIf="(request.status != 'ACEPTADA' && request.status != 'RECHAZADA')&& sessionData.role === 2"
+  class="request__buttons">
+  <input *ngIf="sessionData.role === 2" class="request__button cancel" type="button" (click)="rejectedRequest()"
+    value="Rechazar" />
+  <input *ngIf="sessionData.role === 2" class="request__button agree" type="button" (click)="acceptedRequest()"
+    value="Aceptar" />
 </div>
 
 <app-list-payment [payments]="payments"></app-list-payment>

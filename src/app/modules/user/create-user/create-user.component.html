@@ -1,1 +1,105 @@
-<p>create-user works!</p>
+<div class="user__main">
+    <div class="user-right fade-in">
+        <form class="user custom-text-color" [formGroup]="aFormGroup">
+            <h1 class="user__title">Crear usere</h1>
+
+            <!--  Name input -->
+            <div class="user__pair">
+                <input formControlName="name" class="user__input-text" type="text" id="name" name="user"
+                    placeholder="Nombre" />
+                <label class="user__label" for="name">Nombre</label>
+                <div class="warning-validator" *ngIf="fgv.name.errors && (fgv.name.dirty || fgv.name.touched)">
+                    <strong *ngIf="fgv.name.errors.required">
+                        Este campo es requerido
+                    </strong>
+                </div>
+            </div>
+
+            <!--  Lastname input -->
+            <div class="user__pair">
+                <input formControlName="lastname" class="user__input-text" type="text" id="lastname" name="user"
+                    placeholder="Apellido" />
+                <label class="user__label" for="lastname">Apellido</label>
+                <div class="warning-validator" *ngIf="
+              fgv.lastname.errors && (fgv.lastname.dirty || fgv.lastname.touched)
+            ">
+                    <strong *ngIf="fgv.lastname.errors.required">
+                        Este campo es requerido
+                    </strong>
+                </div>
+            </div>
+
+            <!--  Document input -->
+            <div class="user__pair">
+                <input formControlName="document" class="user__input-text" type="text" id="document" name="document"
+                    placeholder="Documento" />
+                <label class="user__label" for="document">Documento</label>
+                <div class="warning-validator" *ngIf="
+              fgv.document.errors && (fgv.document.dirty || fgv.document.touched)
+            ">
+                    <strong *ngIf="fgv.document.errors.required">
+                        Este campo es requerido
+                    </strong>
+                </div>
+            </div>
+
+
+            <div class="user__pair">
+                <input formControlName="email" class="user__input-text" type="email" id="email" name="email"
+                    placeholder="Correo" />
+                <label class="user__label" for="email">Correo</label>
+                <div class="warning-validator" *ngIf="fgv.email.errors && (fgv.email.dirty || fgv.email.touched)">
+                    <strong *ngIf="fgv.email.errors.required">
+                        Este campo es requerido
+                    </strong>
+                </div>
+            </div>
+            <div class="user__pair">
+                <input formControlName="phone" class="user__input-text" type="text" id="phone" name="phone"
+                    placeholder="Telefono" />
+                <label class="user__label" for="phone">Telefono</label>
+                <div class="warning-validator" *ngIf="fgv.phone.errors && (fgv.phone.dirty || fgv.phone.touched)">
+                    <strong *ngIf="fgv.phone.errors.required">
+                        Este campo es requerido
+                    </strong>
+                </div>
+            </div>
+
+            <!--  Country select -->
+            <div class="user__pair">
+                <label class="user__label" for="country">Rol</label>
+                <select class="country__blocks-select" name="rol" id="rol">
+                    <option value="1">
+                        Administrador
+                    </option>
+                    <option value="2">
+                        Vendedor
+                    </option>
+                </select>
+            </div>
+            <div class="user__pair">
+                <label class="user__label" for="country">País</label>
+                <select class="country__blocks-select" name="blocks" id="countryBlock"
+                    (change)="getCitiesByCountryId($event)">
+                    <option *ngFor="let country of countries" value="{{ country.id }}">
+                        {{ country.name }}
+                    </option>
+                </select>
+            </div>
+
+            <!--  City select -->
+            <div class="user__pair">
+                <label class="user__label" for="city">Ciudad</label>
+                <select formControlName="cityId" class="country__blocks-select" name="blocks" id="countryBlock">
+                    <option *ngFor="let city of cities" value="{{ city.id }}">
+                        {{ city.name }}
+                    </option>
+                </select>
+            </div>
+            <div class="user__buttons">
+                <input class="user__button cancel" type="button" value="Cancelar" routerLink="/" />
+                <input class="user__button agree" (click)="createUser()" type="button" value="Crear" />
+            </div>
+        </form>
+    </div>
+</div>

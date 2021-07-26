@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { Subscription } from 'rxjs';
+import { UserModel } from 'src/app/models/security/user.model';
 import { RequestService } from 'src/app/services/requests/request.service';
+import { SecurityService } from 'src/app/services/security.service';
 
 @Component({
   selector: 'app-home-list-request',
@@ -13,8 +16,10 @@ export class HomeListRequestComponent implements OnInit {
     data: [0, 0, 0],
     colors: ['#5497d1', '#54d188', '#d15460'],
   };
-
-  constructor(private RequestService: RequestService) {}
+  isLoggedIn: Boolean = false;
+  subsription: Subscription = new Subscription();
+  sessionData: any;
+  constructor(private RequestService: RequestService,private service: SecurityService) {}
 
   ngOnInit(): void {
     this.RequestService.getAllRecords().subscribe(
@@ -26,6 +31,13 @@ export class HomeListRequestComponent implements OnInit {
       },
       (err) => console.log
     );
+    this.subsription = this.service
+      .getUserData()
+      .subscribe((datos: UserModel) => {
+        console.log(datos);
+        this.sessionData = datos;
+        this.isLoggedIn = datos.isLogged;
+      });
   }
 
   calculateChartData() {

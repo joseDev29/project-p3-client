@@ -1,7 +1,8 @@
 <div class="projects-main__title">
-    <h1 class="projects__title">Zona administrador</h1>
+    <h1 *ngIf="sessionData.role === 1" class="projects__title">Zona Administrador</h1>
+    <h1 *ngIf="sessionData.role === 2" class="projects__title">Zona Venderdor</h1>
     <h2 class="projects__subtitle">Proyectos</h2>
-    <a href="" [routerLink]="['/project/admin/creation']" class="project-card-create--btn">Crear</a>
+    <a *ngIf="sessionData.role === 1" [routerLink]="['/project/admin/creation']" class="project-card-create--btn">Crear</a>
     
 </div>
 <div class="projects">

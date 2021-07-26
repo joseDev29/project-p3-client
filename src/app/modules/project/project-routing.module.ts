@@ -14,6 +14,8 @@ import { ListPropertyComponent } from './block/property/list-property/list-prope
 import { AuthenticatedAdminGuard } from 'src/app/guards/authenticated-admin.guard';
 import { ViewProjectComponent } from './admin/view-project/view-project.component';
 import { PublicClientRequestComponent } from './public-client-request/public-client-request.component';
+import { AuthenticatedUserGuard } from 'src/app/guards/authenticated-user.guard';
+import { AuthenticatedBothGuard } from 'src/app/guards/authenticated-both.guard';
 
 const routes: Routes = [
   {
@@ -22,18 +24,25 @@ const routes: Routes = [
       {
         path: 'list',
         component: ListProjectComponent,
+        canActivate: [AuthenticatedBothGuard]
       },
       {
         path: 'creation',
         component: CreateProjectComponent,
+        canActivate: [AuthenticatedAdminGuard]
+
       },
       {
         path: 'edition/:id',
         component: UpdateProjectComponent,
+        canActivate: [AuthenticatedAdminGuard]
+
       },
       {
         path: 'view/:id',
         component: ViewProjectComponent,
+        canActivate: [AuthenticatedBothGuard]
+
       },
       {
         path: 'block',
@@ -41,14 +50,19 @@ const routes: Routes = [
           {
             path: 'creation',
             component: CreateBlockComponent,
+            canActivate: [AuthenticatedAdminGuard]
+
           },
           {
             path: 'edition/:id',
             component: UpdateBlockComponent,
+            canActivate: [AuthenticatedAdminGuard]
+
           },
           {
             path: 'list',
             component: ListBlockComponent,
+            canActivate: [AuthenticatedBothGuard]
           },
           {
             path: 'property',
@@ -56,14 +70,19 @@ const routes: Routes = [
               {
                 path: 'creation',
                 component: CreatePropertyComponent,
+                canActivate: [AuthenticatedAdminGuard]
+
               },
               {
                 path: 'edition/:id',
                 component: UpdatePropertyComponent,
+                canActivate: [AuthenticatedAdminGuard]
+
               },
               {
                 path: 'list',
                 component: ListPropertyComponent,
+                canActivate: [AuthenticatedBothGuard]
               },
               {
                 path: '**',
@@ -105,4 +124,4 @@ const routes: Routes = [
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule],
 })
-export class ProjectRoutingModule {}
+export class ProjectRoutingModule { }
