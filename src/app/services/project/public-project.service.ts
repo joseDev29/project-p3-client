@@ -6,6 +6,8 @@ import { ProjectModel } from 'src/app/models/project/project.model';
 import { BlockModel } from '../../models/project/block.model';
 import { PropertyModel } from '../../models/project/property.model';
 import { PublicClientRequestModel } from 'src/app/models/project/public-client-request.model';
+import { CountryModel } from 'src/app/models/parameters/country.model';
+import { CityModel } from 'src/app/models/parameters/city.model';
 
 @Injectable({
   providedIn: 'root',
@@ -33,6 +35,13 @@ export class PublicProjectService {
     );
   }
 
+  getProjectsByCityId(cityId) {
+    const filter: String = `{"where": {"cityId":"${cityId}"},"fields":{"id":true,"code":true,"name":true,"description":true,"image":true,"cityId":true},"include":[{"relation":"city","scope":{"include":[{"relation":"country"}]}}]}`;
+    return this.http.get<ProjectModel[]>(
+      `${ServiceConfig.BASE_URL}projects?filter=${filter}`
+    );
+  }
+
   getBlocksByProjectId(id: string): Observable<BlockModel[]> {
     return this.http.get<BlockModel[]>(
       `${ServiceConfig.BASE_URL}${this.entity}/${id}/blocks`
@@ -55,6 +64,20 @@ export class PublicProjectService {
     return this.http.post<any>(
       `${ServiceConfig.BASE_URL}properties/${propertyId}/offer`,
       data
+    );
+  }
+
+  getCountries(): Observable<CountryModel[]> {
+    const filter: String = '{"fields":{"id":true,"code":true,"name":true}}';
+
+    return this.http.get<CountryModel[]>(
+      `${ServiceConfig.BASE_URL}countries?filter=${filter}`
+    );
+  }
+
+  getCitiesByCountryId(countryId: String): Observable<CityModel[]> {
+    return this.http.get<CityModel[]>(
+      `${ServiceConfig.BASE_URL}countries/${countryId}/cities`
     );
   }
 }

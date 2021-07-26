@@ -1,3 +1,38 @@
+<!-- Filter -->
+<div class="filter-bar fade-in">
+  <div class="filter-bar__selects">
+    <select
+      name="countries"
+      id="countries"
+      class="select_countries"
+      (change)="getCitiesByCountryId($event)"
+    >
+      <option value="all-countries" selected>Todos los paises</option>
+      <option *ngFor="let country of countries" value="{{ country.id }}">
+        {{ country.name }}
+      </option>
+    </select>
+    <select
+      name="cities"
+      id="cities"
+      class="select_cities"
+      (change)="changeSelected($event)"
+    >
+      <option value="all-cities" selected>Todas las ciudades</option>
+      <option *ngFor="let city of cities" value="{{ city.id }}">
+        {{ city.name }}
+      </option>
+    </select>
+  </div>
+  <a
+    class="filter-bar__btn"
+    style="cursor: pointer"
+    (click)="filterProjects($event)"
+    >Filtrar</a
+  >
+</div>
+
+<!-- Project list -->
 <div class="projects custom-text-color">
   <app-card-project
     *ngFor="let project of projects"
