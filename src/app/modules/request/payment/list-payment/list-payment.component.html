@@ -5,7 +5,7 @@
     *ngFor="let payment of payments"
     class="request__payment-card box-shadow fade-in-0"
   >
-    <h4 class="payment-card__title">{{ payment.code }}</h4>
+    <h4 class="payment-card__title">{} {{ payment.code }}</h4>
     <hr class="separator" />
     <p class="payment-card__description">{{payment.date | date}}</p>
     <p class="payment-card__value">$ {{ payment.value | number }}</p>

@@ -87,6 +87,8 @@ export class CreateUserComponent implements OnInit {
   createUser() {
     if (this.aFormGroup.invalid) {
       console.log('Invalid form');
+      console.log("prueba);
+      
     } else {
       
       this.getUserData();
